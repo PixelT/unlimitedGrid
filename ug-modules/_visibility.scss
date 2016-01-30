@@ -1,0 +1,21 @@
+// ----- MODULE-VISIBILITY ----------------------
+@if($module-visibility) {
+    [class*="#{$prefix-hide}"] {
+        display: block;
+    }
+    [class*="#{$prefix-show}"] {
+        display: none;
+    }
+    @if($grid-responsive) {
+        @each $key, $value in $module-visibility-breakpoints {
+            @media (min-width: $value) {
+                .#{$prefix-show}#{$key} {
+                    display: block;
+                }
+                .#{$prefix-hide}#{$key} {
+                    display: none;
+                }
+            }
+        }
+    }
+}

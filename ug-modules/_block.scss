@@ -1,0 +1,43 @@
+// ----- MODULE-BLOCK ---------------------------
+@if($module-block) {
+    @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
+        @for $i from 1 through abs($module-block-columns) {
+            .#{$prefix-block}#{$i} {
+                > * {
+                    width: calc(( #{$i} / #{abs($grid-columns)}) * 100% - #{$grid-gutter-horizontal});
+                }
+            }
+        }
+    } @else {
+        @each $column-value in check-columns($module-block-columns) {
+            .#{$prefix-block}#{$column-value} {
+                > * {
+                    width: calc(( 100% / max-value(#{$grid-columns})) * #{$column-value} - #{$grid-gutter-horizontal});
+                }
+            }
+        }
+    }
+    @if($grid-responsive) {
+        @each $key, $value in $module-block-breakpoints {
+            @media (min-width: $value) {
+                @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
+                    @for $i from 1 through abs($module-block-columns) {
+                        .#{$prefix-block}#{$key}#{$i} {
+                            > * {
+                                width: calc(( #{$i} / #{abs($grid-columns)}) * 100% - #{$grid-gutter-horizontal});
+                            }
+                        }
+                    }
+                } @else {
+                    @each $column-value in check-columns($module-block-columns) {
+                        .#{$prefix-block}#{$key}#{$column-value} {
+                            > * {
+                                width: calc(( 100% / max-value(#{$grid-columns})) * #{$column-value} - #{$grid-gutter-horizontal});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

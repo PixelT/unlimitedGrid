@@ -1,0 +1,20 @@
+// ----- MODULE-RESPONSIVE ----------------------
+@if($grid-responsive) {
+    @each $key, $value in $grid-breakpoints {
+        @media (min-width: $value) {
+            @if (length($grid-columns) == 1) and ($grid-columns < 0) {
+                @for $i from 1 through abs($grid-columns) {
+                    .#{$prefix-column}#{$key}#{$i} {
+                        width: ($i / abs($grid-columns)) * 100%;
+                    }
+                }
+            } @else {
+                @each $column-value in check-columns($grid-columns) {
+                    .#{$prefix-column}#{$key}#{$column-value} {
+                        width: (100% / max-value($grid-columns)) * $column-value;
+                    }
+                }
+            }
+        }
+    }
+}
