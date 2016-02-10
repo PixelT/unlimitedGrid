@@ -9,7 +9,6 @@
 	}
 	@return $max-value;
 }
-
 @function check-columns($list) {
 	$columns-values: ();
 	@each $item in $list {
@@ -29,7 +28,7 @@ html {
 	box-sizing: inherit;
 }
 // ----- HELPERS-CLEARFIX -----------------------
-.#{$helpers-clearfix} {
+.#{$helper-clearfix} {
 	&:after,
 	&:before {
 		content: '';
@@ -54,15 +53,15 @@ html {
 			display: block;
 			position: fixed;
 			margin: 0 auto;
+			z-index: -1;
 			left: 0;
 			right: 0;
 			bottom: 0;
 			top: 0;
-			z-index: -1;
 			width: 100%;
 			max-width: $grid-max-width;
 			height: 100%;
-			background: repeating-linear-gradient(90deg, map-get($debug-settings, background-column) 0, map-get($debug-settings, background-column) calc(#{$debug-width} - #{$grid-gutter-horizontal}), map-get($debug-settings, background-gutter) calc(#{$debug-width} - #{$grid-gutter-horizontal}), map-get($debug-settings, background-gutter) calc(#{$debug-width} + ( #{$grid-gutter-horizontal} / #{$debug-columns} ))); //grid nomargin
+			background: repeating-linear-gradient(90deg, map-get($debug-settings, background-column) 0, map-get($debug-settings, background-column) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} + ( #{$grid-gutter} / #{$debug-columns} ))); //grid nomargin
 			@if ($grid-margin != 0) {
 				background-origin: content-box;
 				padding: 0 $grid-margin;
@@ -97,61 +96,23 @@ html {
 	}
 }
 // ----- CLASS-ROW ------------------------------
-[class*="#{$class-row}"] {
+.#{$class-row} {
 	&:after {
 		clear: both;
 		content: '';
 		display: table;
 	}
-	margin-left: -$grid-gutter-horizontal;
-	&:not(:first-child) {
-		margin-top: $grid-gutter-vertical;
-	}
-	// ----- HELPERS-GUTTER ---------------------
-	&.#{$helpers-gutter} {
-		margin-top: 0;
-		margin-left: 0;
-		[class*="#{$prefix-column}"] {
-			padding-left: 0;
-		}
-		&-v {
-			margin-top: 0;
-		}
-		&-h {
-			margin-left: 0;
-			[class*="#{$prefix-column}"] {
-				padding-left: 0;
-			}
-		}
-	}
+	margin-left: -$grid-gutter;
 }
 // ----- CLASS-COLUMN ---------------------------
-[class*="#{$prefix-column}"] {
+[class*="#{$prefix-column}"],
+[class*="#{$prefix-block}"] > * {
 	float: left;
 	min-height: 1px;
-	padding-left: $grid-gutter-horizontal;
+	padding-left: $grid-gutter;
 	width: 100%;
 }
-// ----- CLASS-BLOCK ----------------------------
-[class*="#{$prefix-block}"] {
-	&:after {
-		clear: both;
-		content: '';
-		display: table;
-	}
-	margin: 0;
-	padding: 0;
-	> * {
-
-		float: left;
-		min-height: 1px;
-		padding-left: $grid-gutter-horizontal;
-		margin-left: $grid-gutter-horizontal;
-		width: calc(100% - #{$grid-gutter-horizontal});
-		margin-top: $grid-gutter-vertical;
-	}
-}
-// ----- BASE-GRID ------------------------------
+// ----- GRID-BASE ------------------------------
 @if (length($grid-columns) == 1) and ($grid-columns < 0) {
 	@for $i from 1 through abs($grid-columns) {
 		.#{$prefix-column}#{$i} {
@@ -162,6 +123,15 @@ html {
 	@each $column-value in check-columns($grid-columns) {
 		.#{$prefix-column}#{$column-value} {
 			width: (100% / max-value($grid-columns)) * $column-value;
+		}
+	}
+}
+// ----- GRID-GUTTER ----------------------------
+@each $key, $value in $helper-gutter-values {
+	.#{$helper-gutter}#{$key} {
+		margin-left: -$value;
+		[class*="#{$prefix-column}"] {
+			padding-left: $value;
 		}
 	}
 }

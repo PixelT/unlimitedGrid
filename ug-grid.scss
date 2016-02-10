@@ -1,5 +1,5 @@
-/*!
- * unlimitedGrid v1.0.0
+ /*!
+ * unlimitedGrid v1.1.0
  * Copyright (c) 2015-2016 Krzysztof Kula
  * - https://github.com/PixelT/unlimitedGrid/
  * - http://pixelt.github.io/unlimitedGrid/
@@ -9,8 +9,7 @@
 // ----- GRID-SETTINGS --------------------------
 $grid-max-width: 1200px;
 $grid-columns: -12;
-$grid-gutter-vertical: 10px;
-$grid-gutter-horizontal: 10px;
+$grid-gutter: 10px;
 $grid-margin: 10px;
 $grid-responsive: true;
 $grid-breakpoints: (
@@ -31,9 +30,12 @@ $prefix-show: 'ug-show-';
 $prefix-hide: 'ug-hide-';
 $prefix-block: 'ug-block-';
 
-// ----- HELPER-NAMESPACES ----------------------
-$helpers-clearfix: 'ug-cf';
-$helpers-gutter: 'ug-nogutter';
+// ----- GRID-HELPERS ---------------------------
+$helper-clearfix: 'ug-cf';
+$helper-gutter: 'ug-gutter-';
+$helper-gutter-values: (
+    'reset': 0
+);
 
 // ----- MODULE-OFFSET --------------------------
 $module-offset: true;
