@@ -130,7 +130,7 @@ html {
 @each $key, $value in $helper-gutter-values {
 	.#{$helper-gutter}#{$key} {
 		margin-left: -$value;
-		[class*="#{$prefix-column}"] {
+		> [class*="#{$prefix-column}"] {
 			padding-left: $value;
 		}
 	}

@@ -1,5 +1,5 @@
 /*!
- * unlimitedGrid v1.1.0
+ * unlimitedGrid v1.1.1
  * Copyright (c) 2015-2016 Krzysztof Kula
  * - https://github.com/PixelT/unlimitedGrid/
  * - http://pixelt.github.io/unlimitedGrid/
@@ -138,7 +138,7 @@ html {
   margin-left: 0;
 }
 
-.ug-gutter-reset [class*="ug-col-"] {
+.ug-gutter-reset > [class*="ug-col-"] {
   padding-left: 0;
 }
 
