@@ -1,0 +1,22 @@
+{
+  "name": "unlimitedGrid",
+  "version": "1.2.0",
+  "description": "Responsive, fully customizable & mobile first CSS grid framework / system based on Sass (SCSS)",
+  "main": "ug-grid.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "http://pixelt.github.io/unlimitedGrid/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PixelT/unlimitedGrid"
+  },
+  "author": "Krzysztof Kula",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0"
+  }
+}
