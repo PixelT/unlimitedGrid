@@ -1,8 +1,18 @@
 // ----- MODULE-BLOCK ---------------------------
-@if($module-block) {
+@if ($module-block) {
+    [class*="#{$module-block-class}"] {
+        padding-left: 0;
+        list-style: none;
+        > * {
+            width: 100%;
+            min-height: 1px;
+            padding-left: $grid-gutter;
+            float: left;
+        }
+    }
     @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
         @for $i from 1 through abs($module-block-columns) {
-            .#{$prefix-block}#{$i} {
+            .#{$module-block-class}#{$i} {
                 > * {
                     width: ($i / abs($module-block-columns)) * 100%;
                 }
@@ -10,19 +20,19 @@
         }
     } @else {
         @each $column-value in check-columns($module-block-columns) {
-            .#{$prefix-block}#{$column-value} {
+            .#{$module-block-class}#{$column-value} {
                 > * {
                     width: ($column-value / max-value($module-block-columns)) * 100%;
                 }
             }
         }
     }
-    @if($grid-responsive) {
+    @if ($grid-responsive) {
         @each $key, $value in $module-block-breakpoints {
             @media (min-width: $value) {
                 @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
                     @for $i from 1 through abs($module-block-columns) {
-                        .#{$prefix-block}#{$key}#{$i} {
+                        .#{$module-block-class}#{$key}#{$i} {
                             > * {
                                 width: ($i / abs($module-block-columns)) * 100%;
                             }
@@ -30,7 +40,7 @@
                     }
                 } @else {
                     @each $column-value in check-columns($module-block-columns) {
-                        .#{$prefix-block}#{$key}#{$column-value} {
+                        .#{$module-block-class}#{$key}#{$column-value} {
                             > * {
                                 width: ($column-value / max-value($module-block-columns)) * 100%;
                             }

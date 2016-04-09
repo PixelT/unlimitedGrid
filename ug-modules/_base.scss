@@ -1,5 +1,5 @@
 // ----- MODULE-BASE ----------------------------
-// ----- FUNCTIONS / HELPERS --------------------
+// ----- FUNCTIONS / MIXIN ----------------------
 @function max-value($list) {
 	$max-value: 0;
 	@each $item in $list {
@@ -18,24 +18,26 @@
 	}
 	@return $columns-values;
 }
+@mixin clearfix {
+	&::after {
+		display: table;
+		clear: both;
+		content: '';
+	}
+}
 // ----- BOX-SIZING -----------------------------
 html {
 	box-sizing: border-box;
 }
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: inherit;
 }
 // ----- HELPERS-CLEARFIX -----------------------
-.#{$helper-clearfix} {
-	&:after,
-	&:before {
-		content: '';
-		display: table;
-	}
-	&:after {
-		clear: both;
+@if ($helper-clearfix) {
+	.#{$helper-clearfix-class} {
+		@include clearfix;
 	}
 }
 // ----- DEBUG ----------------------------------
@@ -45,92 +47,79 @@ html {
 	} @else {
 		$debug-columns: abs($grid-columns);
 	}
-	#{$debug-handle} {
+	#{$debug-class} {
 		$debug-width: (100 / $debug-columns) + '%';
 		position: relative;
-		&:after {
-			content: '';
+		&::after {
 			display: block;
 			position: fixed;
-			margin: 0 auto;
-			z-index: -1;
-			left: 0;
+			top: 0;
 			right: 0;
 			bottom: 0;
-			top: 0;
+			left: 0;
 			width: 100%;
-			max-width: $grid-max-width;
+			max-width: $wrapper-max-width;
 			height: 100%;
+			margin: 0 auto;
 			background: repeating-linear-gradient(90deg, map-get($debug-settings, background-column) 0, map-get($debug-settings, background-column) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} + ( #{$grid-gutter} / #{$debug-columns} ))); //grid nomargin
-			@if ($grid-margin != 0) {
+			content: '';
+			z-index: -1;
+			@if ($wrapper-gutter != 0) {
+				padding: 0 $wrapper-gutter;
 				background-origin: content-box;
-				padding: 0 $grid-margin;
 			}
 		}
-		@if ($grid-margin != 0) {
-			&:before {
-				content: '';
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				top: 0;
-				width: 100%;
-				z-index: -1;
-				max-width: $grid-max-width;
-				margin: 0 auto;
-				border-left: $grid-margin solid map-get($debug-settings, background-gutter);
-				border-right: $grid-margin solid map-get($debug-settings, background-gutter);
-			}
-		}
-
 	}
 }
 // ----- CLASS-GRID -----------------------------
-.#{$class-grid} {
-	padding: 0 $grid-margin;
+.#{$wrapper-class} {
 	width: 100%;
-	@if($grid-max-width != 100%) {
+	@if ($wrapper-gutter != 0) {
+		padding: 0 $wrapper-gutter;
+	} @else {
+		padding: 0;
+	}
+	@if ($wrapper-max-width != 100%) {
+		max-width: $wrapper-max-width;
 		margin: 0 auto;
-		max-width: $grid-max-width;
 	}
 }
 // ----- CLASS-ROW ------------------------------
-.#{$class-row} {
-	&:after {
-		clear: both;
-		content: '';
-		display: table;
-	}
+.#{$grid-class-row} {
+	@include clearfix;
 	margin-left: -$grid-gutter;
 }
 // ----- CLASS-COLUMN ---------------------------
-[class*="#{$prefix-column}"],
-[class*="#{$prefix-block}"] > * {
-	float: left;
+[class*="#{$grid-class-column}"] {
+	width: 100%;
 	min-height: 1px;
 	padding-left: $grid-gutter;
-	width: 100%;
+	float: left;
+}
+.#{$grid-class-column}center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
 }
 // ----- GRID-BASE ------------------------------
 @if (length($grid-columns) == 1) and ($grid-columns < 0) {
 	@for $i from 1 through abs($grid-columns) {
-		.#{$prefix-column}#{$i} {
+		.#{$grid-class-column}#{$i} {
 			width: ($i / abs($grid-columns)) * 100%;
 		}
 	}
 } @else {
 	@each $column-value in check-columns($grid-columns) {
-		.#{$prefix-column}#{$column-value} {
+		.#{$grid-class-column}#{$column-value} {
 			width: (100% / max-value($grid-columns)) * $column-value;
 		}
 	}
 }
 // ----- GRID-GUTTER ----------------------------
 @each $key, $value in $helper-gutter-values {
-	.#{$helper-gutter}#{$key} {
+	.#{$helper-gutter-class}#{$key} {
 		margin-left: -$value;
-		> [class*="#{$prefix-column}"] {
+		> [class*="#{$grid-class-column}"] {
 			padding-left: $value;
 		}
 	}

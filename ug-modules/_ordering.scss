@@ -1,0 +1,71 @@
+// ----- MODULE-ORDERING (PULL/PUSH) ------------
+@if ($module-ordering) {
+    [class*="#{$module-ordering-class-pull}"],
+    [class*="#{$module-ordering-class-push}"] {
+        position: relative;
+    }
+    @if (length($module-ordering-columns) == 1) and ($module-ordering-columns < 0) {
+        @for $i from 1 through abs($module-ordering-columns) {
+            .#{$module-ordering-class-pull}#{$i} {
+                left: -($i / abs($module-ordering-columns)) * 100%;
+            }
+        }
+    } @else {
+        @each $column-value in check-columns($module-ordering-columns) {
+            .#{$module-ordering-class-pull}#{$column-value} {
+                left: -(100% / max-value($module-ordering-columns)) * $column-value;
+            }
+        }
+    }
+    @if ($grid-responsive) {
+        @each $key, $value in $module-ordering-breakpoints {
+            @media (min-width: $value) {
+                @if (length($module-ordering-columns) == 1) and ($module-ordering-columns < 0) {
+                    @for $i from 1 through abs($module-ordering-columns) {
+                        .#{$module-ordering-class-pull}#{$key}#{$i} {
+                            left: -($i / abs($module-ordering-columns)) * 100%;
+                        }
+                    }
+                } @else {
+                    @each $column-value in check-columns($module-ordering-columns) {
+                        .#{$module-ordering-class-pull}#{$key}#{$column-value} {
+                            left: -(100% / max-value($module-ordering-columns)) * $column-value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @if (length($module-ordering-columns) == 1) and ($module-ordering-columns < 0) {
+        @for $i from 1 through abs($module-ordering-columns) {
+            .#{$module-ordering-class-push}#{$i} {
+                left: ($i / abs($module-ordering-columns)) * 100%;
+            }
+        }
+    } @else {
+        @each $column-value in check-columns($module-ordering-columns) {
+            .#{$module-ordering-class-push}#{$column-value} {
+                left: (100% / max-value($module-ordering-columns)) * $column-value;
+            }
+        }
+    }
+    @if ($grid-responsive) {
+        @each $key, $value in $module-ordering-breakpoints {
+            @media (min-width: $value) {
+                @if (length($module-ordering-columns) == 1) and ($module-ordering-columns < 0) {
+                    @for $i from 1 through abs($module-ordering-columns) {
+                        .#{$module-ordering-class-push}#{$key}#{$i} {
+                            left: ($i / abs($module-ordering-columns)) * 100%;
+                        }
+                    }
+                } @else {
+                    @each $column-value in check-columns($module-ordering-columns) {
+                        .#{$module-ordering-class-push}#{$key}#{$column-value} {
+                            left: (100% / max-value($module-ordering-columns)) * $column-value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
