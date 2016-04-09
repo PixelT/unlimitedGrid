@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unlimitedGrid - DEMO</title>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
+    <link rel="stylesheet" href="ug-grid.css">
+</head>
+<body>
+
+<div class="ug-wrapper">
+
+    <div class="heading">grid: basic</div>
+    <div class="ug-row">
+        <div class="ug-col-12">
+            <div class="box-primary">12</div>
+        </div>
+    </div>
+    <div class="ug-row">
+        <div class="ug-col-3">
+            <div class="box-primary">3</div>
+        </div>
+        <div class="ug-col-9">
+            <div class="box-secondary">9</div>
+        </div>
+    </div>
+    <div class="ug-row">
+        <div class="ug-col-6">
+            <div class="box-primary">6</div>
+        </div>
+        <div class="ug-col-6">
+            <div class="box-secondary">6</div>
+        </div>
+    </div>
+    <div class="ug-row">
+        <div class="ug-col-9">
+            <div class="box-primary">9</div>
+        </div>
+        <div class="ug-col-3">
+            <div class="box-secondary">3</div>
+        </div>
+    </div>
+    <div class="ug-row">
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-primary">1</div>
+        </div>
+        <div class="ug-col-1">
+            <div class="box-secondary">1</div>
+        </div>
+    </div>
+
+    <div class="heading">grid: basic (responsive)</div>
+    <div class="ug-row">
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-primary">s6 m4 l2</div>
+        </div>
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-secondary">s6 m4 l2</div>
+        </div>
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-primary">s6 m4 l2</div>
+        </div>
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-secondary">s6 m4 l2</div>
+        </div>
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-primary">s6 m4 l2</div>
+        </div>
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+            <div class="box-secondary">s6 m4 l2</div>
+        </div>
+    </div>
+    <hr>
+    <div class="ug-row">
+        <div class="ug-col-s-3 ug-col-m-6 ug-col-l-9">
+            <div class="box-primary">s3 m6 l9</div>
+        </div>
+        <div class="ug-col-s-9 ug-col-m-6 ug-col-l-3">
+            <div class="box-secondary">s3 m6 l3</div>
+        </div>
+    </div>
+
+    <div class="heading">grid: nested</div>
+    <div class="ug-row">
+        <div class="ug-col-5">
+            <div class="box-primary">5</div>
+        </div>
+        <div class="ug-col-5">
+            <div class="ug-row">
+                <div class="ug-col-9">
+                    <div class="box-secondary">9</div>
+                </div>
+                <div class="ug-col-3">
+                    <div class="box-secondary">3</div>
+                </div>
+            </div>
+        </div>
+        <div class="ug-col-2">
+            <div class="box-primary">2</div>
+        </div>
+    </div>
+    <hr>
+     <div class="ug-row">
+         <div class="ug-col-5">
+             <div class="box-primary">5</div>
+         </div>
+         <div class="ug-col-5">
+             <div class="box-secondary">5</div>
+             <div class="ug-row">
+                 <div class="ug-col-6">
+                     <div class="box-primary">6</div>
+                     <div class="ug-row">
+                         <div class="ug-col-4">
+                             <div class="box-secondary">4</div>
+                         </div>
+                         <div class="ug-col-4">
+                             <div class="box-secondary">4</div>
+                         </div>
+                         <div class="ug-col-4">
+                             <div class="box-secondary">4</div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="ug-col-6">
+                     <div class="box-secondary">6</div>
+                 </div>
+             </div>
+         </div>
+         <div class="ug-col-2">
+             <div class="box-primary">2</div>
+         </div>
+     </div>
+
+     <div class="heading">grid: nested (responsive)</div>
+     <div class="ug-row">
+         <div class="ug-col-m-4 ug-col-l-6">
+             <div class="box-primary">m4 l6</div>
+         </div>
+         <div class="ug-col-m-8 ug-col-l-6">
+             <div class="box-secondary">m8 l6</div>
+             <div class="ug-row">
+                 <div class="ug-col-s-6 ug-col-m-3">
+                     <div class="box-primary">s6 l3</div>
+                 </div>
+                 <div class="ug-col-s-6 ug-col-m-3">
+                     <div class="box-primary">s6 l3</div>
+                 </div>
+                 <div class="ug-col-s-6 ug-col-m-3">
+                     <div class="box-primary">s6 l3</div>
+                 </div>
+                 <div class="ug-col-s-6 ug-col-m-3">
+                     <div class="box-primary">s6 l3</div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="heading">grid: offset</div>
+     <div class="ug-row">
+         <div class="ug-col-2 ug-offset-10">
+             <div class="box-primary">2 | <i class="fa fa-caret-right"></i>10</div>
+         </div>
+     </div>
+     <div class="ug-row">
+         <div class="ug-col-4 ug-offset-8">
+             <div class="box-secondary">4 | <i class="fa fa-caret-right"></i>8</div>
+         </div>
+     </div>
+     <div class="ug-row">
+         <div class="ug-col-6 ug-offset-6">
+             <div class="box-primary">6 | <i class="fa fa-caret-right"></i>6</div>
+         </div>
+     </div>
+     <div class="ug-row">
+         <div class="ug-col-8 ug-offset-4">
+             <div class="box-secondary">8 | <i class="fa fa-caret-right"></i>4</div>
+         </div>
+     </div>
+     <div class="ug-row">
+         <div class="ug-col-10 ug-offset-2">
+             <div class="box-primary">10 | <i class="fa fa-caret-right"></i>2</div>
+         </div>
+     </div>
+     <hr>
+     <div class="ug-row">
+         <div class="ug-col-4">
+             <div class="box-primary">4</div>
+         </div>
+         <div class="ug-col-4 ug-offset-2">
+             <div class="box-secondary">4 | <i class="fa fa-caret-right"></i>2</div>
+         </div>
+     </div>
+    <hr>
+    <div class="ug-row">
+        <div class="ug-col-4 ug-offset-4">
+            <div class="box-primary">4 | <i class="fa fa-caret-right"></i>4</div>
+        </div>
+        <div class="ug-col-4">
+            <div class="box-secondary">4</div>
+        </div>
+    </div>
+
+    <div class="heading">grid: offset (responsive)</div>
+    <div class="ug-row">
+        <div class="ug-col-3">
+            <div class="box-primary">
+                3
+            </div>
+        </div>
+        <div class="ug-col-3 ug-offset-s-2 ug-offset-m-4 ug-offset-l-6">
+            <div class="box-secondary">
+                3 | s<i class="fa fa-caret-right"></i>2 m<i class="fa fa-caret-right"></i>4 l<i class="fa fa-caret-right"></i>6
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="ug-row">
+        <div class="ug-col-5 ug-offset-s-1 ug-offset-m-2 ug-offset-l-3">
+            <div class="box-primary">
+                5 | s<i class="fa fa-caret-right"></i>1 m<i class="fa fa-caret-right"></i>2 l<i class="fa fa-caret-right"></i>3
+            </div>
+        </div>
+        <div class="ug-col-3">
+            <div class="box-secondary">
+                3
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">grid: ordering - pull / push</div>
+    <div class="ug-row">
+        <div class="ug-col-3 ug-push-9">
+            <div class="box-primary">
+                3 | 9
+            </div>
+        </div>
+        <div class="ug-col-9 ug-pull-3">
+            <div class="box-secondary">
+                9 | 3
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">grid: ordering - pull / push (responsive)</div>
+    <div class="ug-row">
+        <div class="ug-col-3 ug-push-l-9">
+            <div class="box-primary">
+                3 L9
+            </div>
+        </div>
+        <div class="ug-col-9 ug-pull-l-3">
+            <div class="box-secondary">
+                9 L3
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">grid: visibility - show / hide</div>
+    <div class="ug-row">
+        <div class="ug-col-3">
+            <div class="box-primary">
+                3
+            </div>
+        </div>
+        <div class="ug-col-3 ug-show-s">
+            <div class="box-secondary">
+                3 | <i class="fa fa-eye"></i>s
+            </div>
+        </div>
+        <div class="ug-col-3 ug-show-m">
+            <div class="box-primary">
+                3 | <i class="fa fa-eye"></i>m
+            </div>
+        </div>
+        <div class="ug-col-3 ug-show-l">
+            <div class="box-secondary">
+                3 | <i class="fa fa-eye"></i>l
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">grid: block</div>
+    <div class="ug-row ug-block-3">
+        <div>
+            <div class="box-secondary">3</div>
+        </div>
+        <div>
+            <div class="box-primary">3</div>
+        </div>
+        <div>
+            <div class="box-secondary">3</div>
+        </div>
+        <div>
+            <div class="box-primary">3</div>
+        </div>
+        <div>
+            <div class="box-secondary">3</div>
+        </div>
+        <div>
+            <div class="box-primary">3</div>
+        </div>
+    </div>
+    <hr>
+    <ul class="ug-row ug-block-3">
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, eligendi.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, temporibus.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, iste.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, maxime.
+        </li>
+    </ul>
+
+    <div class="heading">grid: block (responsive)</div>
+    <div class="ug-row ug-block-s-6 ug-block-l-3">
+        <div>
+            <div class="box-secondary">S6 L3</div>
+        </div>
+        <div>
+            <div class="box-secondary">S6 L3</div>
+        </div>
+        <div>
+            <div class="box-secondary">S6 L3</div>
+        </div>
+        <div>
+            <div class="box-secondary">S6 L3</div>
+        </div>
+    </div>
+    <hr>
+    <ul class="ug-row ug-block-s-6 ug-block-l-3">
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, eligendi.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, temporibus.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, iste.
+        </li>
+        <li>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, maxime.
+        </li>
+    </ul>
+
+    <div class="heading">grid: gutter custom</div>
+    <div class="ug-row ug-gutter-reset">
+        <div class="ug-col-4">
+            <div class="box-secondary">4</div>
+        </div>
+        <div class="ug-col-4">
+            <div class="box-primary">4</div>
+        </div>
+        <div class="ug-col-4">
+            <div class="box-secondary">4</div>
+        </div>
+    </div>
+
+    <div class="heading">grid: center single column</div>
+    <div class="ug-row">
+        <div class="ug-col-6 ug-col-center">
+            <div class="box-primary">6</div>
+        </div>
+    </div>
+
+    <div class="heading">grid: center single column (responsive)</div>
+    <div class="ug-row">
+        <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2 ug-col-center">
+            <div class="box-primary">S6 M4 L2</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="ug-debug" id="ug-debug"></div>
+<div class="toggle-debug-wrapper">
+    <label for="toggle-debug">
+        <input type="checkbox" id="toggle-debug" checked="" onclick="toggleDebug();">
+        Toggle debug
+    </label>
+</div>
+
+
+<style>
+body {
+    min-width: 320px;
+    font-family: 'Oxygen';
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 50px;
+}
+hr {
+    margin: 5px 0 10px;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+.heading {
+    margin: 50px 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: #eee;
+    border: 1px solid #ddd;
+}
+.box-secondary,
+.box-primary {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 0;
+    margin-bottom: 5px;
+}
+.box-primary {
+    background: rgba(26, 188, 156, 0.75);
+    border: 1px solid rgba(26, 188, 156, 1);
+}
+.box-secondary {
+    background: rgba(22, 160, 133, 0.75);
+    border: 1px solid rgba(22, 160, 133, 1);
+}
+.toggle-debug-wrapper {
+  background: #34495e;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 12px 15px;
+  color: #fff;
+}
+.toggle-debug-wrapper label {
+  text-shadow: 1px 1px 0 #2c3e50;
+}
+.toggle-debug-wrapper label:hover {
+  cursor: pointer;
+}
+.toggle-debug-wrapper input[type="checkbox"] {
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+}
+</style>
+<script>
+function toggleDebug() {
+    var debug = document.getElementById("ug-debug");
+    debug.style.display = (debug.style.display == "none") ? "block" : "none";
+}
+</script>
+</body>
+</html>
