@@ -10,9 +10,11 @@
             float: left;
         }
     }
-    .#{$helper-gutter-class}#{$key} {
-        &[class*="#{$module-block-class}"] > * {
-            padding-left: $value;
+    @each $key, $value in $helper-gutter-values {
+        .#{$helper-gutter-class}#{$key} {
+            &[class*="#{$module-block-class}"] > * {
+                padding-left: $value;
+            }
         }
     }
     @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
