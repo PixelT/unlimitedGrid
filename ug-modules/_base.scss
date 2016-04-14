@@ -97,9 +97,9 @@ html {
 	float: left;
 }
 .#{$grid-class-column}center {
-	float: none;
-	margin-left: auto;
 	margin-right: auto;
+	margin-left: auto;
+	float: none;
 }
 // ----- GRID-BASE ------------------------------
 @if (length($grid-columns) == 1) and ($grid-columns < 0) {

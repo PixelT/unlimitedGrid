@@ -37,15 +37,19 @@ $helper-gutter-values: (
 $module-offset: true;
 $module-offset-class: 'ug-offset-';
 $module-offset-columns: $grid-columns;
-$module-offset-breakpoints: $grid-breakpoints;
-$module-offset-media-range: true;
+$module-offset-breakpoints: (
+    'm-': 768px
+);
+$module-offset-media-range: false;
 
 // ----- MODULE-ORDERING (PULL/PUSH) ------------
 $module-ordering: true;
 $module-ordering-class-push: 'ug-push-';
 $module-ordering-class-pull: 'ug-pull-';
 $module-ordering-columns: $grid-columns;
-$module-ordering-breakpoints: $grid-breakpoints;
+$module-ordering-breakpoints: (
+    'm-': 768px
+);
 
 // ----- MODULE-VISIBILITY (SHOW/HIDE) ----------
 $module-visibility: true;
