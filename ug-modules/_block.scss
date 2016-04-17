@@ -4,10 +4,15 @@
         padding-left: 0;
         list-style: none;
         > * {
-            width: 100%;
             min-height: 1px;
             padding-left: $grid-gutter;
-            float: left;
+            @if ($grid-flexbox) {
+                flex: 0 0 100%;
+                max-width: 100%;
+            } @else {
+                width: 100%;
+                float: left;
+            }
         }
     }
     @each $key, $value in $helper-gutter-values {
@@ -21,7 +26,12 @@
         @for $i from 1 through abs($module-block-columns) {
             .#{$module-block-class}#{$i} {
                 > * {
-                    width: ($i / abs($module-block-columns)) * 100%;
+                    @if ($grid-flexbox) {
+                        flex: 0 0 ($i / abs($module-block-columns)) * 100%;
+                        max-width: ($i / abs($module-block-columns)) * 100%;
+                    } @else {
+                        width: ($i / abs($module-block-columns)) * 100%;
+                    }
                 }
             }
         }
@@ -29,7 +39,12 @@
         @each $column-value in check-columns($module-block-columns) {
             .#{$module-block-class}#{$column-value} {
                 > * {
-                    width: ($column-value / max-value($module-block-columns)) * 100%;
+                    @if ($grid-flexbox) {
+                        flex: ($column-value / max-value($module-block-columns)) * 100%;
+                        max-width: ($column-value / max-value($module-block-columns)) * 100%;
+                    } @else {
+                        width: ($column-value / max-value($module-block-columns)) * 100%;
+                    }
                 }
             }
         }
@@ -41,7 +56,12 @@
                     @for $i from 1 through abs($module-block-columns) {
                         .#{$module-block-class}#{$key}#{$i} {
                             > * {
-                                width: ($i / abs($module-block-columns)) * 100%;
+                                @if ($grid-flexbox) {
+                                    flex: 0 0 ($i / abs($module-block-columns)) * 100%;
+                                    max-width: ($i / abs($module-block-columns)) * 100%;
+                                } @else {
+                                    width: ($i / abs($module-block-columns)) * 100%;
+                                }
                             }
                         }
                     }
@@ -49,7 +69,12 @@
                     @each $column-value in check-columns($module-block-columns) {
                         .#{$module-block-class}#{$key}#{$column-value} {
                             > * {
-                                width: ($column-value / max-value($module-block-columns)) * 100%;
+                                @if ($grid-flexbox) {
+                                    flex: 0 0 ($column-value / max-value($module-block-columns)) * 100%;
+                                    max-width: ($column-value / max-value($module-block-columns)) * 100%;
+                                } @else {
+                                    width: ($column-value / max-value($module-block-columns)) * 100%;
+                                }
                             }
                         }
                     }

@@ -86,32 +86,103 @@ html {
 }
 // ----- CLASS-ROW ------------------------------
 .#{$grid-class-row} {
-	@include clearfix;
 	margin-left: -$grid-gutter;
+	@if ($grid-flexbox) {
+		display: flex;
+		flex-wrap: wrap;
+		&-reverse {
+			flex-wrap: wrap-reverse;
+		}
+		&-top {
+			align-items: flex-start;
+		}
+		&-middle {
+			align-items: center;
+		}
+		&-bottom {
+			align-items: flex-end;
+		}
+		&-left {
+			justify-content: flex-start;
+		}
+		&-center {
+			justify-content: center;
+		}
+		&-right {
+			justify-content: flex-end;
+		}
+		&-around {
+			justify-content: space-around;
+		}
+		&-between {
+			justify-content: space-between;
+		}
+	} @else {
+		@include clearfix;
+	}
 }
 // ----- CLASS-COLUMN ---------------------------
 [class*="#{$grid-class-column}"] {
-	width: 100%;
 	min-height: 1px;
 	padding-left: $grid-gutter;
-	float: left;
+	@if ($grid-flexbox) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	} @else {
+		width: 100%;
+		float: left;
+	}
 }
-.#{$grid-class-column}center {
-	margin-right: auto;
-	margin-left: auto;
-	float: none;
+.#{$grid-class-column} {
+	&center {
+		margin-right: auto;
+		margin-left: auto;
+		@if ($grid-flexbox) {
+			justify-content: center;
+		} @else {
+			float: none;
+		}
+	}
+	@if ($grid-flexbox) {
+		&content {
+			flex: 0 0 auto;
+		}
+		&auto {
+			flex: 1 1 0%;
+		}
+		&top {
+			align-self: flex-start;
+		}
+		&middle {
+			align-self: center;
+		}
+		&bottom {
+			align-self: flex-end;
+		}
+	}
 }
+
 // ----- GRID-BASE ------------------------------
 @if (length($grid-columns) == 1) and ($grid-columns < 0) {
 	@for $i from 1 through abs($grid-columns) {
 		.#{$grid-class-column}#{$i} {
-			width: ($i / abs($grid-columns)) * 100%;
+			@if ($grid-flexbox) {
+				flex: 0 0 ($i / abs($grid-columns)) * 100%;
+				max-width: ($i / abs($grid-columns)) * 100%;
+			} @else {
+				width: ($i / abs($grid-columns)) * 100%;
+			}
 		}
 	}
 } @else {
 	@each $column-value in check-columns($grid-columns) {
 		.#{$grid-class-column}#{$column-value} {
-			width: (100% / max-value($grid-columns)) * $column-value;
+			@if ($grid-flexbox) {
+				flex: 0 0 (100% / max-value($grid-columns)) * $column-value;
+				max-width: (100% / max-value($grid-columns)) * $column-value;
+			} @else {
+				width: (100% / max-value($grid-columns)) * $column-value;
+			}
 		}
 	}
 }

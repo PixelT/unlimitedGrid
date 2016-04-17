@@ -16,6 +16,9 @@ $grid-class-column: 'ug-col-';
 
 $grid-columns: -12;
 $grid-gutter: 10px;
+
+$grid-flexbox: true;
+
 $grid-responsive: true;
 $grid-breakpoints: (
     's-'  : 480px,
