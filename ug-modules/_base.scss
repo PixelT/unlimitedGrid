@@ -42,11 +42,7 @@ html {
 }
 // ----- DEBUG ----------------------------------
 @if ($debug) {
-	@if (length($grid-columns) > 1) {
-		$debug-columns: max-value($grid-columns);
-	} @else {
-		$debug-columns: abs($grid-columns);
-	}
+	$debug-columns: if(length($grid-columns) > 1, max-value($grid-columns), abs($grid-columns));
 	#{$debug-class} {
 		$debug-width: (100 / $debug-columns) + '%';
 		position: relative;
