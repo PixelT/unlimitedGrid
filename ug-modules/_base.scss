@@ -57,7 +57,7 @@ html {
 			max-width: $ug-wrapper-max-width;
 			height: 100%;
 			margin: 0 auto;
-			background: repeating-linear-gradient(90deg, map-get($ug-debug-settings, background-column) 0, map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + ( #{$ug-grid-gutter} / #{$ug-debug-columns} ))); //grid nomargin
+			background: repeating-linear-gradient(90deg, map-get($ug-debug-settings, background-column) 0, map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + ( #{$ug-grid-gutter} / #{$ug-debug-columns} )));
 			content: '';
 			z-index: -1;
 			@if ($ug-wrapper-gutter != 0) {
