@@ -1,6 +1,6 @@
 {
   "name": "unlimitedGrid",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Responsive, fully customizable & mobile first CSS grid framework / system based on Sass (SCSS)",
   "main": "ug-grid.scss",
   "scripts": {
