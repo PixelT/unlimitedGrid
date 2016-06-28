@@ -1,22 +1,22 @@
 // ----- MODULE-BASE ----------------------------
 // ----- FUNCTIONS / MIXIN ----------------------
 @function max-value($list) {
-	$max-value: 0;
+	$ug-max-value: 0;
 	@each $item in $list {
-		@if ($item > $max-value) {
-			$max-value: $item;
+		@if ($item > $ug-max-value) {
+			$ug-max-value: $item;
 		}
 	}
-	@return $max-value;
+	@return $ug-max-value;
 }
 @function check-columns($list) {
-	$columns-values: ();
+	$ug-columns-values: ();
 	@each $item in $list {
-		@if (index($columns-values, $item) == null) {
-			$columns-values: append($columns-values, $item);
+		@if (index($ug-columns-values, $item) == null) {
+			$ug-columns-values: append($ug-columns-values, $item);
 		}
 	}
-	@return $columns-values;
+	@return $ug-columns-values;
 }
 @mixin clearfix {
 	&::after {
@@ -35,16 +35,16 @@ html {
 	box-sizing: inherit;
 }
 // ----- HELPERS-CLEARFIX -----------------------
-@if ($helper-clearfix) {
-	.#{$helper-clearfix-class} {
+@if ($ug-helper-clearfix) {
+	.#{$ug-helper-clearfix-class} {
 		@include clearfix;
 	}
 }
 // ----- DEBUG ----------------------------------
-@if ($debug) {
-	$debug-columns: if(length($grid-columns) > 1, max-value($grid-columns), abs($grid-columns));
-	#{$debug-class} {
-		$debug-width: (100 / $debug-columns) + '%';
+@if ($ug-debug) {
+	$ug-debug-columns: if(length($ug-grid-columns) > 1, max-value($ug-grid-columns), abs($ug-grid-columns));
+	#{$ug-debug-class} {
+		$ug-debug-width: (100 / $ug-debug-columns) + '%';
 		position: relative;
 		&::after {
 			display: block;
@@ -54,36 +54,36 @@ html {
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			max-width: $wrapper-max-width;
+			max-width: $ug-wrapper-max-width;
 			height: 100%;
 			margin: 0 auto;
-			background: repeating-linear-gradient(90deg, map-get($debug-settings, background-column) 0, map-get($debug-settings, background-column) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} - #{$grid-gutter}), map-get($debug-settings, background-gutter) calc(#{$debug-width} + ( #{$grid-gutter} / #{$debug-columns} ))); //grid nomargin
+			background: repeating-linear-gradient(90deg, map-get($ug-debug-settings, background-column) 0, map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}), map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + ( #{$ug-grid-gutter} / #{$ug-debug-columns} ))); //grid nomargin
 			content: '';
 			z-index: -1;
-			@if ($wrapper-gutter != 0) {
-				padding: 0 $wrapper-gutter;
+			@if ($ug-wrapper-gutter != 0) {
+				padding: 0 $ug-wrapper-gutter;
 				background-origin: content-box;
 			}
 		}
 	}
 }
 // ----- CLASS-GRID -----------------------------
-.#{$wrapper-class} {
+.#{$ug-wrapper-class} {
 	width: 100%;
-	@if ($wrapper-gutter != 0) {
-		padding: 0 $wrapper-gutter;
+	@if ($ug-wrapper-gutter != 0) {
+		padding: 0 $ug-wrapper-gutter;
 	} @else {
 		padding: 0;
 	}
-	@if ($wrapper-max-width != 100%) {
-		max-width: $wrapper-max-width;
+	@if ($ug-wrapper-max-width != 100%) {
+		max-width: $ug-wrapper-max-width;
 		margin: 0 auto;
 	}
 }
 // ----- CLASS-ROW ------------------------------
-.#{$grid-class-row} {
-	margin-left: -$grid-gutter;
-	@if ($grid-flexbox) {
+.#{$ug-grid-class-row} {
+	margin-left: -$ug-grid-gutter;
+	@if ($ug-grid-flexbox) {
 		display: flex;
 		flex-flow: row wrap;
 		&-reverse {
@@ -118,10 +118,10 @@ html {
 	}
 }
 // ----- CLASS-COLUMN ---------------------------
-[class*="#{$grid-class-column}"] {
+[class*="#{$ug-grid-class-column}"] {
 	min-height: 1px;
-	padding-left: $grid-gutter;
-	@if ($grid-flexbox) {
+	padding-left: $ug-grid-gutter;
+	@if ($ug-grid-flexbox) {
 		flex: 1 1 100%;
 		max-width: 100%;
 	} @else {
@@ -129,17 +129,17 @@ html {
 		float: left;
 	}
 }
-.#{$grid-class-column} {
+.#{$ug-grid-class-column} {
 	&center {
 		margin-right: auto;
 		margin-left: auto;
-		@if ($grid-flexbox) {
+		@if ($ug-grid-flexbox) {
 			justify-content: center;
 		} @else {
 			float: none;
 		}
 	}
-	@if ($grid-flexbox) {
+	@if ($ug-grid-flexbox) {
 		&content {
 			flex: 0 0 auto;
 		}
@@ -159,34 +159,34 @@ html {
 }
 
 // ----- GRID-BASE ------------------------------
-@if (length($grid-columns) == 1) and ($grid-columns < 0) {
-	@for $i from 1 through abs($grid-columns) {
-		.#{$grid-class-column}#{$i} {
-			@if ($grid-flexbox) {
-				flex-basis: ($i / abs($grid-columns)) * 100%;
-				max-width: ($i / abs($grid-columns)) * 100%;
+@if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+	@for $i from 1 through abs($ug-grid-columns) {
+		.#{$ug-grid-class-column}#{$i} {
+			@if ($ug-grid-flexbox) {
+				flex-basis: ($i / abs($ug-grid-columns)) * 100%;
+				max-width: ($i / abs($ug-grid-columns)) * 100%;
 			} @else {
-				width: ($i / abs($grid-columns)) * 100%;
+				width: ($i / abs($ug-grid-columns)) * 100%;
 			}
 		}
 	}
 } @else {
-	@each $column-value in check-columns($grid-columns) {
-		.#{$grid-class-column}#{$column-value} {
-			@if ($grid-flexbox) {
-				flex-basis: (100% / max-value($grid-columns)) * $column-value;
-				max-width: (100% / max-value($grid-columns)) * $column-value;
+	@each $column-value in check-columns($ug-grid-columns) {
+		.#{$ug-grid-class-column}#{$column-value} {
+			@if ($ug-grid-flexbox) {
+				flex-basis: (100% / max-value($ug-grid-columns)) * $column-value;
+				max-width: (100% / max-value($ug-grid-columns)) * $column-value;
 			} @else {
-				width: (100% / max-value($grid-columns)) * $column-value;
+				width: (100% / max-value($ug-grid-columns)) * $column-value;
 			}
 		}
 	}
 }
 // ----- GRID-GUTTER ----------------------------
-@each $key, $value in $helper-gutter-values {
-	.#{$helper-gutter-class}#{$key} {
+@each $key, $value in $ug-helper-gutter-values {
+	.#{$ug-helper-gutter-class}#{$key} {
 		margin-left: -$value;
-		> [class*="#{$grid-class-column}"] {
+		> [class*="#{$ug-grid-class-column}"] {
 			padding-left: $value;
 		}
 	}

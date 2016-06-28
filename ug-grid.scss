@@ -7,20 +7,20 @@
  */
 
 // ----- GRID-SETTINGS --------------------------
-$wrapper-class: 'ug-wrapper';
-$wrapper-max-width: 1200px;
-$wrapper-gutter: 15px;
+$ug-wrapper-class: 'ug-wrapper';
+$ug-wrapper-max-width: 1200px;
+$ug-wrapper-gutter: 15px;
 
-$grid-class-row: 'ug-row';
-$grid-class-column: 'ug-col-';
+$ug-grid-class-row: 'ug-row';
+$ug-grid-class-column: 'ug-col-';
 
-$grid-columns: -12;
-$grid-gutter: 10px;
+$ug-grid-columns: -12;
+$ug-grid-gutter: 10px;
 
-$grid-flexbox: true;
+$ug-grid-flexbox: true;
 
-$grid-responsive: true;
-$grid-breakpoints: (
+$ug-grid-responsive: true;
+$ug-grid-breakpoints: (
     's-'  : 480px,
     'm-'  : 768px,
     'l-'  : 992px,
@@ -28,37 +28,37 @@ $grid-breakpoints: (
 );
 
 // ----- GRID-HELPERS ---------------------------
-$helper-clearfix: true;
-$helper-clearfix-class: 'ug-cf';
+$ug-helper-clearfix: true;
+$ug-helper-clearfix-class: 'ug-cf';
 
-$helper-gutter-class: 'ug-gutter-';
-$helper-gutter-values: (
+$ug-helper-gutter-class: 'ug-gutter-';
+$ug-helper-gutter-values: (
     'reset' : 0
 );
 
 // ----- MODULE-OFFSET --------------------------
-$module-offset: true;
-$module-offset-class: 'ug-offset-';
-$module-offset-columns: $grid-columns;
-$module-offset-breakpoints: (
+$ug-module-offset: true;
+$ug-module-offset-class: 'ug-offset-';
+$ug-module-offset-columns: $ug-grid-columns;
+$ug-module-offset-breakpoints: (
     'm-': 768px
 );
-$module-offset-media-range: false;
+$ug-module-offset-media-range: false;
 
 // ----- MODULE-ORDERING (PULL/PUSH) ------------
-$module-ordering: true;
-$module-ordering-class-push: 'ug-push-';
-$module-ordering-class-pull: 'ug-pull-';
-$module-ordering-columns: $grid-columns;
-$module-ordering-breakpoints: (
+$ug-module-ordering: true;
+$ug-module-ordering-class-push: 'ug-push-';
+$ug-module-ordering-class-pull: 'ug-pull-';
+$ug-module-ordering-columns: $ug-grid-columns;
+$ug-module-ordering-breakpoints: (
     'm-': 768px
 );
 
 // ----- MODULE-VISIBILITY (SHOW/HIDE) ----------
-$module-visibility: true;
-$module-visibility-class-show: 'ug-show-';
-$module-visibility-class-hide: 'ug-hide-';
-$module-visibility-breakpoints:  (
+$ug-module-visibility: true;
+$ug-module-visibility-class-show: 'ug-show-';
+$ug-module-visibility-class-hide: 'ug-hide-';
+$ug-module-visibility-breakpoints:  (
     's'  : 480px,
     'm'  : 768px,
     'l'  : 992px,
@@ -66,15 +66,15 @@ $module-visibility-breakpoints:  (
 );
 
 // ----- MODULE-BLOCK ---------------------------
-$module-block: true;
-$module-block-class: 'ug-block-';
-$module-block-columns: $grid-columns;
-$module-block-breakpoints: $grid-breakpoints;
+$ug-module-block: true;
+$ug-module-block-class: 'ug-block-';
+$ug-module-block-columns: $ug-grid-columns;
+$ug-module-block-breakpoints: $ug-grid-breakpoints;
 
 // ----- DEBUG ----------------------------------
-$debug: true;
-$debug-class: '.ug-debug';
-$debug-settings: (
+$ug-debug: true;
+$ug-debug-class: '.ug-debug';
+$ug-debug-settings: (
     'background-gutter' : rgba(#27ae60, .10),
     'background-column' : rgba(#27ae60, .05)
 );

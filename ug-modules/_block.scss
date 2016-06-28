@@ -1,12 +1,12 @@
 // ----- MODULE-BLOCK ---------------------------
-@if ($module-block) {
-    [class*="#{$module-block-class}"] {
+@if ($ug-module-block) {
+    [class*="#{$ug-module-block-class}"] {
         padding-left: 0;
         list-style: none;
         > * {
             min-height: 1px;
-            padding-left: $grid-gutter;
-            @if ($grid-flexbox) {
+            padding-left: $ug-grid-gutter;
+            @if ($ug-grid-flexbox) {
                 flex: 0 0 100%;
                 max-width: 100%;
             } @else {
@@ -15,65 +15,65 @@
             }
         }
     }
-    @each $key, $value in $helper-gutter-values {
-        .#{$helper-gutter-class}#{$key} {
-            &[class*="#{$module-block-class}"] > * {
+    @each $key, $value in $ug-helper-gutter-values {
+        .#{$ug-helper-gutter-class}#{$key} {
+            &[class*="#{$ug-module-block-class}"] > * {
                 padding-left: $value;
             }
         }
     }
-    @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
-        @for $i from 1 through abs($module-block-columns) {
-            .#{$module-block-class}#{$i} {
+    @if (length($ug-module-block-columns) == 1) and ($ug-module-block-columns < 0) {
+        @for $i from 1 through abs($ug-module-block-columns) {
+            .#{$ug-module-block-class}#{$i} {
                 > * {
-                    @if ($grid-flexbox) {
-                        flex: 0 0 ($i / abs($module-block-columns)) * 100%;
-                        max-width: ($i / abs($module-block-columns)) * 100%;
+                    @if ($ug-grid-flexbox) {
+                        flex: 0 0 ($i / abs($ug-module-block-columns)) * 100%;
+                        max-width: ($i / abs($ug-module-block-columns)) * 100%;
                     } @else {
-                        width: ($i / abs($module-block-columns)) * 100%;
+                        width: ($i / abs($ug-module-block-columns)) * 100%;
                     }
                 }
             }
         }
     } @else {
-        @each $column-value in check-columns($module-block-columns) {
-            .#{$module-block-class}#{$column-value} {
+        @each $column-value in check-columns($ug-module-block-columns) {
+            .#{$ug-module-block-class}#{$column-value} {
                 > * {
-                    @if ($grid-flexbox) {
-                        flex: ($column-value / max-value($module-block-columns)) * 100%;
-                        max-width: ($column-value / max-value($module-block-columns)) * 100%;
+                    @if ($ug-grid-flexbox) {
+                        flex: ($column-value / max-value($ug-module-block-columns)) * 100%;
+                        max-width: ($column-value / max-value($ug-module-block-columns)) * 100%;
                     } @else {
-                        width: ($column-value / max-value($module-block-columns)) * 100%;
+                        width: ($column-value / max-value($ug-module-block-columns)) * 100%;
                     }
                 }
             }
         }
     }
-    @if ($grid-responsive) {
-        @each $key, $value in $module-block-breakpoints {
+    @if ($ug-grid-responsive) {
+        @each $key, $value in $ug-module-block-breakpoints {
             @media (min-width: $value) {
-                @if (length($module-block-columns) == 1) and ($module-block-columns < 0) {
-                    @for $i from 1 through abs($module-block-columns) {
-                        .#{$module-block-class}#{$key}#{$i} {
+                @if (length($ug-module-block-columns) == 1) and ($ug-module-block-columns < 0) {
+                    @for $i from 1 through abs($ug-module-block-columns) {
+                        .#{$ug-module-block-class}#{$key}#{$i} {
                             > * {
-                                @if ($grid-flexbox) {
-                                    flex: 0 0 ($i / abs($module-block-columns)) * 100%;
-                                    max-width: ($i / abs($module-block-columns)) * 100%;
+                                @if ($ug-grid-flexbox) {
+                                    flex: 0 0 ($i / abs($ug-module-block-columns)) * 100%;
+                                    max-width: ($i / abs($ug-module-block-columns)) * 100%;
                                 } @else {
-                                    width: ($i / abs($module-block-columns)) * 100%;
+                                    width: ($i / abs($ug-module-block-columns)) * 100%;
                                 }
                             }
                         }
                     }
                 } @else {
-                    @each $column-value in check-columns($module-block-columns) {
-                        .#{$module-block-class}#{$key}#{$column-value} {
+                    @each $column-value in check-columns($ug-module-block-columns) {
+                        .#{$ug-module-block-class}#{$key}#{$column-value} {
                             > * {
-                                @if ($grid-flexbox) {
-                                    flex: 0 0 ($column-value / max-value($module-block-columns)) * 100%;
-                                    max-width: ($column-value / max-value($module-block-columns)) * 100%;
+                                @if ($ug-grid-flexbox) {
+                                    flex: 0 0 ($column-value / max-value($ug-module-block-columns)) * 100%;
+                                    max-width: ($column-value / max-value($ug-module-block-columns)) * 100%;
                                 } @else {
-                                    width: ($column-value / max-value($module-block-columns)) * 100%;
+                                    width: ($column-value / max-value($ug-module-block-columns)) * 100%;
                                 }
                             }
                         }

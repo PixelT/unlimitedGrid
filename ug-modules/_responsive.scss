@@ -1,41 +1,41 @@
 // ----- MODULE-RESPONSIVE ----------------------
-@if ($grid-responsive) {
-    @each $key, $value in $grid-breakpoints {
+@if ($ug-grid-responsive) {
+    @each $key, $value in $ug-grid-breakpoints {
         @media (min-width: $value) {
-            @if (length($grid-columns) == 1) and ($grid-columns < 0) {
-                @for $i from 1 through abs($grid-columns) {
-                    .#{$grid-class-column}#{$key}#{$i} {
-                        @if ($grid-flexbox) {
-                            flex-basis: ($i / abs($grid-columns)) * 100%;
-                            max-width: ($i / abs($grid-columns)) * 100%;
+            @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+                @for $i from 1 through abs($ug-grid-columns) {
+                    .#{$ug-grid-class-column}#{$key}#{$i} {
+                        @if ($ug-grid-flexbox) {
+                            flex-basis: ($i / abs($ug-grid-columns)) * 100%;
+                            max-width: ($i / abs($ug-grid-columns)) * 100%;
                         } @else {
-                            width: ($i / abs($grid-columns)) * 100%;
+                            width: ($i / abs($ug-grid-columns)) * 100%;
                         }
                     }
                 }
-                @if ($grid-flexbox) {
-                    .#{$grid-class-column}#{$key}content {
+                @if ($ug-grid-flexbox) {
+                    .#{$ug-grid-class-column}#{$key}content {
                         flex: 0 0 auto;
                     }
-                    .#{$grid-class-column}#{$key}auto {
+                    .#{$ug-grid-class-column}#{$key}auto {
                         flex: 1 1 0%;
                     }
                 }
             } @else {
-                @each $column-value in check-columns($grid-columns) {
-                    .#{$grid-class-column}#{$key}#{$column-value} {
-                        @if ($grid-flexbox) {
-                            flex-basis: (100% / max-value($grid-columns)) * $column-value;
-                            max-width: (100% / max-value($grid-columns)) * $column-value;
+                @each $column-value in check-columns($ug-grid-columns) {
+                    .#{$ug-grid-class-column}#{$key}#{$column-value} {
+                        @if ($ug-grid-flexbox) {
+                            flex-basis: (100% / max-value($ug-grid-columns)) * $column-value;
+                            max-width: (100% / max-value($ug-grid-columns)) * $column-value;
                         } @else {
-                            width: (100% / max-value($grid-columns)) * $column-value;
+                            width: (100% / max-value($ug-grid-columns)) * $column-value;
                         }
                     }
-                    @if ($grid-flexbox) {
-                        .#{$grid-class-column}#{$key}content {
+                    @if ($ug-grid-flexbox) {
+                        .#{$ug-grid-class-column}#{$key}content {
                             flex: 0 0 auto;
                         }
-                        .#{$grid-class-column}#{$key}auto {
+                        .#{$ug-grid-class-column}#{$key}auto {
                             flex: 1 1 0%;
                         }
                     }
