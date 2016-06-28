@@ -85,7 +85,7 @@ html {
 	margin-left: -$grid-gutter;
 	@if ($grid-flexbox) {
 		display: flex;
-		flex-wrap: wrap;
+		flex-flow: row wrap;
 		&-reverse {
 			flex-wrap: wrap-reverse;
 		}
@@ -122,7 +122,7 @@ html {
 	min-height: 1px;
 	padding-left: $grid-gutter;
 	@if ($grid-flexbox) {
-		flex: 0 0 100%;
+		flex: 1 1 100%;
 		max-width: 100%;
 	} @else {
 		width: 100%;
@@ -163,7 +163,7 @@ html {
 	@for $i from 1 through abs($grid-columns) {
 		.#{$grid-class-column}#{$i} {
 			@if ($grid-flexbox) {
-				flex: 0 0 ($i / abs($grid-columns)) * 100%;
+				flex-basis: ($i / abs($grid-columns)) * 100%;
 				max-width: ($i / abs($grid-columns)) * 100%;
 			} @else {
 				width: ($i / abs($grid-columns)) * 100%;
@@ -174,7 +174,7 @@ html {
 	@each $column-value in check-columns($grid-columns) {
 		.#{$grid-class-column}#{$column-value} {
 			@if ($grid-flexbox) {
-				flex: 0 0 (100% / max-value($grid-columns)) * $column-value;
+				flex-basis: (100% / max-value($grid-columns)) * $column-value;
 				max-width: (100% / max-value($grid-columns)) * $column-value;
 			} @else {
 				width: (100% / max-value($grid-columns)) * $column-value;
