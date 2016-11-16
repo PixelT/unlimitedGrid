@@ -1,89 +1,84 @@
- /*!
- * unlimitedGrid v1.4.0
- * Copyright (c) 2015-2016 Krzysztof Kula
- * - https://github.com/PixelT/unlimitedGrid/
- * - http://pixelt.github.io/unlimitedGrid/
- * Licensed under MIT
- */
+/*!
+ * unlimitedGrid v2.0.0 | MIT License
+ * Copyright (c) 2015-16 Krzysztof Kula
+ * - https://github.com/PixelT/unlimitedgrid
+ * - http://psdtohtml.ninja/unlimitedGrid/
+*/
 
-// ----- GRID-SETTINGS --------------------------
-$ug-wrapper-class: 'ug-wrapper';
-$ug-wrapper-max-width: 1200px;
-$ug-wrapper-gutter: 15px;
+// ----- SETTINGS FOR AUTOMATICALLY GENERATE GRID ---------
+// ----- BASIC SETTINGS -----------------------------------
+$ug-grid-wrapper-width : 1200px;
+$ug-grid-columns       : -12;
+$ug-grid-gutter-type   : 'margin';
+$ug-grid-gutter        : 15px;
+$ug-grid-box-sizing    : 'grid';
+$ug-grid-flexbox       : true;
+$ug-grid-use-rem       : false;
 
-$ug-grid-class-row: 'ug-row';
-$ug-grid-class-column: 'ug-col-';
+// ----- CLASS / NAMES SETTINGS ---------------------------
+$ug-grid-class-container : 'ug-wrapper' !default;
+$ug-grid-class-row       : 'ug-row' !default;
+$ug-grid-class-column    : 'ug-col-' !default;
 
-$ug-grid-columns: -12;
-$ug-grid-gutter: 10px;
-
-$ug-grid-flexbox: true;
-
-$ug-grid-responsive: true;
-$ug-grid-breakpoints: (
+// ----- RESPONSIVE SETTINGS ------------------------------
+$ug-grid-responsive  : true !default;
+$ug-grid-breakpoints : (
     's-'  : 480px,
     'm-'  : 768px,
     'l-'  : 992px,
     'xl-' : 1200px
-);
+) !default;
 
-// ----- GRID-HELPERS ---------------------------
-$ug-helper-clearfix: true;
-$ug-helper-clearfix-class: 'ug-cf';
+// ----- HELPERS SETTINGS ---------------------------------
+$ug-helper-clearfix       : false !default;
+$ug-helper-clearfix-class : 'ug-cf' !default;
 
-$ug-helper-gutter-class: 'ug-gutter-';
-$ug-helper-gutter-values: (
+$ug-helper-gutter-wrapper : false !default;
+$ug-helper-gutter-class   : 'ug-gutter-' !default;
+$ug-helper-gutter-values  : (
     'reset' : 0
-);
+) !default;
 
-// ----- MODULE-OFFSET --------------------------
-$ug-module-offset: true;
-$ug-module-offset-class: 'ug-offset-';
-$ug-module-offset-columns: $ug-grid-columns;
-$ug-module-offset-breakpoints: (
-    'm-': 768px
-);
-$ug-module-offset-media-range: false;
+// ----- MODULE-OFFSET SETTINGS ---------------------------
+$ug-module-offset             : true !default;
+$ug-module-offset-class       : 'ug-offset-' !default;
+$ug-module-offset-columns     : $ug-grid-columns !default;
+$ug-module-offset-breakpoints : (
+    'm-' : 768px
+) !default;
 
-// ----- MODULE-ORDERING (PULL/PUSH) ------------
-$ug-module-ordering: true;
-$ug-module-ordering-class-push: 'ug-push-';
-$ug-module-ordering-class-pull: 'ug-pull-';
-$ug-module-ordering-columns: $ug-grid-columns;
-$ug-module-ordering-breakpoints: (
-    'm-': 768px
-);
+$ug-module-offset-media-range : false !default;
 
-// ----- MODULE-VISIBILITY (SHOW/HIDE) ----------
-$ug-module-visibility: true;
-$ug-module-visibility-class-show: 'ug-show-';
-$ug-module-visibility-class-hide: 'ug-hide-';
-$ug-module-visibility-breakpoints:  (
-    's'  : 480px,
-    'm'  : 768px,
-    'l'  : 992px,
-    'xl' : 1200px
-);
+// ----- MODULE-ORDERING (PULL/PUSH) SETTINGS -------------
+$ug-module-ordering             : true !default;
+$ug-module-ordering-class-push  : 'ug-push-' !default;
+$ug-module-ordering-class-pull  : 'ug-pull-' !default;
+$ug-module-ordering-columns     : $ug-grid-columns !default;
+$ug-module-ordering-breakpoints : (
+    'm-' : 768px
+) !default;
 
-// ----- MODULE-BLOCK ---------------------------
-$ug-module-block: true;
-$ug-module-block-class: 'ug-block-';
-$ug-module-block-columns: $ug-grid-columns;
-$ug-module-block-breakpoints: $ug-grid-breakpoints;
+// ----- MODULE-VISIBILITY (SHOW/HIDE) SETTINGS -----------
+$ug-module-visibility             : true !default;
+$ug-module-visibility-class-show  : 'ug-show-' !default;
+$ug-module-visibility-class-hide  : 'ug-hide-' !default;
+$ug-module-visibility-breakpoints : (
+    'm' : 768px
+) !default;
 
-// ----- DEBUG ----------------------------------
-$ug-debug: true;
-$ug-debug-class: '.ug-debug';
-$ug-debug-settings: (
-    'background-gutter' : rgba(#27ae60, .10),
-    'background-column' : rgba(#27ae60, .05)
-);
+// ----- DEBUG SETTINGS -----------------------------------
+$ug-debug          : false !default;
+$ug-debug-class    : 'ug-debug' !default;
+$ug-debug-settings : (
+    'background-gutter' : rgba(#3498db, .2),
+    'background-column' : rgba(#2980b9, .1)
+) !default;
 
-// ----- ! DON'T CHANGE ANYTHING BELOW ! --------
-// ----- IMPORT RULES ---------------------------
-@import 'ug-modules/base';
-@import 'ug-modules/responsive';
-@import 'ug-modules/block';
-@import 'ug-modules/offset';
-@import 'ug-modules/ordering';
-@import 'ug-modules/visibility';
+// ----- !DON'T CHANGE ANYTHING BELOW! --------------------
+// ----- IMPORT RULES -------------------------------------
+@import 'ug-modules/ug-mixins';
+@import 'ug-modules/ug-base';
+@import 'ug-modules/ug-responsive';
+@import 'ug-modules/ug-offset';
+@import 'ug-modules/ug-ordering';
+@import 'ug-modules/ug-visibility';

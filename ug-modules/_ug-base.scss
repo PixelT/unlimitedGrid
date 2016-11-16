@@ -1,0 +1,70 @@
+// ----- BASE-DEBUG ---------------------------------------
+@if($ug-debug) {
+    .#{$ug-debug-class} {
+        @include ug-debug();
+    }
+}
+
+// ----- BASE-CLEARFIX ------------------------------------
+@if($ug-helper-clearfix) {
+    .#{$ug-helper-clearfix-class} {
+        @include ug-clearfix;
+    }
+}
+
+// ----- BASE-WRAPPER -------------------------------------
+.#{$ug-grid-class-container} {
+    @include ug-wrapper($gutter-wrapper: $ug-helper-gutter-wrapper);
+}
+
+// ----- BASE-ROW -----------------------------------------
+.#{$ug-grid-class-row} {
+    @include ug-row();
+}
+
+// ----- BASE-COLUMN --------------------------------------
+[class^="#{$ug-grid-class-column}"] {
+    @include ug-col();
+    @if($ug-debug) {
+        position: relative;
+        &:hover {
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 4px 8px;
+                background-color: rgba(#000, .8);
+                color: #eee;
+                white-space: nowrap;
+                content: attr(class);
+            }
+        }
+    }
+}
+
+// ----- BASE-GRID ----------------------------------------
+@if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+    @for $i from 1 through abs($ug-grid-columns) {
+        .#{$ug-grid-class-column}#{$i} {
+                @include ug-width(($i / abs($ug-grid-columns)) * 100%)
+        }
+    }
+} @else {
+    @each $column-value in $ug-grid-columns {
+        .#{$ug-grid-class-column}#{$column-value} {
+            @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
+        }
+    }
+}
+
+// ----- BASE-CUSTOM GUTTERS ------------------------------
+@if($ug-grid-gutter-type == 'margin') {
+    @each $key, $value in $ug-helper-gutter-values {
+        .#{$ug-helper-gutter-class}#{$key} {
+            margin-left: ug-rem(-$value);
+            > [class*="#{$ug-grid-class-column}"] {
+                padding-left: ug-rem($value);
+            }
+        }
+    }
+}

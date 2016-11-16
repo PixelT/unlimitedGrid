@@ -1,0 +1,20 @@
+// ----- MODULE-RESPONSIVE --------------------------------
+@if ($ug-grid-responsive) {
+    @each $key, $value in $ug-grid-breakpoints {
+        @media (min-width: ug-rem($value)) {
+            @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+                @for $i from 1 through abs($ug-grid-columns) {
+                    .#{$ug-grid-class-column}#{$key}#{$i} {
+                        @include ug-width(($i / abs($ug-grid-columns)) * 100%);
+                    }
+                }
+            } @else {
+                @each $column-value in $ug-grid-columns {
+                    .#{$ug-grid-class-column}#{$key}#{$column-value} {
+                        @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
+                    }
+                }
+            }
+        }
+    }
+}

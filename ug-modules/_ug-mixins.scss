@@ -1,0 +1,281 @@
+// ug-mixins.scss is a part of unlimitedGrid, but can also be used alone
+// read more: http://psdtohtml.ninja/unlimitedGrid/
+
+// ----- SETTINGS FOR MIXINS ------------------------------
+$ug-grid-wrapper-width : 1200px !default;
+$ug-grid-columns       : -12 !default;
+$ug-grid-gutter-type   : 'margin' !default;
+$ug-grid-gutter        : 15px !default;
+$ug-grid-box-sizing    : 'grid' !default;
+$ug-grid-flexbox       : true !default;
+$ug-grid-use-rem       : false !default;
+
+// ----- !DON'T CHANGE ANYTHING BELOW! --------------------
+// ----- BOX SIZING (GLOBAL) ------------------------------
+@if($ug-grid-box-sizing == 'global') {
+    html {
+        box-sizing: border-box;
+    }
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+}
+
+// ----- CONVERT PX TO REM --------------------------------
+@function ug-rem($values) {
+    $list: ();
+    @each $value in $values {
+        @if (not unitless($value)) and (unit($value) != '%') {
+            $value: $value / ($value * 0 + 1);
+        }
+        @if($ug-grid-use-rem) {
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, #{($value / 16)}rem)));
+        } @else {
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, #{($value)}px)));
+        }
+    }
+    @return $list;
+}
+
+// ----- GET MAX VALUE FROM LIST OF VALUES ----------------
+@function ug-max-value($ug-list) {
+    $ug-max-value: 0;
+    @if(type-of($ug-list) == number) {
+        $ug-max-value: $ug-list;
+    } @else {
+        @each $ug-item in $ug-list {
+            @if ($ug-item > $ug-max-value) {
+                $ug-max-value: $ug-item;
+            }
+        }
+    }
+    @return $ug-max-value;
+}
+
+// ----- GENERATE RANDOM COLOR ----------------------------
+@function ug-random-color($alpha: 1) {
+    $red: random(255);
+    $green: random(255);
+    $blue: random(255);
+    @return rgba($red, $green, $blue, $alpha);
+}
+
+// ----- DEBUG --------------------------------------------
+@mixin ug-debug() {
+    $ug-debug-columns: if(length($ug-grid-columns) > 1, ug-max-value($ug-grid-columns), abs($ug-grid-columns));
+    $ug-debug-width: (100 / $ug-debug-columns) + '%';
+    position: relative;
+    &::after {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: $ug-grid-wrapper-width;
+        height: 100%;
+        margin: 0 auto;
+        @if($ug-grid-gutter-type != 'padding') {
+            background: repeating-linear-gradient(90deg,
+                map-get($ug-debug-settings, background-column) 0,
+                map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
+                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
+                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + ( #{$ug-grid-gutter} / #{$ug-debug-columns} )));
+        } @else {
+            background: repeating-linear-gradient(90deg,
+                map-get($ug-debug-settings, background-gutter) 0,
+                map-get($ug-debug-settings, background-gutter) $ug-grid-gutter,
+                map-get($ug-debug-settings, background-column) $ug-grid-gutter,
+                map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
+                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
+                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width}));
+        }
+        content: '';
+        z-index: -1;
+    }
+}
+
+// ----- CLEARFIX -----------------------------------------
+@mixin ug-clearfix() {
+    &::after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+}
+
+// ----- CLEAR UL / OL LISTS ------------------------------
+@mixin ug-clearlist() {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+// ----- WRAPPER ------------------------------------------
+@mixin ug-wrapper($width: $ug-grid-wrapper-width, $gutter: $ug-grid-gutter, $gutter-wrapper: false) {
+    @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+        box-sizing: border-box;
+    }
+    width: 100%;
+    @if(($ug-grid-gutter-type == 'padding') or ($ug-grid-gutter-type == 'margin' and $gutter-wrapper == true)){
+        padding-right: ug-rem($gutter);
+        padding-left: ug-rem($gutter);
+    }
+    @if($width != 100%) {
+        max-width: ug-rem($width);
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+// ----- ROW ----------------------------------------------
+@mixin ug-row($gutter: $ug-grid-gutter) {
+    @if($ug-grid-gutter-type == 'padding') {
+        margin-right: ug-rem(-$gutter);
+        margin-left: ug-rem(-$gutter);
+    } @else {
+        margin-left: ug-rem(-$gutter);
+    }
+    @if($ug-grid-flexbox) {
+        display: flex;
+        flex-flow: row wrap;
+    } @else {
+        @include ug-clearfix;
+    }
+}
+
+// ----- COLUMN -------------------------------------------
+@mixin ug-col($width: 100%, $gutter: $ug-grid-gutter) {
+    @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+        box-sizing: border-box;
+    }
+    min-height: ug-rem(1px);
+    padding-left: ug-rem($gutter);
+    @if($ug-grid-gutter-type == 'padding') {
+        padding-right: ug-rem($gutter);
+    }
+    @include ug-width($width);
+    @if(not $ug-grid-flexbox) {
+        float: left;
+    }
+}
+
+// ----- COLUMN (ONLY WIDTH) ------------------------------
+@mixin ug-width($width: 100%) {
+    @if($ug-grid-flexbox) {
+        @if(unitless($width)) {
+            flex: 1 1 percentage($width / abs(ug-max-value($ug-grid-columns)));
+            max-width: percentage($width / abs(ug-max-value($ug-grid-columns)));
+        } @else {
+            flex: 1 1 $width;
+            max-width: $width;
+        }
+    } @else {
+        @if(unitless($width)) {
+            width: percentage($width / abs(ug-max-value($ug-grid-columns)));
+        } @else {
+            width: $width;
+        }
+    }
+}
+
+// ----- OFFSET -------------------------------------------
+@mixin ug-offset($width: 0) {
+    margin-left: if(unitless($width), percentage($width / abs(ug-max-value($ug-grid-columns))), $width);
+}
+
+// ----- PUSH ---------------------------------------------
+@mixin ug-push($width: 0) {
+    position: relative;
+    left: if(unitless($width), percentage($width / abs(ug-max-value($ug-grid-columns))), $width);
+}
+
+// ----- PULL ---------------------------------------------
+@mixin ug-pull($width: 0) {
+    position: relative;
+    left: if(unitless($width), -(percentage($width / abs(ug-max-value($ug-grid-columns)))), -$width);
+}
+
+// ----- SHOW ---------------------------------------------
+@mixin ug-show($display: block) {
+    display: $display;
+}
+
+// ----- HIDE ---------------------------------------------
+@mixin ug-hide() {
+    display: none;
+}
+
+// ----- FORM FIELDS PLACEHOLDER --------------------------
+@mixin ug-placeholder() {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+// ----- SELECTIONS ---------------------------------------
+@mixin ug-selection($current-selector: false) {
+    @if $current-selector {
+        &::selection {
+            @content;
+        }
+    } @else {
+        ::selection {
+            @content;
+        }
+    }
+}
+
+// ----- ALIGN VERTICAL -----------------------------------
+@mixin ug-align-vertical($top: 50%) {
+    top: $top;
+    transform: translateY(-$top);
+}
+
+// ----- ALIGN HORIZONTAL ---------------------------------
+@mixin ug-align-horizontal($left: 50%) {
+    left: $left;
+    transform: translateX(-$left);
+}
+
+// ----- ALIGN VERTICAL & HORIZONTAL ----------------------
+@mixin ug-align-both($top: 50%, $left: 50%) {
+    top: $top;
+    left: $left;
+    transform: translateY(-$top) translateX(-$left);
+}
+
+// ----- CREATE CSS TRIANGLE  -----------------------------
+@mixin ug-create-triangle($direction: right, $color: ug-random-color(), $size: ug-rem(10)) {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    @if ($direction == 'top') {
+        top: -$size;
+        border-width: 0 $size $size;
+        border-color: transparent transparent $color;
+    }
+    @if ($direction == 'bottom') {
+        bottom: -$size;
+        border-width: $size $size 0;
+        border-color: $color transparent transparent;
+    }
+    @if ($direction == 'left') {
+        left: -$size;
+        border-width: $size $size $size 0;
+        border-color: transparent $color transparent transparent;
+    }
+    @if ($direction == 'right') {
+        right: -$size;
+        border-width: $size 0 $size $size;
+        border-color: transparent transparent transparent $color;
+    }
+    border-style: solid;
+}
