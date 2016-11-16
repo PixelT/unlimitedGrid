@@ -1,10 +1,12 @@
 var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     rename       = require('gulp-rename'),
+    browserSync  = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer');
 
+// ----- compile sass [expanded] --------------------------
 gulp.task('sass-expanded', function() {
-    gulp.src('./*.scss')
+    gulp.src('ug-grid.scss')
         .pipe(sass({
             'outputStyle': 'expanded',
             'indentWidth': 4
@@ -13,11 +15,13 @@ gulp.task('sass-expanded', function() {
             browsers: ['last 3 versions', 'IE >= 10'],
             cascade: false
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest(''))
+        .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
+// ----- compile sass [compressed] ------------------------
 gulp.task('sass-compressed', function() {
-    gulp.src('./*.scss')
+    gulp.src('ug-grid.scss')
         .pipe(sass({
             'outputStyle': 'compressed'
         }).on('error', sass.logError))
@@ -28,7 +32,22 @@ gulp.task('sass-compressed', function() {
         .pipe(rename({
             'suffix': '.min'
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest(''))
+        .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
-gulp.task('sass', ['sass-expanded', 'sass-compressed']);
+// ----- watch demo ---------------------------------------
+gulp.task('watch-demo', ['sass-expanded', 'sass-compressed'], function() {
+    gulp.watch('demo.html').on('change', browserSync.reload);
+    gulp.watch('**/*.scss', ['sass-expanded', 'sass-compressed']);
+    browserSync.init({
+        notify: false,
+        server: {
+            baseDir: './',
+            index: 'demo.html',
+        }
+    });
+});
+
+// ----- default task -------------------------------------
+gulp.task('default', ['sass-expanded', 'sass-compressed']);
