@@ -46,7 +46,7 @@
 @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
     @for $i from 1 through abs($ug-grid-columns) {
         .#{$ug-grid-class-column}#{$i} {
-                @include ug-width(($i / abs($ug-grid-columns)) * 100%)
+            @include ug-width(($i / abs($ug-grid-columns)) * 100%)
         }
     }
 } @else {

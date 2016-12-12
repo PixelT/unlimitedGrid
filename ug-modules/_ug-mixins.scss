@@ -251,31 +251,78 @@ $ug-grid-use-rem       : false !default;
     transform: translateY(-$top) translateX(-$left);
 }
 
-// ----- CREATE CSS TRIANGLE  -----------------------------
-@mixin ug-create-triangle($direction: right, $color: ug-random-color(), $size: ug-rem(10)) {
+// ----- CSS TRIANGLE  ------------------------------------
+@mixin ug-create-triangle($direction: right, $color: ug-random-color(), $size: 10px) {
     content: '';
     position: absolute;
     width: 0;
     height: 0;
     @if ($direction == 'top') {
-        top: -$size;
-        border-width: 0 $size $size;
+        top: ug-rem(-$size);
+        border-width: 0 ug-rem($size) ug-rem($size);
         border-color: transparent transparent $color;
     }
     @if ($direction == 'bottom') {
-        bottom: -$size;
-        border-width: $size $size 0;
+        bottom: ug-rem(-$size);
+        border-width: ug-rem($size) ug-rem($size) 0;
         border-color: $color transparent transparent;
     }
     @if ($direction == 'left') {
-        left: -$size;
-        border-width: $size $size $size 0;
+        left: ug-rem(-$size);
+        border-width: ug-rem($size) ug-rem($size) ug-rem($size) 0;
         border-color: transparent $color transparent transparent;
     }
     @if ($direction == 'right') {
-        right: -$size;
-        border-width: $size 0 $size $size;
+        right: ug-rem(-$size);
+        border-width: ug-rem($size) 0 ug-rem($size) ug-rem($size);
         border-color: transparent transparent transparent $color;
     }
     border-style: solid;
+}
+
+// ----- HAMBURGER ICON  ----------------------------------
+@mixin ug-hamburger($width: 32px, $height: 24px, $size: 4px, $bgcolor: #000, $padding: 3px, $hcolor: inherit) {
+    $top: nth($padding, 1) + ($height / 2) - ($size / 2);
+    display: block;
+    @if($ug-grid-box-sizing == 'global') {
+        width: ug-rem($width);
+        height: ug-rem($height);
+    } @else {
+        width: ug-rem(($width) - (if(length($padding) >= 2, (2 * nth($padding, 2)), (2 * nth($padding, 1)))));
+        height: ug-rem(($height) - (2 * nth($padding, 1)));
+    }
+    position: relative;
+    @if ($padding != 0) {
+        padding: ug-rem($padding);
+    }
+    &::after {
+        position: absolute;
+        top: ug-rem($top - nth($padding, 1));
+        right: if(length($padding) >= 2, nth(ug-rem($padding), 2), nth(ug-rem($padding), 1));
+        left: if(length($padding) >= 2, nth(ug-rem($padding), 2), nth(ug-rem($padding), 1));
+        height: ug-rem($size);
+        background-color: $bgcolor;
+        box-shadow: 0 ug-rem($height - ($top + $size)) 0 $bgcolor,
+                    0 -(ug-rem($height - ($top + $size))) 0 $bgcolor;
+        content: '';
+    }
+    @if($hcolor != 'inherit') {
+        &:hover {
+            &::after {
+                background-color: $hcolor;
+                box-shadow: 0 nth(ug-rem($height - ($top + $size + nth($padding, 1))), 1) 0 $hcolor,
+                            0 nth(-(ug-rem($height - ($top + $size + nth($padding, 1)))), 1) 0 $hcolor;
+            }
+        }
+    }
+}
+
+// ----- TRUNCATE LONG TEXT  ------------------------------
+@mixin ug-truncate($width: auto) {
+    @if($width != 'auto') {
+        width: ug-rem($width);
+    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

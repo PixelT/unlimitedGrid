@@ -9,9 +9,9 @@
 // ----- BASIC SETTINGS -----------------------------------
 $ug-grid-wrapper-width : 1200px;
 $ug-grid-columns       : -12;
-$ug-grid-gutter-type   : 'margin';
+$ug-grid-gutter-type   : 'margin'; // 'margin' | 'padding'
 $ug-grid-gutter        : 15px;
-$ug-grid-box-sizing    : 'grid';
+$ug-grid-box-sizing    : 'grid'; // 'grid' | 'global' | false
 $ug-grid-flexbox       : true;
 $ug-grid-use-rem       : false;
 
