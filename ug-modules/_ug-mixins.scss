@@ -251,7 +251,7 @@ $ug-grid-use-rem       : false !default;
     transform: translateY(-$top) translateX(-$left);
 }
 
-// ----- CSS TRIANGLE  ------------------------------------
+// ----- CSS TRIANGLE -------------------------------------
 @mixin ug-create-triangle($direction: right, $color: ug-random-color(), $size: 10px) {
     content: '';
     position: absolute;
@@ -280,7 +280,7 @@ $ug-grid-use-rem       : false !default;
     border-style: solid;
 }
 
-// ----- HAMBURGER ICON  ----------------------------------
+// ----- HAMBURGER ICON -----------------------------------
 @mixin ug-hamburger($width: 32px, $height: 24px, $size: 4px, $bgcolor: #000, $padding: 3px, $hcolor: inherit) {
     $top: nth($padding, 1) + ($height / 2) - ($size / 2);
     display: block;
@@ -317,7 +317,7 @@ $ug-grid-use-rem       : false !default;
     }
 }
 
-// ----- TRUNCATE LONG TEXT  ------------------------------
+// ----- TRUNCATE LONG TEXT -------------------------------
 @mixin ug-truncate($width: auto) {
     @if($width != 'auto') {
         width: ug-rem($width);
