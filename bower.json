@@ -1,5 +1,5 @@
 {
-    "name": "unlimitedGrid",
+    "name": "unlimitedgrid",
     "homepage": "http://psdtohtml.ninja/unlimitedGrid/",
     "description": "Responsive, fully customizable & mobile first CSS grid framework / system based on Sass (SCSS)",
     "main": "ug-grid.scss",
