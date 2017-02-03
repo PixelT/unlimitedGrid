@@ -23,20 +23,49 @@
 }
 
 // ----- BASE-COLUMN --------------------------------------
-[class^="#{$ug-grid-class-column}"] {
-    @include ug-col();
-    @if($ug-debug) {
-        position: relative;
-        &:hover {
-            &::after {
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 4px 8px;
-                background-color: rgba(#000, .8);
-                color: #eee;
-                white-space: nowrap;
-                content: attr(class);
+%extend-col {
+    @include ug-col($extend: true);
+}
+
+@if ($ug-helper-attr-selector) {
+    [class^="#{$ug-grid-class-column}"] {
+        @include ug-col();
+        @if($ug-debug) {
+            position: relative;
+            &:hover {
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 4px 8px;
+                    background-color: rgba(#000, .8);
+                    color: #eee;
+                    white-space: nowrap;
+                    content: attr(class);
+                }
+            }
+        }
+    }
+} @else {
+    @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+        @for $i from 1 through abs($ug-grid-columns) {
+            .#{$ug-grid-class-column}#{$i} {
+                @extend %extend-col;
+            }
+        }
+        @if($ug-grid-responsive) {
+            @each $key, $value in $ug-grid-breakpoints {
+                @for $i from 1 through abs($ug-grid-columns) {
+                    .#{$ug-grid-class-column}#{$key}#{$i} {
+                        @extend %extend-col;
+                    }
+                }
+            }
+        }
+    } @else {
+        @each $column-value in $ug-grid-columns {
+            .#{$ug-grid-class-column}#{$column-value} {
+                @extend %extend-col;
             }
         }
     }
@@ -46,12 +75,20 @@
 @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
     @for $i from 1 through abs($ug-grid-columns) {
         .#{$ug-grid-class-column}#{$i} {
+            @if (not $ug-helper-attr-selector) {
+                @extend %extend-col;
+            }
+        }
+        .#{$ug-grid-class-column}#{$i} {
             @include ug-width(($i / abs($ug-grid-columns)) * 100%)
         }
     }
 } @else {
     @each $column-value in $ug-grid-columns {
         .#{$ug-grid-class-column}#{$column-value} {
+            @if (not $ug-helper-attr-selector) {
+                @extend %extend-col;
+            }
             @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
         }
     }

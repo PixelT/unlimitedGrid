@@ -33,6 +33,8 @@ $ug-grid-breakpoints : (
 $ug-helper-clearfix       : false !default;
 $ug-helper-clearfix-class : 'ug-cf' !default;
 
+$ug-helper-attr-selector  : true !default;
+
 $ug-helper-gutter-wrapper : false !default;
 $ug-helper-gutter-class   : 'ug-gutter-' !default;
 $ug-helper-gutter-values  : (
