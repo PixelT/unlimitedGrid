@@ -1,0 +1,38 @@
+{
+    "name": "unlimitedGrid",
+    "homepage": "http://psdtohtml.ninja/unlimitedGrid/",
+    "description": "Responsive, fully customizable & mobile first CSS grid framework / system based on Sass (SCSS)",
+    "main": "ug-grid.scss",
+    "authors": [
+        {
+            "name": "Krzysztof Kula",
+            "homepage": "http://psdtohtml.ninja"
+        }
+    ],
+    "license": "MIT",
+    "keywords": [
+        "css",
+        "css-framework",
+        "css3",
+        "flex",
+        "flexbox",
+        "flexbox-css",
+        "flexbox-grid",
+        "framework",
+        "frontend",
+        "grid",
+        "responsive",
+        "rwd",
+        "sass",
+        "scss",
+        "ui"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PixelT/unlimitedGrid.git"
+    },
+    "ignore": [
+        "**/.*",
+        "sache.json"
+    ]
+}
