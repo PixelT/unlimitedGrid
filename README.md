@@ -8,6 +8,15 @@
 - unlimitedGrid is a very small / simple / flexible and functional grid "framework" (build with Sass)
 - Just set the properties in the ug-grid.scss file, next build / compile this file
 - Use the generated classes in your HTML to fast create your individual grid / layout structure!
+-- or --
+- Use build functions / mixins to create your own grid
+
+## How start? ##
+
+- **npm** - ```npm install unlimitedgrid```
+- **bower** - ```bower install unlimitedgrid```
+- **github (1)** - ```git clone https://github.com/PixelT/unlimitedGrid.git```
+- **github (2)** - download the [latest release](https://github.com/PixelT/unlimitedGrid/releases/latest)
 
 ## Why use it? ##
 
