@@ -29,7 +29,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/PixelT/unlimitedGrid.git"
+        "url": "git://github.com/PixelT/unlimitedGrid.git"
     },
     "ignore": [
         "**/.*",
