@@ -36,6 +36,23 @@
             background-color: #e5e5e5;
             color: #444;
         }
+        .heading-flexbox::after {
+            content: 'available only in flexbox grid!';
+            position:absolute;
+            right: 7px;
+            top: 7px;
+            font-size: 11px;
+            background-color: rgba(39, 174, 96, .75);
+            color: #fff;
+            display: block;
+            padding: 5px 10px;
+        }
+        @media (max-width: 767px) {
+            .heading-flexbox::after {
+                content: 'flexbox';
+                padding: 5px;
+            }
+        }
         .box-secondary,
         .box-primary {
             text-align: center;
@@ -49,8 +66,9 @@
         .box-primary span {
             display: inline-block;
             background-color: #000;
-            padding: 0 8px;
-            line-height: 20px;
+            padding: 4px 8px;
+            line-height: 16px;
+            font-weight: bold;
         }
         .box-secondary span {
             background-color: rgba(41, 128, 185, 1);
@@ -416,6 +434,30 @@
             </div>
             <div class="ug-col-4">
                 <div class="box-secondary"><span>4</span></div>
+            </div>
+        </div>
+        <div class="heading heading-flexbox"><span>grid: custom width</span></div>
+        <div class="ug-row">
+            <div class="ug-col-auto">
+                <div class="box-secondary"><span>auto</span></div>
+            </div>
+            <div class="ug-col-expand">
+                <div class="box-primary"><span>expand</span></div>
+            </div>
+            <div class="ug-col-auto">
+                <div class="box-secondary"><span>auto</span></div>
+            </div>
+        </div>
+        <div class="heading heading-flexbox"><span>grid: custom width (responsive)</span></div>
+        <div class="ug-row">
+            <div class="ug-col-auto ug-col-m-expand">
+                <div class="box-secondary"><span>auto &lt; M<br>expand &gt; M</span></div>
+            </div>
+            <div class="ug-col-expand ug-col-l-auto">
+                <div class="box-primary"><span>expand &lt; L<br>auto &gt; L</span></div>
+            </div>
+            <div class="ug-col-auto ug-col-m-expand">
+                <div class="box-secondary"><span>auto &lt; M <br>expand &gt; M</span></div>
             </div>
         </div>
     </div>

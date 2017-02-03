@@ -94,6 +94,15 @@
     }
 }
 
+@if ($ug-grid-flexbox) {
+    .#{$ug-grid-class-column}auto {
+        @include ug-col-auto($ug-grid-gutter);
+    }
+    .#{$ug-grid-class-column}expand {
+        @include ug-col-expand($ug-grid-gutter);
+    }
+}
+
 // ----- BASE-CUSTOM GUTTERS ------------------------------
 @if($ug-grid-gutter-type == 'margin') {
     @each $key, $value in $ug-helper-gutter-values {

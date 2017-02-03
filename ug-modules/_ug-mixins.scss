@@ -184,6 +184,42 @@ $ug-grid-use-rem       : false !default;
     }
 }
 
+// ----- COLUMN (AUTO - FLEXBOX ONLY)----------------------
+@mixin ug-col-auto($gutter: $ug-grid-gutter) {
+    @if($ug-grid-flexbox) {
+        @if(not $ug-helper-attr-selector) {
+            @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+                box-sizing: border-box;
+            }
+            min-height: ug-rem(1px);
+            padding-left: ug-rem($gutter);
+            @if($ug-grid-gutter-type == 'padding') {
+                padding-right: ug-rem($gutter);
+            }
+        }
+        width: auto;
+        max-width: 100%;
+        flex: none;
+    }
+}
+
+// ----- COLUMN (EXPAND - FLEXBOX ONLY)--------------------
+@mixin ug-col-expand($gutter: $ug-grid-gutter) {
+    @if($ug-grid-flexbox) {
+        @if(not $ug-helper-attr-selector) {
+            @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+                box-sizing: border-box;
+            }
+            min-height: ug-rem(1px);
+            padding-left: ug-rem($gutter);
+            @if($ug-grid-gutter-type == 'padding') {
+                padding-right: ug-rem($gutter);
+            }
+        }
+        flex: 1;
+    }
+}
+
 // ----- OFFSET -------------------------------------------
 @mixin ug-offset($width: 0) {
     margin-left: if(unitless($width), percentage($width / abs(ug-max-value($ug-grid-columns))), $width);

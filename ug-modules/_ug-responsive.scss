@@ -8,11 +8,23 @@
                         @include ug-width(($i / abs($ug-grid-columns)) * 100%);
                     }
                 }
+                .#{$ug-grid-class-column}#{$key}auto {
+                    @include ug-col-auto($ug-grid-gutter);
+                }
+                .#{$ug-grid-class-column}#{$key}expand {
+                    @include ug-col-expand($ug-grid-gutter);
+                }
             } @else {
                 @each $column-value in $ug-grid-columns {
                     .#{$ug-grid-class-column}#{$key}#{$column-value} {
                         @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
                     }
+                }
+                .#{$ug-grid-class-column}#{$key}auto {
+                    @include ug-col-auto($ug-grid-gutter);
+                }
+                .#{$ug-grid-class-column}#{$key}expand {
+                    @include ug-col-expand($ug-grid-gutter);
                 }
             }
         }
