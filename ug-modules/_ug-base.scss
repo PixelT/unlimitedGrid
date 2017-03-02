@@ -28,7 +28,7 @@
 }
 
 @if ($ug-helper-attr-selector) {
-    [class^="#{$ug-grid-class-column}"] {
+    [class*="#{$ug-grid-class-column}"] {
         @include ug-col();
         @if($ug-debug) {
             position: relative;

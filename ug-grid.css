@@ -20,7 +20,7 @@
     flex-flow: row wrap;
 }
 
-[class^="ug-col-"] {
+[class*="ug-col-"] {
     box-sizing: border-box;
     min-height: 1px;
     padding-left: 15px;
