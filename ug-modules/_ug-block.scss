@@ -1,0 +1,43 @@
+// ----- MODULE-BLOCK -------------------------------------
+@if($ug-module-block) {
+    [class*="#{$ug-module-block-class}"] > * {
+        width: 100%;
+    }
+    ul[class*="#{$ug-module-block-class}"],
+    ol[class*="#{$ug-module-block-class}"] {
+        list-style: none;
+        padding-left: 0;
+    }
+    @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
+        @for $i from 1 through abs($ug-module-offset-columns) {
+            .#{$ug-module-block-class}#{$i} {
+                @include ug-block(($i / abs($ug-module-offset-columns)) * 100%);
+            }
+        }
+    } @else {
+        @each $column-value in $ug-grid-columns {
+            .#{$ug-module-block-class}#{$column-value} {
+                @include ug-block((100% / ug-max-value($ug-module-offset-columns)) * $column-value)
+            }
+        }
+    }
+    @if ($ug-grid-responsive) {
+        @each $key, $value in $ug-grid-breakpoints {
+            @media (min-width: ug-rem($value)) {
+                @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+                    @for $i from 1 through abs($ug-grid-columns) {
+                        .#{$ug-module-block-class}#{$key}#{$i} {
+                            @include ug-block(($i / abs($ug-grid-columns)) * 100%);
+                        }
+                    }
+                } @else {
+                    @each $column-value in $ug-grid-columns {
+                        .#{$ug-module-block-class}#{$key}#{$column-value} {
+                            @include ug-block((100% / ug-max-value($ug-grid-columns)) * $column-value);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

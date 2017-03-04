@@ -60,6 +60,14 @@ $ug-module-ordering-breakpoints : (
     'm-' : 768px
 ) !default;
 
+// ----- MODULE-BLOCK SETTINGS ----------------------------
+$ug-module-block             : true !default;
+$ug-module-block-class       : 'ug-block-' !default;
+$ug-module-block-columns     : $ug-grid-columns !default;
+$ug-module-block-breakpoints : (
+    'm' : 768px
+) !default;
+
 // ----- MODULE-VISIBILITY (SHOW/HIDE) SETTINGS -----------
 $ug-module-visibility             : true !default;
 $ug-module-visibility-class-show  : 'ug-show-' !default;
@@ -84,3 +92,4 @@ $ug-debug-settings : (
 @import 'ug-modules/ug-offset';
 @import 'ug-modules/ug-ordering';
 @import 'ug-modules/ug-visibility';
+@import 'ug-modules/ug-block';

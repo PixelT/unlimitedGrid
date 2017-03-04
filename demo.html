@@ -46,12 +46,26 @@
             color: #fff;
             display: block;
             padding: 5px 10px;
+            font-weight: 400;
+            text-shadow: 1px 1px 0 rgba(39, 174, 96, 1);
         }
         @media (max-width: 767px) {
             .heading-flexbox::after {
                 content: 'flexbox';
                 padding: 5px;
             }
+        }
+        .subheading {
+            display: inline-block;
+            background-color: rgba(41, 128, 185, .75);
+            text-shadow: 1px 1px 0 rgba(41, 128, 185, 1);
+            color: #fff;
+            padding: 5px 10px;
+            margin-top: 2px;
+            margin-bottom: -5px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 400;
         }
         .box-secondary,
         .box-primary {
@@ -436,6 +450,78 @@
                 <div class="box-secondary"><span>4</span></div>
             </div>
         </div>
+        <div class="heading">grid: block (basic)</div>
+        <div class="ug-row ug-block-3">
+            <div>
+                <div class="box-primary"><span>3</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>3</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>3</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>3</span></div>
+            </div>
+        </div>
+        <span class="subheading">(un)ordered list:</span>
+        <ul class="ug-row ug-block-3">
+            <li>
+                <div class="box-primary"><span>3</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>3</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>3</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>3</span></div>
+            </li>
+        </ul>
+        <div class="heading">grid: block (responsive)</div>
+        <div class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+            <div>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </div>
+        </div>
+        <span class="subheading">(un)ordered list:</span>
+        <ul class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+            <li>
+                <div class="box-primary"><span>S6 M4 L2</span></div>
+            </li>
+        </ul>
         <div class="heading heading-flexbox"><span>grid: custom width</span></div>
         <div class="ug-row">
             <div class="ug-col-auto">
