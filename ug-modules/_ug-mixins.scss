@@ -325,37 +325,36 @@ $ug-grid-use-rem       : false !default;
 }
 
 // ----- HAMBURGER ICON -----------------------------------
-@mixin ug-hamburger($width: 32px, $height: 24px, $size: 4px, $bgcolor: #000, $padding: 3px, $hcolor: inherit) {
-    $top: nth($padding, 1) + ($height / 2) - ($size / 2);
-    display: block;
-    @if($ug-grid-box-sizing == 'global') {
-        width: ug-rem($width);
-        height: ug-rem($height);
-    } @else {
-        width: ug-rem(($width) - (if(length($padding) >= 2, (2 * nth($padding, 2)), (2 * nth($padding, 1)))));
-        height: ug-rem(($height) - (2 * nth($padding, 1)));
-    }
+@mixin ug-hamburger($width: 32px, $height: 32px, $size: 2px, $spacing: 3px, $padding: 8px, $color: ug-random-color(), $hcolor: false, $bgcolor: transparent, $hbgcolor: false) {
+    width: ug-rem($width);
+    height: ug-rem($height);
+    background-color: $bgcolor;
     position: relative;
-    @if ($padding != 0) {
-        padding: ug-rem($padding);
-    }
-    &::after {
-        position: absolute;
-        top: ug-rem($top - nth($padding, 1));
-        right: if(length($padding) >= 2, nth(ug-rem($padding), 2), nth(ug-rem($padding), 1));
-        left: if(length($padding) >= 2, nth(ug-rem($padding), 2), nth(ug-rem($padding), 1));
-        height: ug-rem($size);
-        background-color: $bgcolor;
-        box-shadow: 0 ug-rem($height - ($top + $size)) 0 $bgcolor,
-                    0 -(ug-rem($height - ($top + $size))) 0 $bgcolor;
+    display: inline-block;
+    vertical-align: middle;
+    &::before {
+        left: ug-rem($padding);
+        right: ug-rem($padding);
         content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: ug-rem($size);
+        background-color: $color;
+        box-shadow: 0 ug-rem($size + $spacing) 0 $color,
+                    0 ug-rem(-$size - $spacing) 0 $color;
     }
-    @if($hcolor != 'inherit') {
+    @if($hbgcolor) {
         &:hover {
-            &::after {
+            background-color: $hbgcolor;
+        }
+    }
+    @if($hcolor) {
+        &:hover {
+            &::before {
                 background-color: $hcolor;
-                box-shadow: 0 nth(ug-rem($height - ($top + $size + nth($padding, 1))), 1) 0 $hcolor,
-                            0 nth(-(ug-rem($height - ($top + $size + nth($padding, 1)))), 1) 0 $hcolor;
+                box-shadow: 0 ug-rem($size + $spacing) 0 $hcolor,
+                            0 ug-rem(-$size - $spacing) 0 $hcolor;
             }
         }
     }
