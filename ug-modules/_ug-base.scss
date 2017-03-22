@@ -112,5 +112,10 @@
                 padding-left: ug-rem($value);
             }
         }
+        @if($ug-module-block) {
+            .#{$ug-helper-gutter-class}#{$key}[class*="#{$ug-module-block-class}"] > * {
+                padding-left: ug-rem($value);
+            }
+        }
     }
 }
