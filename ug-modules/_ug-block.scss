@@ -1,7 +1,7 @@
 // ----- MODULE-BLOCK -------------------------------------
 @if($ug-module-block) {
     [class*="#{$ug-module-block-class}"] > * {
-        width: 100%;
+        @include ug-col($extend: false);
     }
     ul[class*="#{$ug-module-block-class}"],
     ol[class*="#{$ug-module-block-class}"] {

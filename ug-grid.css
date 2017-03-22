@@ -737,7 +737,12 @@
 }
 
 [class*="ug-block-"] > * {
-    width: 100%;
+    box-sizing: border-box;
+    min-height: 1px;
+    padding-left: 15px;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    max-width: 100%;
 }
 
 ul[class*="ug-block-"],
