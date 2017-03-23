@@ -165,12 +165,6 @@ $ug-grid-use-rem       : false !default;
     }
 }
 
-@mixin ug-block($width: 100%, $gutter: $ug-grid-gutter, $element: '*') {
-    > #{$element} {
-        @include ug-col($width, $gutter, $extend: false);
-    }
-}
-
 // ----- COLUMN (ONLY WIDTH) ------------------------------
 @mixin ug-width($width: 100%) {
     @if($ug-grid-flexbox) {
@@ -189,6 +183,7 @@ $ug-grid-use-rem       : false !default;
         }
     }
 }
+
 
 // ----- COLUMN (AUTO - FLEXBOX ONLY)----------------------
 @mixin ug-col-auto($gutter: $ug-grid-gutter) {
@@ -223,6 +218,13 @@ $ug-grid-use-rem       : false !default;
             }
         }
         flex: 1;
+    }
+}
+
+// ----- BLOCK --------------------------------------------
+@mixin ug-block($width: 100%, $gutter: $ug-grid-gutter, $element: '*') {
+    > #{$element} {
+        @include ug-width($width);
     }
 }
 

@@ -756,108 +756,72 @@ ol[class*="ug-block-"] {
 }
 
 .ug-block-1 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 8.33333%;
     flex: 1 1 8.33333%;
     max-width: 8.33333%;
 }
 
 .ug-block-2 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 16.66667%;
     flex: 1 1 16.66667%;
     max-width: 16.66667%;
 }
 
 .ug-block-3 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 25%;
     flex: 1 1 25%;
     max-width: 25%;
 }
 
 .ug-block-4 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 33.33333%;
     flex: 1 1 33.33333%;
     max-width: 33.33333%;
 }
 
 .ug-block-5 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 41.66667%;
     flex: 1 1 41.66667%;
     max-width: 41.66667%;
 }
 
 .ug-block-6 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 50%;
     flex: 1 1 50%;
     max-width: 50%;
 }
 
 .ug-block-7 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 58.33333%;
     flex: 1 1 58.33333%;
     max-width: 58.33333%;
 }
 
 .ug-block-8 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 66.66667%;
     flex: 1 1 66.66667%;
     max-width: 66.66667%;
 }
 
 .ug-block-9 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 75%;
     flex: 1 1 75%;
     max-width: 75%;
 }
 
 .ug-block-10 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 83.33333%;
     flex: 1 1 83.33333%;
     max-width: 83.33333%;
 }
 
 .ug-block-11 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 91.66667%;
     flex: 1 1 91.66667%;
     max-width: 91.66667%;
 }
 
 .ug-block-12 > * {
-    box-sizing: border-box;
-    min-height: 1px;
-    padding-left: 15px;
     -ms-flex: 1 1 100%;
     flex: 1 1 100%;
     max-width: 100%;
@@ -865,97 +829,61 @@ ol[class*="ug-block-"] {
 
 @media (min-width: 480px) {
     .ug-block-s-1 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 8.33333%;
         flex: 1 1 8.33333%;
         max-width: 8.33333%;
     }
     .ug-block-s-2 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 16.66667%;
         flex: 1 1 16.66667%;
         max-width: 16.66667%;
     }
     .ug-block-s-3 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 25%;
         flex: 1 1 25%;
         max-width: 25%;
     }
     .ug-block-s-4 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 33.33333%;
         flex: 1 1 33.33333%;
         max-width: 33.33333%;
     }
     .ug-block-s-5 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 41.66667%;
         flex: 1 1 41.66667%;
         max-width: 41.66667%;
     }
     .ug-block-s-6 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 50%;
         flex: 1 1 50%;
         max-width: 50%;
     }
     .ug-block-s-7 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 58.33333%;
         flex: 1 1 58.33333%;
         max-width: 58.33333%;
     }
     .ug-block-s-8 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 66.66667%;
         flex: 1 1 66.66667%;
         max-width: 66.66667%;
     }
     .ug-block-s-9 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 75%;
         flex: 1 1 75%;
         max-width: 75%;
     }
     .ug-block-s-10 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 83.33333%;
         flex: 1 1 83.33333%;
         max-width: 83.33333%;
     }
     .ug-block-s-11 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 91.66667%;
         flex: 1 1 91.66667%;
         max-width: 91.66667%;
     }
     .ug-block-s-12 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 100%;
         flex: 1 1 100%;
         max-width: 100%;
@@ -964,97 +892,61 @@ ol[class*="ug-block-"] {
 
 @media (min-width: 768px) {
     .ug-block-m-1 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 8.33333%;
         flex: 1 1 8.33333%;
         max-width: 8.33333%;
     }
     .ug-block-m-2 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 16.66667%;
         flex: 1 1 16.66667%;
         max-width: 16.66667%;
     }
     .ug-block-m-3 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 25%;
         flex: 1 1 25%;
         max-width: 25%;
     }
     .ug-block-m-4 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 33.33333%;
         flex: 1 1 33.33333%;
         max-width: 33.33333%;
     }
     .ug-block-m-5 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 41.66667%;
         flex: 1 1 41.66667%;
         max-width: 41.66667%;
     }
     .ug-block-m-6 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 50%;
         flex: 1 1 50%;
         max-width: 50%;
     }
     .ug-block-m-7 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 58.33333%;
         flex: 1 1 58.33333%;
         max-width: 58.33333%;
     }
     .ug-block-m-8 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 66.66667%;
         flex: 1 1 66.66667%;
         max-width: 66.66667%;
     }
     .ug-block-m-9 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 75%;
         flex: 1 1 75%;
         max-width: 75%;
     }
     .ug-block-m-10 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 83.33333%;
         flex: 1 1 83.33333%;
         max-width: 83.33333%;
     }
     .ug-block-m-11 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 91.66667%;
         flex: 1 1 91.66667%;
         max-width: 91.66667%;
     }
     .ug-block-m-12 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 100%;
         flex: 1 1 100%;
         max-width: 100%;
@@ -1063,97 +955,61 @@ ol[class*="ug-block-"] {
 
 @media (min-width: 992px) {
     .ug-block-l-1 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 8.33333%;
         flex: 1 1 8.33333%;
         max-width: 8.33333%;
     }
     .ug-block-l-2 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 16.66667%;
         flex: 1 1 16.66667%;
         max-width: 16.66667%;
     }
     .ug-block-l-3 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 25%;
         flex: 1 1 25%;
         max-width: 25%;
     }
     .ug-block-l-4 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 33.33333%;
         flex: 1 1 33.33333%;
         max-width: 33.33333%;
     }
     .ug-block-l-5 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 41.66667%;
         flex: 1 1 41.66667%;
         max-width: 41.66667%;
     }
     .ug-block-l-6 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 50%;
         flex: 1 1 50%;
         max-width: 50%;
     }
     .ug-block-l-7 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 58.33333%;
         flex: 1 1 58.33333%;
         max-width: 58.33333%;
     }
     .ug-block-l-8 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 66.66667%;
         flex: 1 1 66.66667%;
         max-width: 66.66667%;
     }
     .ug-block-l-9 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 75%;
         flex: 1 1 75%;
         max-width: 75%;
     }
     .ug-block-l-10 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 83.33333%;
         flex: 1 1 83.33333%;
         max-width: 83.33333%;
     }
     .ug-block-l-11 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 91.66667%;
         flex: 1 1 91.66667%;
         max-width: 91.66667%;
     }
     .ug-block-l-12 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 100%;
         flex: 1 1 100%;
         max-width: 100%;
@@ -1162,97 +1018,61 @@ ol[class*="ug-block-"] {
 
 @media (min-width: 1200px) {
     .ug-block-xl-1 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 8.33333%;
         flex: 1 1 8.33333%;
         max-width: 8.33333%;
     }
     .ug-block-xl-2 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 16.66667%;
         flex: 1 1 16.66667%;
         max-width: 16.66667%;
     }
     .ug-block-xl-3 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 25%;
         flex: 1 1 25%;
         max-width: 25%;
     }
     .ug-block-xl-4 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 33.33333%;
         flex: 1 1 33.33333%;
         max-width: 33.33333%;
     }
     .ug-block-xl-5 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 41.66667%;
         flex: 1 1 41.66667%;
         max-width: 41.66667%;
     }
     .ug-block-xl-6 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 50%;
         flex: 1 1 50%;
         max-width: 50%;
     }
     .ug-block-xl-7 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 58.33333%;
         flex: 1 1 58.33333%;
         max-width: 58.33333%;
     }
     .ug-block-xl-8 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 66.66667%;
         flex: 1 1 66.66667%;
         max-width: 66.66667%;
     }
     .ug-block-xl-9 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 75%;
         flex: 1 1 75%;
         max-width: 75%;
     }
     .ug-block-xl-10 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 83.33333%;
         flex: 1 1 83.33333%;
         max-width: 83.33333%;
     }
     .ug-block-xl-11 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 91.66667%;
         flex: 1 1 91.66667%;
         max-width: 91.66667%;
     }
     .ug-block-xl-12 > * {
-        box-sizing: border-box;
-        min-height: 1px;
-        padding-left: 15px;
         -ms-flex: 1 1 100%;
         flex: 1 1 100%;
         max-width: 100%;
