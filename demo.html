@@ -167,11 +167,28 @@
             padding: 4px 8px;
             white-space: nowrap;
         }
+        .message {
+            background-color: #fff;
+            border-bottom: 1px solid #BDC3C7;
+            padding: 5px;
+            text-align: center;
+            font-size: 13px;
+            /* font-weight: bold; */
+            color: #aaa;
+            line-height: 18px;
+        }
+        .message span {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
     <div class="ug-wrapper">
+        <div class="message">
+            By default, all <span>modules</span> are enabled and have one responsive breakpoint (in 768px)<br>
+            You can edit modules and their breakpoints in setting file (ug-grid.scss)
+        </div>
         <div class="heading"><span>grid: basic</span></div>
         <div class="ug-row">
             <div class="ug-col-12">
@@ -483,43 +500,43 @@
         <div class="heading">grid: block (responsive)</div>
         <div class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </div>
         </div>
         <span class="subheading">(un)ordered list:</span>
         <ul class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>S6 M4 L2</span></div>
+                <div class="box-primary"><span>M4</span></div>
             </li>
         </ul>
         <div class="heading heading-flexbox"><span>grid: custom width</span></div>

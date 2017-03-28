@@ -65,7 +65,7 @@ $ug-module-block             : true !default;
 $ug-module-block-class       : 'ug-block-' !default;
 $ug-module-block-columns     : $ug-grid-columns !default;
 $ug-module-block-breakpoints : (
-    'm' : 768px
+    'm-' : 768px
 ) !default;
 
 // ----- MODULE-VISIBILITY (SHOW/HIDE) SETTINGS -----------
