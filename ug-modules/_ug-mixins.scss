@@ -2,13 +2,14 @@
 // read more: http://psdtohtml.ninja/unlimitedGrid/
 
 // ----- SETTINGS FOR MIXINS ------------------------------
-$ug-grid-wrapper-width : 1200px !default;
-$ug-grid-columns       : -12 !default;
-$ug-grid-gutter-type   : 'margin' !default;
-$ug-grid-gutter        : 15px !default;
-$ug-grid-box-sizing    : 'grid' !default;
-$ug-grid-flexbox       : true !default;
-$ug-grid-use-rem       : false !default;
+$ug-grid-wrapper-width  : 1200px !default;
+$ug-grid-wrapper-gutter : true !default;
+$ug-grid-columns        : -12 !default;
+$ug-grid-gutter-type    : 'margin' !default;
+$ug-grid-gutter         : 15px !default;
+$ug-grid-box-sizing     : 'grid' !default;
+$ug-grid-flexbox        : true !default;
+$ug-grid-use-rem        : false !default;
 
 // ----- !DON'T CHANGE ANYTHING BELOW! --------------------
 // ----- BOX SIZING (GLOBAL) ------------------------------
@@ -71,11 +72,19 @@ $ug-grid-use-rem       : false !default;
         display: block;
         position: fixed;
         top: 0;
-        right: 0;
         bottom: 0;
+        @if($ug-grid-wrapper-gutter == 'number') {
+            left: $ug-grid-wrapper-gutter;
+            right: $ug-grid-wrapper-gutter;
+            max-width: $ug-grid-wrapper-width - (2 * $ug-grid-wrapper-gutter);
+        } @else {
+            left: 0;
+            right: 0;
+            max-width: $ug-grid-wrapper-width;
+        }
+        right: 0;
         left: 0;
         width: 100%;
-        max-width: $ug-grid-wrapper-width;
         height: 100%;
         margin: 0 auto;
         @if($ug-grid-gutter-type != 'padding') {
@@ -115,14 +124,22 @@ $ug-grid-use-rem       : false !default;
 }
 
 // ----- WRAPPER ------------------------------------------
-@mixin ug-wrapper($width: $ug-grid-wrapper-width, $gutter: $ug-grid-gutter, $gutter-wrapper: false) {
+@mixin ug-wrapper($width: $ug-grid-wrapper-width, $gutter: $ug-grid-gutter, $gutter-wrapper: $ug-grid-wrapper-gutter) {
     @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
         box-sizing: border-box;
     }
     width: 100%;
-    @if(($ug-grid-gutter-type == 'padding') or ($ug-grid-gutter-type == 'margin' and $gutter-wrapper == true)){
+    @if($ug-grid-gutter-type == 'padding') {
         padding-right: ug-rem($gutter);
         padding-left: ug-rem($gutter);
+    } @else if($ug-grid-gutter-type == 'margin') {
+        @if($gutter-wrapper == true) {
+            padding-right: ug-rem($gutter);
+            padding-left: ug-rem($gutter);
+        } @else if(type-of($gutter-wrapper) == 'number') {
+            padding-left: ug-rem($gutter-wrapper);
+            padding-right: ug-rem($gutter-wrapper);
+        }
     }
     @if($width != 100%) {
         max-width: ug-rem($width);

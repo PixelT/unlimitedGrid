@@ -14,7 +14,7 @@
 
 // ----- BASE-WRAPPER -------------------------------------
 .#{$ug-grid-class-container} {
-    @include ug-wrapper($gutter-wrapper: $ug-helper-gutter-wrapper);
+    @include ug-wrapper($gutter-wrapper: $ug-grid-wrapper-gutter);
 }
 
 // ----- BASE-ROW -----------------------------------------

@@ -7,13 +7,14 @@
 
 // ----- SETTINGS FOR AUTOMATICALLY GENERATE GRID ---------
 // ----- BASIC SETTINGS -----------------------------------
-$ug-grid-wrapper-width : 1200px;
-$ug-grid-columns       : -12;
-$ug-grid-gutter-type   : 'margin'; // 'margin' | 'padding'
-$ug-grid-gutter        : 15px;
-$ug-grid-box-sizing    : 'grid'; // 'grid' | 'global' | false
-$ug-grid-flexbox       : true;
-$ug-grid-use-rem       : false;
+$ug-grid-wrapper-width  : 1200px;
+$ug-grid-wrapper-gutter : false;
+$ug-grid-columns        : -12;
+$ug-grid-gutter-type    : 'margin'; // 'margin' | 'padding'
+$ug-grid-gutter         : 15px;
+$ug-grid-box-sizing     : 'grid'; // 'grid' | 'global' | false
+$ug-grid-flexbox        : true;
+$ug-grid-use-rem        : false;
 
 // ----- CLASS / NAMES SETTINGS ---------------------------
 $ug-grid-class-container : 'ug-wrapper' !default;
@@ -35,7 +36,6 @@ $ug-helper-clearfix-class : 'ug-cf' !default;
 
 $ug-helper-attr-selector  : true !default;
 
-$ug-helper-gutter-wrapper : false !default;
 $ug-helper-gutter-class   : 'ug-gutter-' !default;
 $ug-helper-gutter-values  : (
     'reset' : 0
