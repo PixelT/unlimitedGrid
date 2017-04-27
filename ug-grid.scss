@@ -51,12 +51,19 @@ $ug-module-offset-breakpoints : (
 
 $ug-module-offset-media-range : false !default;
 
-// ----- MODULE-ORDERING (PULL/PUSH) SETTINGS -------------
-$ug-module-ordering             : true !default;
-$ug-module-ordering-class-push  : 'ug-push-' !default;
-$ug-module-ordering-class-pull  : 'ug-pull-' !default;
-$ug-module-ordering-columns     : $ug-grid-columns !default;
-$ug-module-ordering-breakpoints : (
+// ----- MODULE-PULL SETTINGS -----------------------------
+$ug-module-pull             : true !default;
+$ug-module-pull-class       : 'ug-pull-' !default;
+$ug-module-pull-columns     : $ug-grid-columns !default;
+$ug-module-pull-breakpoints : (
+    'm-' : 768px
+) !default;
+
+// ----- MODULE-PUSH SETTINGS -----------------------------
+$ug-module-push             : true !default;
+$ug-module-push-class       : 'ug-push-' !default;
+$ug-module-push-columns     : $ug-grid-columns !default;
+$ug-module-push-breakpoints : (
     'm-' : 768px
 ) !default;
 
@@ -90,6 +97,7 @@ $ug-debug-settings : (
 @import 'ug-modules/ug-base';
 @import 'ug-modules/ug-responsive';
 @import 'ug-modules/ug-offset';
-@import 'ug-modules/ug-ordering';
+@import 'ug-modules/ug-pull';
+@import 'ug-modules/ug-push';
 @import 'ug-modules/ug-visibility';
 @import 'ug-modules/ug-block';
