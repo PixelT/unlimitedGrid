@@ -16,54 +16,17 @@
     @if ($ug-grid-responsive) {
         $ug-counter: 1;
         @each $key, $value in $ug-module-offset-breakpoints {
-            @if ($ug-module-offset-media-range) {
-                $ug-counter: $ug-counter + 1;
-                @if ($ug-counter <= length($ug-module-offset-breakpoints)) {
-                    @media (min-width: ug-rem($value)) and (max-width: ug-rem(nth((nth($ug-module-offset-breakpoints, $ug-counter)), 2)-1)) {
-                        @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
-                            @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
-                                .#{$ug-module-offset-class}#{$key}#{$i} {
-                                    @include ug-offset(($i / abs($ug-module-offset-columns)) * 100%);
-                                }
-                            }
-                        } @else {
-                            @each $column-value in $ug-grid-columns {
-                                .#{$ug-module-offset-class}#{$key}#{$column-value} {
-                                    @include ug-offset((100% / ug-max-value($ug-module-offset-columns)) * $column-value);
-                                }
-                            }
+            @media (min-width: ug-rem($value)) {
+                @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
+                    @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
+                        .#{$ug-module-offset-class}#{$key}#{$i} {
+                            @include ug-offset(($i / abs($ug-module-offset-columns)) * 100%);
                         }
                     }
                 } @else {
-                    @media (min-width: ug-rem($value)) {
-                        @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
-                            @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
-                                .#{$ug-module-offset-class}#{$key}#{$i} {
-                                    @include ug-offset(($i / abs($ug-module-offset-columns)) * 100%);
-                                }
-                            }
-                        } @else {
-                            @each $column-value in $ug-grid-columns {
-                                .#{$ug-module-offset-class}#{$key}#{$column-value} {
-                                    @include ug-offset((100% / ug-max-value($ug-module-offset-columns)) * $column-value);
-                                }
-                            }
-                        }
-                    }
-                }
-            } @else {
-                @media (min-width: ug-rem($value)) {
-                    @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
-                        @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
-                            .#{$ug-module-offset-class}#{$key}#{$i} {
-                                @include ug-offset(($i / abs($ug-module-offset-columns)) * 100%);
-                            }
-                        }
-                    } @else {
-                        @each $column-value in $ug-grid-columns {
-                            .#{$ug-module-offset-class}#{$key}#{$column-value} {
-                                @include ug-offset((100% / ug-max-value($ug-module-offset-columns)) * $column-value);
-                            }
+                    @each $column-value in $ug-grid-columns {
+                        .#{$ug-module-offset-class}#{$key}#{$column-value} {
+                            @include ug-offset((100% / ug-max-value($ug-module-offset-columns)) * $column-value);
                         }
                     }
                 }
