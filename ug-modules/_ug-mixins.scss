@@ -83,18 +83,19 @@ $ug-grid-use-rem        : false !default;
         position: fixed;
         top: 0;
         bottom: 0;
-        @if($ug-grid-wrapper-gutter == 'number') {
-            left: $ug-grid-wrapper-gutter;
-            right: $ug-grid-wrapper-gutter;
-            max-width: $ug-grid-wrapper-width - (2 * $ug-grid-wrapper-gutter);
+        @if(type-of($ug-grid-wrapper-gutter) == 'number') {
+            left: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
+            right: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
+            max-width: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-wrapper-gutter)), ug-rem($ug-grid-wrapper-width + (2 * $ug-grid-gutter) - (2 * $ug-grid-wrapper-gutter)));
+        } @else if($ug-grid-wrapper-gutter == true) and ($ug-grid-gutter-type == 'margin') {
+            left: ug-rem($ug-grid-gutter);
+            right: ug-rem($ug-grid-gutter);
+            max-width: ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-gutter));
         } @else {
             left: 0;
             right: 0;
-            max-width: $ug-grid-wrapper-width;
+            max-width: ug-rem($ug-grid-wrapper-width);
         }
-        right: 0;
-        left: 0;
-        width: 100%;
         height: 100%;
         margin: 0 auto;
         @if($ug-grid-gutter-type != 'padding') {
@@ -139,17 +140,12 @@ $ug-grid-use-rem        : false !default;
         box-sizing: border-box;
     }
     width: 100%;
-    @if($ug-grid-gutter-type == 'padding') {
+    @if(($gutter-wrapper == true) or ($ug-grid-gutter-type == 'padding') and ($gutter-wrapper == false)) {
         padding-right: ug-rem($gutter);
         padding-left: ug-rem($gutter);
-    } @else if($ug-grid-gutter-type == 'margin') {
-        @if($gutter-wrapper == true) {
-            padding-right: ug-rem($gutter);
-            padding-left: ug-rem($gutter);
-        } @else if(type-of($gutter-wrapper) == 'number') {
-            padding-left: ug-rem($gutter-wrapper);
-            padding-right: ug-rem($gutter-wrapper);
-        }
+    } @else if(type-of($gutter-wrapper) == 'number') {
+        padding-left: ug-rem($gutter-wrapper);
+        padding-right: ug-rem($gutter-wrapper);
     }
     @if($width != 100%) {
         max-width: ug-rem($width);
