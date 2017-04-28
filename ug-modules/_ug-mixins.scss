@@ -63,6 +63,16 @@ $ug-grid-use-rem        : false !default;
     @return rgba($red, $green, $blue, $alpha);
 }
 
+// ----- REPLACE STRING ------------------------------------
+// https://css-tricks.com/snippets/sass/ug-string-function/
+@function ug-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + ug-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
 // ----- DEBUG --------------------------------------------
 @mixin ug-debug() {
     $ug-debug-columns: if(length($ug-grid-columns) > 1, ug-max-value($ug-grid-columns), abs($ug-grid-columns));
