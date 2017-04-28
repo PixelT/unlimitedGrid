@@ -122,24 +122,6 @@
             width: 12px;
             height: 12px;
         }
-        .ug-debug {
-            position: relative;
-        }
-        .ug-debug::after {
-            display: block;
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            max-width: 1200px;
-            height: 100%;
-            margin: 0 auto;
-            background: repeating-linear-gradient(90deg, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.1) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% + ( 15px / 12 )));
-            content: '';
-            z-index: -1;
-        }
         .ug-row:hover .box-primary {
             background-color: rgba(231, 76, 60, .75);
             border-color: rgba(231, 76, 60, 1);
@@ -467,7 +449,7 @@
                 <div class="box-secondary"><span>4</span></div>
             </div>
         </div>
-        <div class="heading">grid: block (basic)</div>
+        <div class="heading"><span>grid: block (basic)</span></div>
         <div class="ug-row ug-block-3">
             <div>
                 <div class="box-primary"><span>3</span></div>
@@ -497,7 +479,7 @@
                 <div class="box-primary"><span>3</span></div>
             </li>
         </ul>
-        <div class="heading">grid: block (responsive)</div>
+        <div class="heading"><span>grid: block (responsive)</span></div>
         <div class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
             <div>
                 <div class="box-primary"><span>M4</span></div>

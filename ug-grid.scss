@@ -84,7 +84,7 @@ $ug-module-visibility-breakpoints : (
 ) !default;
 
 // ----- DEBUG SETTINGS -----------------------------------
-$ug-debug          : false !default;
+$ug-debug          : true !default;
 $ug-debug-class    : 'ug-debug' !default;
 $ug-debug-settings : (
     'background-gutter' : rgba(#3498db, .2),

@@ -4,6 +4,25 @@
  * - https://github.com/PixelT/unlimitedgrid
  * - http://psdtohtml.ninja/unlimitedGrid/
 */
+.ug-debug {
+    position: relative;
+}
+
+.ug-debug::after {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    background: repeating-linear-gradient(90deg, rgba(41, 128, 185, 0.1) 0, rgba(41, 128, 185, 0.1) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% + ( 15px / 12 )));
+    content: '';
+    z-index: -1;
+}
+
 .ug-wrapper {
     box-sizing: border-box;
     width: 100%;
@@ -27,6 +46,18 @@
     -ms-flex: 1 1 100%;
     flex: 1 1 100%;
     max-width: 100%;
+    position: relative;
+}
+
+[class*="ug-col-"]:hover::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #eee;
+    white-space: nowrap;
+    content: attr(class);
 }
 
 .ug-col-1 {
