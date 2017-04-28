@@ -397,7 +397,7 @@ $ug-grid-use-rem        : false !default;
 
 // ----- @MEDIA BREAKPOINTS -------------------------------
 @mixin ug-bp($value, $rule: min) {
-    @if( (variable-exists(ug-grid-breakpoints)) and (type-of($ug-grid-breakpoints) == 'map') and (type-of($value) == 'string') ) {
+    @if(type-of($ug-grid-breakpoints) == 'map') and (type-of($value) == 'string') {
         $bp-key-list: ();
         $bp-val-list: ();
         $value: ug-replace($value, '-');
@@ -413,12 +413,12 @@ $ug-grid-use-rem        : false !default;
         @if($rule == 'max') {
             $bp-value: nth($bp-val-list, $bp-index) - 1;
         }
-        @media (#{$rule}-width: $bp-value) {
+        @media (#{$rule}-width: ug-rem($bp-value)) {
             @content;
         }
     } @else {
         @if(type-of($value) == 'number') {
-            @media (#{$rule}-width: $value) {
+            @media (#{$rule}-width: ug-rem($value)) {
                 @content;
             }
         }

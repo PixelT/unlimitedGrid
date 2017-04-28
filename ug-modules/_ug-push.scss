@@ -15,7 +15,7 @@
     }
     @if ($ug-grid-responsive) {
         @each $key, $value in $ug-module-push-breakpoints {
-            @media (min-width: $value) {
+            @include ug-bp($value) {
                 @if (length($ug-module-push-columns) == 1) and ($ug-module-push-columns < 0) {
                     @for $i from 1 through abs($ug-module-push-columns) {
                         .#{$ug-module-push-class}#{$key}#{$i} {

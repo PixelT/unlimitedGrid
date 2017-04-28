@@ -8,7 +8,7 @@
     }
     @if ($ug-grid-responsive) {
         @each $key, $value in $ug-module-visibility-breakpoints {
-            @media (min-width: $value) {
+            @include ug-bp($value) {
                 .#{$ug-module-visibility-class-show}#{$key} {
                     @include ug-show();
                 }

@@ -15,7 +15,7 @@
     }
     @if ($ug-grid-responsive) {
         @each $key, $value in $ug-module-pull-breakpoints {
-            @media (min-width: ug-rem($value)) {
+            @include ug-bp($value) {
                 @if (length($ug-module-pull-columns) == 1) and ($ug-module-pull-columns < 0) {
                     @for $i from 1 through abs($ug-module-pull-columns) {
                         .#{$ug-module-pull-class}#{$key}#{$i} {

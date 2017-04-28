@@ -23,7 +23,7 @@
     }
     @if ($ug-grid-responsive) {
         @each $key, $value in $ug-module-block-breakpoints {
-            @media (min-width: ug-rem($value)) {
+            @include ug-bp($value) {
                 @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
                     @for $i from 1 through abs($ug-grid-columns) {
                         .#{$ug-module-block-class}#{$key}#{$i} {

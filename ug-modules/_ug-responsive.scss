@@ -1,7 +1,7 @@
 // ----- MODULE-RESPONSIVE --------------------------------
 @if ($ug-grid-responsive) {
     @each $key, $value in $ug-grid-breakpoints {
-        @media (min-width: ug-rem($value)) {
+        @include ug-bp($value) {
             @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
                 @for $i from 1 through abs($ug-grid-columns) {
                     .#{$ug-grid-class-column}#{$key}#{$i} {

@@ -16,7 +16,7 @@
     @if ($ug-grid-responsive) {
         $ug-counter: 1;
         @each $key, $value in $ug-module-offset-breakpoints {
-            @media (min-width: ug-rem($value)) {
+            @include ug-bp($value) {
                 @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
                     @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
                         .#{$ug-module-offset-class}#{$key}#{$i} {
