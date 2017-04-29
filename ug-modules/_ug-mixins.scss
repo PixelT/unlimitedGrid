@@ -13,7 +13,7 @@ $ug-grid-use-rem        : false !default;
 
 // ----- !DON'T CHANGE ANYTHING BELOW! --------------------
 // ----- BOX SIZING (GLOBAL) ------------------------------
-@if($ug-grid-box-sizing == 'global') {
+@if $ug-grid-box-sizing == 'global' {
     html {
         box-sizing: border-box;
     }
@@ -28,13 +28,13 @@ $ug-grid-use-rem        : false !default;
 @function ug-rem($values) {
     $list: ();
     @each $value in $values {
-        @if (not unitless($value)) and (unit($value) != '%') {
+        @if not unitless($value) and unit($value) != '%' {
             $value: $value / ($value * 0 + 1);
         }
-        @if($ug-grid-use-rem) {
-            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, #{($value / 16)}rem)));
+        @if $ug-grid-use-rem {
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, ($value / 16) * 1rem)));
         } @else {
-            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, #{($value)}px)));
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, $value * 1px)));
         }
     }
     @return $list;
@@ -43,11 +43,11 @@ $ug-grid-use-rem        : false !default;
 // ----- GET MAX VALUE FROM LIST OF VALUES ----------------
 @function ug-max-value($ug-list) {
     $ug-max-value: 0;
-    @if(type-of($ug-list) == number) {
+    @if type-of($ug-list) == number {
         $ug-max-value: $ug-list;
     } @else {
         @each $ug-item in $ug-list {
-            @if ($ug-item > $ug-max-value) {
+            @if $ug-item > $ug-max-value {
                 $ug-max-value: $ug-item;
             }
         }
@@ -74,20 +74,20 @@ $ug-grid-use-rem        : false !default;
 }
 
 // ----- DEBUG --------------------------------------------
-@mixin ug-debug() {
+@mixin ug-debug {
     $ug-debug-columns: if(length($ug-grid-columns) > 1, ug-max-value($ug-grid-columns), abs($ug-grid-columns));
-    $ug-debug-width: (100 / $ug-debug-columns) + '%';
+    $ug-debug-width: (100 / $ug-debug-columns) * 1%;
     position: relative;
     &::after {
         display: block;
         position: fixed;
         top: 0;
         bottom: 0;
-        @if(type-of($ug-grid-wrapper-gutter) == 'number') {
+        @if type-of($ug-grid-wrapper-gutter) == 'number' {
             left: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
             right: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
             max-width: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-wrapper-gutter)), ug-rem($ug-grid-wrapper-width + (2 * $ug-grid-gutter) - (2 * $ug-grid-wrapper-gutter)));
-        } @else if($ug-grid-wrapper-gutter == true) and ($ug-grid-gutter-type == 'margin') {
+        } @else if $ug-grid-wrapper-gutter == true and $ug-grid-gutter-type == 'margin' {
             left: ug-rem($ug-grid-gutter);
             right: ug-rem($ug-grid-gutter);
             max-width: ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-gutter));
@@ -98,12 +98,12 @@ $ug-grid-use-rem        : false !default;
         }
         height: 100%;
         margin: 0 auto;
-        @if($ug-grid-gutter-type != 'padding') {
+        @if $ug-grid-gutter-type != 'padding' {
             background: repeating-linear-gradient(90deg,
                 map-get($ug-debug-settings, background-column) 0,
                 map-get($ug-debug-settings, background-column) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
                 map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} - #{$ug-grid-gutter}),
-                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + ( #{$ug-grid-gutter} / #{$ug-debug-columns} )));
+                map-get($ug-debug-settings, background-gutter) calc(#{$ug-debug-width} + (#{$ug-grid-gutter} / #{$ug-debug-columns})));
         } @else {
             background: repeating-linear-gradient(90deg,
                 map-get($ug-debug-settings, background-gutter) 0,
@@ -119,7 +119,7 @@ $ug-grid-use-rem        : false !default;
 }
 
 // ----- CLEARFIX -----------------------------------------
-@mixin ug-clearfix() {
+@mixin ug-clearfix {
     &::after {
         display: table;
         clear: both;
@@ -128,7 +128,7 @@ $ug-grid-use-rem        : false !default;
 }
 
 // ----- CLEAR UL / OL LISTS ------------------------------
-@mixin ug-clearlist() {
+@mixin ug-clearlist {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -136,18 +136,18 @@ $ug-grid-use-rem        : false !default;
 
 // ----- WRAPPER ------------------------------------------
 @mixin ug-wrapper($width: $ug-grid-wrapper-width, $gutter: $ug-grid-gutter, $gutter-wrapper: $ug-grid-wrapper-gutter) {
-    @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+    @if $ug-grid-box-sizing != 'global' and $ug-grid-box-sizing != false {
         box-sizing: border-box;
     }
     width: 100%;
-    @if(($gutter-wrapper == true) or ($ug-grid-gutter-type == 'padding') and ($gutter-wrapper == false)) {
+    @if $gutter-wrapper == true or $ug-grid-gutter-type == 'padding' and $gutter-wrapper == false {
         padding-right: ug-rem($gutter);
         padding-left: ug-rem($gutter);
-    } @else if(type-of($gutter-wrapper) == 'number') {
+    } @else if type-of($gutter-wrapper) == 'number' {
         padding-left: ug-rem($gutter-wrapper);
         padding-right: ug-rem($gutter-wrapper);
     }
-    @if($width != 100%) {
+    @if $width != 100% {
         max-width: ug-rem($width);
         margin-right: auto;
         margin-left: auto;
@@ -156,13 +156,13 @@ $ug-grid-use-rem        : false !default;
 
 // ----- ROW ----------------------------------------------
 @mixin ug-row($gutter: $ug-grid-gutter) {
-    @if($ug-grid-gutter-type == 'padding') {
+    @if $ug-grid-gutter-type == 'padding' {
         margin-right: ug-rem(-$gutter);
         margin-left: ug-rem(-$gutter);
     } @else {
         margin-left: ug-rem(-$gutter);
     }
-    @if($ug-grid-flexbox) {
+    @if $ug-grid-flexbox {
         display: flex;
         flex-flow: row wrap;
     } @else {
@@ -172,26 +172,26 @@ $ug-grid-use-rem        : false !default;
 
 // ----- COLUMN -------------------------------------------
 @mixin ug-col($width: 100%, $gutter: $ug-grid-gutter, $extend: false) {
-    @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+    @if $ug-grid-box-sizing != 'global' and $ug-grid-box-sizing != false {
         box-sizing: border-box;
     }
-    min-height: ug-rem(1px);
+    min-height: ug-rem(1);
     padding-left: ug-rem($gutter);
-    @if($ug-grid-gutter-type == 'padding') {
+    @if $ug-grid-gutter-type == 'padding' {
         padding-right: ug-rem($gutter);
     }
-    @if(not $extend) {
+    @if not $extend {
         @include ug-width($width);
     }
-    @if(not $ug-grid-flexbox) {
+    @if not $ug-grid-flexbox {
         float: left;
     }
 }
 
 // ----- COLUMN (ONLY WIDTH) ------------------------------
 @mixin ug-width($width: 100%) {
-    @if($ug-grid-flexbox) {
-        @if(unitless($width)) {
+    @if $ug-grid-flexbox {
+        @if unitless($width) {
             flex: 1 1 percentage($width / abs(ug-max-value($ug-grid-columns)));
             max-width: percentage($width / abs(ug-max-value($ug-grid-columns)));
         } @else {
@@ -199,7 +199,7 @@ $ug-grid-use-rem        : false !default;
             max-width: $width;
         }
     } @else {
-        @if(unitless($width)) {
+        @if unitless($width) {
             width: percentage($width / abs(ug-max-value($ug-grid-columns)));
         } @else {
             width: $width;
@@ -207,17 +207,16 @@ $ug-grid-use-rem        : false !default;
     }
 }
 
-
 // ----- COLUMN (AUTO - FLEXBOX ONLY)----------------------
 @mixin ug-col-auto($gutter: $ug-grid-gutter) {
-    @if($ug-grid-flexbox) {
-        @if(not $ug-helper-attr-selector) {
-            @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+    @if $ug-grid-flexbox {
+        @if not $ug-helper-attr-selector {
+            @if $ug-grid-box-sizing != 'global' and $ug-grid-box-sizing != false {
                 box-sizing: border-box;
             }
-            min-height: ug-rem(1px);
+            min-height: ug-rem(1);
             padding-left: ug-rem($gutter);
-            @if($ug-grid-gutter-type == 'padding') {
+            @if $ug-grid-gutter-type == 'padding' {
                 padding-right: ug-rem($gutter);
             }
         }
@@ -229,14 +228,14 @@ $ug-grid-use-rem        : false !default;
 
 // ----- COLUMN (EXPAND - FLEXBOX ONLY)--------------------
 @mixin ug-col-expand($gutter: $ug-grid-gutter) {
-    @if($ug-grid-flexbox) {
-        @if(not $ug-helper-attr-selector) {
-            @if($ug-grid-box-sizing != 'global') and ($ug-grid-box-sizing != false) {
+    @if $ug-grid-flexbox {
+        @if not $ug-helper-attr-selector {
+            @if $ug-grid-box-sizing != 'global' and $ug-grid-box-sizing != false {
                 box-sizing: border-box;
             }
-            min-height: ug-rem(1px);
+            min-height: ug-rem(1);
             padding-left: ug-rem($gutter);
-            @if($ug-grid-gutter-type == 'padding') {
+            @if $ug-grid-gutter-type == 'padding' {
                 padding-right: ug-rem($gutter);
             }
         }
@@ -274,12 +273,12 @@ $ug-grid-use-rem        : false !default;
 }
 
 // ----- HIDE ---------------------------------------------
-@mixin ug-hide() {
+@mixin ug-hide {
     display: none;
 }
 
 // ----- FORM FIELDS PLACEHOLDER --------------------------
-@mixin ug-placeholder() {
+@mixin ug-placeholder {
     &::-webkit-input-placeholder {
         @content;
     }
@@ -326,22 +325,22 @@ $ug-grid-use-rem        : false !default;
     position: absolute;
     width: 0;
     height: 0;
-    @if ($direction == 'top') {
+    @if $direction == 'top' {
         top: ug-rem(-$size);
         border-width: 0 ug-rem($size) ug-rem($size);
         border-color: transparent transparent $color;
     }
-    @if ($direction == 'bottom') {
+    @if $direction == 'bottom' {
         bottom: ug-rem(-$size);
         border-width: ug-rem($size) ug-rem($size) 0;
         border-color: $color transparent transparent;
     }
-    @if ($direction == 'left') {
+    @if $direction == 'left' {
         left: ug-rem(-$size);
         border-width: ug-rem($size) ug-rem($size) ug-rem($size) 0;
         border-color: transparent $color transparent transparent;
     }
-    @if ($direction == 'right') {
+    @if $direction == 'right' {
         right: ug-rem(-$size);
         border-width: ug-rem($size) 0 ug-rem($size) ug-rem($size);
         border-color: transparent transparent transparent $color;
@@ -369,12 +368,12 @@ $ug-grid-use-rem        : false !default;
         box-shadow: 0 ug-rem($size + $spacing) 0 $color,
                     0 ug-rem(-$size - $spacing) 0 $color;
     }
-    @if($hbgcolor) {
+    @if $hbgcolor {
         &:hover {
             background-color: $hbgcolor;
         }
     }
-    @if($hcolor) {
+    @if $hcolor {
         &:hover {
             &::before {
                 background-color: $hcolor;
@@ -387,7 +386,7 @@ $ug-grid-use-rem        : false !default;
 
 // ----- TRUNCATE LONG TEXT -------------------------------
 @mixin ug-truncate($width: auto) {
-    @if($width != 'auto') {
+    @if $width != 'auto' {
         width: ug-rem($width);
     }
     white-space: nowrap;
@@ -397,7 +396,7 @@ $ug-grid-use-rem        : false !default;
 
 // ----- @MEDIA BREAKPOINTS -------------------------------
 @mixin ug-bp($value, $rule: min) {
-    @if(type-of($ug-grid-breakpoints) == 'map') and (type-of($value) == 'string') {
+    @if type-of($ug-grid-breakpoints) == 'map' and type-of($value) == 'string' {
         $bp-key-list: ();
         $bp-val-list: ();
         $value: ug-replace($value, '-');
@@ -410,14 +409,14 @@ $ug-grid-use-rem        : false !default;
         }
         $bp-index: index($bp-key-list, $value);
         $bp-value: nth($bp-val-list, $bp-index);
-        @if($rule == 'max') {
+        @if $rule == 'max' {
             $bp-value: nth($bp-val-list, $bp-index) - 1;
         }
         @media (#{$rule}-width: ug-rem($bp-value)) {
             @content;
         }
     } @else {
-        @if(type-of($value) == 'number') {
+        @if type-of($value) == 'number' {
             @media (#{$rule}-width: ug-rem($value)) {
                 @content;
             }

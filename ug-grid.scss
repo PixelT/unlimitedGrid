@@ -27,7 +27,7 @@ $ug-grid-breakpoints : (
     's-'  : 480px,
     'm-'  : 768px,
     'l-'  : 992px,
-    'xl-' : 1200px
+    'xl-' : 1200px,
 ) !default;
 
 // ----- HELPERS SETTINGS ---------------------------------
@@ -38,7 +38,7 @@ $ug-helper-attr-selector  : true !default;
 
 $ug-helper-gutter-class   : 'ug-gutter-' !default;
 $ug-helper-gutter-values  : (
-    'reset' : 0
+    'reset' : 0,
 ) !default;
 
 // ----- MODULE-OFFSET SETTINGS ---------------------------
@@ -46,7 +46,7 @@ $ug-module-offset             : true !default;
 $ug-module-offset-class       : 'ug-offset-' !default;
 $ug-module-offset-columns     : $ug-grid-columns !default;
 $ug-module-offset-breakpoints : (
-    'm-' : 768px
+    'm-' : 768px,
 ) !default;
 
 // ----- MODULE-PULL SETTINGS -----------------------------
@@ -54,7 +54,7 @@ $ug-module-pull             : true !default;
 $ug-module-pull-class       : 'ug-pull-' !default;
 $ug-module-pull-columns     : $ug-grid-columns !default;
 $ug-module-pull-breakpoints : (
-    'm-' : 768px
+    'm-' : 768px,
 ) !default;
 
 // ----- MODULE-PUSH SETTINGS -----------------------------
@@ -62,7 +62,7 @@ $ug-module-push             : true !default;
 $ug-module-push-class       : 'ug-push-' !default;
 $ug-module-push-columns     : $ug-grid-columns !default;
 $ug-module-push-breakpoints : (
-    'm-' : 768px
+    'm-' : 768px,
 ) !default;
 
 // ----- MODULE-BLOCK SETTINGS ----------------------------
@@ -70,7 +70,7 @@ $ug-module-block             : true !default;
 $ug-module-block-class       : 'ug-block-' !default;
 $ug-module-block-columns     : $ug-grid-columns !default;
 $ug-module-block-breakpoints : (
-    'm-' : 768px
+    'm-' : 768px,
 ) !default;
 
 // ----- MODULE-VISIBILITY (SHOW/HIDE) SETTINGS -----------
@@ -78,15 +78,15 @@ $ug-module-visibility             : true !default;
 $ug-module-visibility-class-show  : 'ug-show-' !default;
 $ug-module-visibility-class-hide  : 'ug-hide-' !default;
 $ug-module-visibility-breakpoints : (
-    'm' : 768px
+    'm' : 768px,
 ) !default;
 
 // ----- DEBUG SETTINGS -----------------------------------
 $ug-debug          : true !default;
 $ug-debug-class    : 'ug-debug' !default;
 $ug-debug-settings : (
-    'background-gutter' : rgba(#3498db, .2),
-    'background-column' : rgba(#2980b9, .1)
+    'background-gutter' : rgba(#3498db, 0.2),
+    'background-column' : rgba(#2980b9, 0.1),
 ) !default;
 
 // ----- !DON'T CHANGE ANYTHING BELOW! --------------------

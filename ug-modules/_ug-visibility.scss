@@ -1,19 +1,19 @@
 // ----- MODULE-VISIBILITY (SHOW/HIDE) --------------------
-@if ($ug-module-visibility) {
+@if $ug-module-visibility {
     [class*="#{$ug-module-visibility-class-hide}"] {
-        @include ug-show();
+        @include ug-show;
     }
     [class*="#{$ug-module-visibility-class-show}"] {
-        @include ug-hide();
+        @include ug-hide;
     }
-    @if ($ug-grid-responsive) {
+    @if $ug-grid-responsive {
         @each $key, $value in $ug-module-visibility-breakpoints {
             @include ug-bp($value) {
                 .#{$ug-module-visibility-class-show}#{$key} {
-                    @include ug-show();
+                    @include ug-show;
                 }
                 .#{$ug-module-visibility-class-hide}#{$key} {
-                    @include ug-hide();
+                    @include ug-hide;
                 }
             }
         }

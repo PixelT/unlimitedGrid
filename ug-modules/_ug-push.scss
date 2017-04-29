@@ -1,31 +1,31 @@
 // ----- MODULE-PUSH --------------------------------------
-@if ($ug-module-push) {
-    @if (length($ug-module-push-columns) == 1) and ($ug-module-push-columns < 0) {
+@if $ug-module-push {
+    @if length($ug-module-push-columns) == 1 and $ug-module-push-columns < 0 {
         @for $i from 1 through abs($ug-module-push-columns) {
             .#{$ug-module-push-class}#{$i} {
-                @include ug-push(($i / abs($ug-module-push-columns)) * 100%);
+                @include ug-push($i / abs($ug-module-push-columns) * 100%);
             }
         }
     } @else {
         @each $column-value in $ug-grid-columns {
             .#{$ug-module-push-class}#{$column-value} {
-                @include ug-push((100% / ug-max-value($ug-module-push-columns)) * $column-value);
+                @include ug-push(100% / ug-max-value($ug-module-push-columns) * $column-value);
             }
         }
     }
-    @if ($ug-grid-responsive) {
+    @if $ug-grid-responsive {
         @each $key, $value in $ug-module-push-breakpoints {
             @include ug-bp($value) {
-                @if (length($ug-module-push-columns) == 1) and ($ug-module-push-columns < 0) {
+                @if length($ug-module-push-columns) == 1 and $ug-module-push-columns < 0 {
                     @for $i from 1 through abs($ug-module-push-columns) {
                         .#{$ug-module-push-class}#{$key}#{$i} {
-                            @include ug-push(($i / abs($ug-module-push-columns)) * 100%);
+                            @include ug-push($i / abs($ug-module-push-columns) * 100%);
                         }
                     }
                 } @else {
                     @each $column-value in $ug-grid-columns {
                         .#{$ug-module-push-class}#{$key}#{$column-value} {
-                            @include ug-push((100% / ug-max-value($ug-module-push-columns)) * $column-value);
+                            @include ug-push(100% / ug-max-value($ug-module-push-columns) * $column-value);
                         }
                     }
                 }

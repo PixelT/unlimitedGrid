@@ -1,5 +1,5 @@
 // ----- MODULE-BLOCK -------------------------------------
-@if($ug-module-block) {
+@if $ug-module-block {
     [class*="#{$ug-module-block-class}"] > * {
         @include ug-col($extend: false);
     }
@@ -8,32 +8,32 @@
         list-style: none;
         padding-left: 0;
     }
-    @if (length($ug-module-block-columns) == 1) and ($ug-module-block-columns < 0) {
+    @if length($ug-module-block-columns) == 1 and $ug-module-block-columns < 0 {
         @for $i from 1 through abs($ug-module-block-columns) {
             .#{$ug-module-block-class}#{$i} {
-                @include ug-block(($i / abs($ug-module-block-columns)) * 100%);
+                @include ug-block($i / abs($ug-module-block-columns) * 100%);
             }
         }
     } @else {
         @each $column-value in $ug-grid-columns {
             .#{$ug-module-block-class}#{$column-value} {
-                @include ug-block((100% / ug-max-value($ug-module-block-columns)) * $column-value)
+                @include ug-block(100% / ug-max-value($ug-module-block-columns) * $column-value)
             }
         }
     }
-    @if ($ug-grid-responsive) {
+    @if $ug-grid-responsive {
         @each $key, $value in $ug-module-block-breakpoints {
             @include ug-bp($value) {
-                @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+                @if length($ug-grid-columns) == 1 and $ug-grid-columns < 0 {
                     @for $i from 1 through abs($ug-grid-columns) {
                         .#{$ug-module-block-class}#{$key}#{$i} {
-                            @include ug-block(($i / abs($ug-grid-columns)) * 100%);
+                            @include ug-block($i / abs($ug-grid-columns) * 100%);
                         }
                     }
                 } @else {
                     @each $column-value in $ug-grid-columns {
                         .#{$ug-module-block-class}#{$key}#{$column-value} {
-                            @include ug-block((100% / ug-max-value($ug-grid-columns)) * $column-value);
+                            @include ug-block(100% / ug-max-value($ug-grid-columns) * $column-value);
                         }
                     }
                 }

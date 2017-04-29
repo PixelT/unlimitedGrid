@@ -18,7 +18,7 @@
     max-width: 1200px;
     height: 100%;
     margin: 0 auto;
-    background: repeating-linear-gradient(90deg, rgba(41, 128, 185, 0.1) 0, rgba(41, 128, 185, 0.1) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% + ( 15px / 12 )));
+    background: repeating-linear-gradient(90deg, rgba(41, 128, 185, 0.1) 0, rgba(41, 128, 185, 0.1) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% - 15px), rgba(52, 152, 219, 0.2) calc(8.33333% + (15px / 12)));
     content: '';
     z-index: -1;
 }
@@ -55,7 +55,7 @@
     right: 0;
     padding: 4px 8px;
     background-color: rgba(0, 0, 0, 0.8);
-    color: #eee;
+    color: #eeeeee;
     white-space: nowrap;
     content: attr(class);
 }

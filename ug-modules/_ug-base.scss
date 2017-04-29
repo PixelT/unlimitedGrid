@@ -1,12 +1,12 @@
 // ----- BASE-DEBUG ---------------------------------------
-@if($ug-debug) {
+@if $ug-debug {
     .#{$ug-debug-class} {
-        @include ug-debug();
+        @include ug-debug;
     }
 }
 
 // ----- BASE-CLEARFIX ------------------------------------
-@if($ug-helper-clearfix) {
+@if $ug-helper-clearfix {
     .#{$ug-helper-clearfix-class} {
         @include ug-clearfix;
     }
@@ -19,7 +19,7 @@
 
 // ----- BASE-ROW -----------------------------------------
 .#{$ug-grid-class-row} {
-    @include ug-row();
+    @include ug-row;
 }
 
 // ----- BASE-COLUMN --------------------------------------
@@ -27,19 +27,19 @@
     @include ug-col($extend: true);
 }
 
-@if ($ug-helper-attr-selector) {
+@if $ug-helper-attr-selector {
     [class*="#{$ug-grid-class-column}"] {
-        @include ug-col();
-        @if($ug-debug) {
+        @include ug-col;
+        @if $ug-debug {
             position: relative;
             &:hover {
                 &::after {
                     position: absolute;
                     top: 0;
                     right: 0;
-                    padding: 4px 8px;
-                    background-color: rgba(#000, .8);
-                    color: #eee;
+                    padding: ug-rem(4 8);
+                    background-color: rgba(#000, 0.8);
+                    color: rgba(#eee, 1);
                     white-space: nowrap;
                     content: attr(class);
                 }
@@ -47,13 +47,13 @@
         }
     }
 } @else {
-    @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+    @if length($ug-grid-columns) == 1 and $ug-grid-columns < 0 {
         @for $i from 1 through abs($ug-grid-columns) {
             .#{$ug-grid-class-column}#{$i} {
                 @extend %extend-col;
             }
         }
-        @if($ug-grid-responsive) {
+        @if $ug-grid-responsive {
             @each $key, $value in $ug-grid-breakpoints {
                 @for $i from 1 through abs($ug-grid-columns) {
                     .#{$ug-grid-class-column}#{$key}#{$i} {
@@ -72,10 +72,10 @@
 }
 
 // ----- BASE-GRID ----------------------------------------
-@if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+@if length($ug-grid-columns) == 1 and $ug-grid-columns < 0 {
     @for $i from 1 through abs($ug-grid-columns) {
         .#{$ug-grid-class-column}#{$i} {
-            @if (not $ug-helper-attr-selector) {
+            @if not $ug-helper-attr-selector {
                 @extend %extend-col;
             }
         }
@@ -86,7 +86,7 @@
 } @else {
     @each $column-value in $ug-grid-columns {
         .#{$ug-grid-class-column}#{$column-value} {
-            @if (not $ug-helper-attr-selector) {
+            @if not $ug-helper-attr-selector {
                 @extend %extend-col;
             }
             @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
@@ -94,7 +94,7 @@
     }
 }
 
-@if ($ug-grid-flexbox) {
+@if $ug-grid-flexbox {
     .#{$ug-grid-class-column}auto {
         @include ug-col-auto($ug-grid-gutter);
     }
@@ -104,7 +104,7 @@
 }
 
 // ----- BASE-CUSTOM GUTTERS ------------------------------
-@if($ug-grid-gutter-type == 'margin') {
+@if $ug-grid-gutter-type == 'margin' {
     @each $key, $value in $ug-helper-gutter-values {
         .#{$ug-helper-gutter-class}#{$key} {
             margin-left: ug-rem(-$value);
@@ -112,7 +112,7 @@
                 padding-left: ug-rem($value);
             }
         }
-        @if($ug-module-block) {
+        @if $ug-module-block {
             .#{$ug-helper-gutter-class}#{$key}[class*="#{$ug-module-block-class}"] > * {
                 padding-left: ug-rem($value);
             }
