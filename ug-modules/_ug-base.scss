@@ -1,3 +1,14 @@
+// ----- HELPER FUNCTIONS ---------------------------------
+@function ug-helper-trim($class) {
+    $index: -1;
+    $counter: 0;
+    @while str-slice($class, $index) == ' ' or str-slice($class, $index) == '-' or str-slice($class, $index) == '_' {
+        $counter: $counter + 1;
+        $index: $index - 1;
+    }
+    @return str-slice($class, 1, str-length($class) - $counter);
+}
+
 // ----- BASE-DEBUG ---------------------------------------
 @if $ug-debug {
     .#{$ug-debug-class} {
@@ -28,7 +39,7 @@
 }
 
 @if $ug-helper-attr-selector {
-    [class*="#{$ug-grid-class-column}"] {
+    [class*="#{ug-helper-trim($ug-grid-class-column)}"] {
         @include ug-col;
         @if $ug-debug {
             position: relative;
@@ -108,12 +119,12 @@
     @each $key, $value in $ug-helper-gutter-values {
         .#{$ug-helper-gutter-class}#{$key} {
             margin-left: ug-rem(-$value);
-            > [class*="#{$ug-grid-class-column}"] {
+            > [class*="#{ug-helper-trim($ug-grid-class-column)}"] {
                 padding-left: ug-rem($value);
             }
         }
         @if $ug-module-block {
-            .#{$ug-helper-gutter-class}#{$key}[class*="#{$ug-module-block-class}"] > * {
+            .#{$ug-helper-gutter-class}#{$key}[class*="#{ug-helper-trim($ug-module-block-class)}"] > * {
                 padding-left: ug-rem($value);
             }
         }

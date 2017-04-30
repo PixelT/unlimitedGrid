@@ -1,10 +1,10 @@
 // ----- MODULE-BLOCK -------------------------------------
 @if $ug-module-block {
-    [class*="#{$ug-module-block-class}"] > * {
+    [class*="#{ug-helper-trim($ug-module-block-class)}"] > * {
         @include ug-col($extend: false);
     }
-    ul[class*="#{$ug-module-block-class}"],
-    ol[class*="#{$ug-module-block-class}"] {
+    ul[class*="#{ug-helper-trim($ug-module-block-class)}"],
+    ol[class*="#{ug-helper-trim($ug-module-block-class)}"] {
         list-style: none;
         padding-left: 0;
     }

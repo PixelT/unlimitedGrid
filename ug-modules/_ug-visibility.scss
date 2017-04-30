@@ -1,9 +1,9 @@
 // ----- MODULE-VISIBILITY (SHOW/HIDE) --------------------
 @if $ug-module-visibility {
-    [class*="#{$ug-module-visibility-class-hide}"] {
+    [class*="#{ug-helper-trim($ug-module-visibility-class-hide)}"] {
         @include ug-show;
     }
-    [class*="#{$ug-module-visibility-class-show}"] {
+    [class*="#{ug-helper-trim($ug-module-visibility-class-show)}"] {
         @include ug-hide;
     }
     @if $ug-grid-responsive {
