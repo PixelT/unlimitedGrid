@@ -13,6 +13,7 @@
 
 ## How start? ##
 
+- **yarn** - ```yarn add unlimitedgrid```
 - **npm** - ```npm install unlimitedgrid```
 - **bower** - ```bower install unlimitedgrid```
 - **github (1)** - ```git clone https://github.com/PixelT/unlimitedGrid.git```
