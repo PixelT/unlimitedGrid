@@ -1,12 +1,12 @@
 // ----- HELPER FUNCTIONS ---------------------------------
-@function ug-helper-trim($class) {
+@function ug-helper-trim($string) {
     $index: -1;
     $counter: 0;
-    @while str-slice($class, $index) == ' ' or str-slice($class, $index) == '-' or str-slice($class, $index) == '_' {
+    @while str-slice($string, $index, $index) == ' ' or str-slice($string, $index, $index) == '-' or str-slice($string, $index, $index) == '_' {
         $counter: $counter + 1;
         $index: $index - 1;
     }
-    @return str-slice($class, 1, str-length($class) - $counter);
+    @return str-slice($string, 1, str-length($string) - $counter);
 }
 
 // ----- BASE-DEBUG ---------------------------------------
