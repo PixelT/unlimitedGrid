@@ -1,6 +1,6 @@
 {
   "name": "unlimitedgrid",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Responsive, fully customizable & mobile first CSS grid framework / system based on Sass (SCSS)",
   "main": "ug-grid.scss",
   "scripts": {
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/PixelT/unlimitedGrid/issues"
   },
-  "homepage": "http://psdtohtml.ninja/unlimitedGrid/",
+  "homepage": "http://pixelt.github.io/unlimitedGrid/",
   "devDependencies": {
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",

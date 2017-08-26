@@ -1,6 +1,6 @@
 # unlimitedGrid
 
-- **Documentation & examples**: [http://psdtohtml.ninja/unlimitedGrid/](http://psdtohtml.ninja/unlimitedGrid/)
+- **Documentation & examples**: [http://pixelt.github.io/unlimitedGrid/](http://pixelt.github.io/unlimitedGrid/)
 - **Demo** (htmlpreview): [http://htmlpreview.github.io/?https://github.com/PixelT/unlimitedGrid/blob/master/demo.html](http://htmlpreview.github.io/?https://github.com/PixelT/unlimitedGrid/blob/master/demo.html)
 
 ## TL;DR
@@ -44,7 +44,7 @@ unlimitedGrid is very flexible. It allows you to define multiple things, such as
 
 ## Documentation / Examples
 
-Full documentation, demo examples & codes and more other cool stuff you can find on the [unlimitedGrid documentation page](http://psdtohtml.ninja/unlimitedGrid/)
+Full documentation, demo examples & codes and more other cool stuff you can find on the [unlimitedGrid documentation page](http://pixelt.github.io/unlimitedGrid/)
 
 ## Issues
 
