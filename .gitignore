@@ -1,0 +1,7 @@
+*.todo
+node_modules/
+.DS_Store
+.idea
+gulpfile.js
+package.json
+package-lock.json
