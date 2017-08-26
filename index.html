@@ -1,0 +1,2257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>unlimitedGrid documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Arimo|Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <a href="index.html" class="title">
+        unlimitedgrid
+    </a>
+    <div class="github-wrapper">
+        <a class="github-button" href="https://github.com/PixelT/unlimitedGrid" data-show-count="true" aria-label="Star PixelT/unlimitedGrid on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/PixelT/unlimitedGrid/archive/master.zip" aria-label="Download PixelT/unlimitedGrid on GitHub">Download</a>
+    </div>
+    <ul class="nav">
+        <li>
+            <a href="#section-introduction" data-scroll>Introduction</a>
+        </li>
+        <li>
+            <a href="#section-about" data-scroll>About unlimitedGrid</a>
+        </li>
+        <li>
+            <a href="#section-how-to-start" data-scroll>How to start</a>
+        </li>
+        <li class="nav-parent">
+            <a href="#section-settings" data-scroll>Settings</a>
+            <ul class="nav nav-submenu">
+                <li>
+                    <a href="#settings-basic" data-scroll>Settings basic</a>
+                </li>
+                <li>
+                    <a href="#settings-class-names" data-scroll>Settings class / names</a>
+                </li>
+                <li>
+                    <a href="#settings-responsive" data-scroll>Settings responsive</a>
+                </li>
+                <li>
+                    <a href="#settings-helpers" data-scroll>Settings helpers</a>
+                </li>
+                <li>
+                    <a href="#settings-modules" data-scroll>Settings modules</a>
+                </li>
+                <li>
+                    <a href="#settings-debug" data-scroll>Settings debug</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#section-responsive-breakpoints" data-scroll>Responsive breakpoints</a>
+        </li>
+        <li>
+            <a href="#section-modules" data-scroll>Modules</a>
+        </li>
+        <li class="nav-parent">
+            <a href="#section-usage-examples" data-scroll>Usage &amp; Examples</a>
+                <ul class="nav nav-submenu nav-columns">
+                    <li>
+                        <a href="#example-grid-wrapper" data-scroll>Grid wrapper</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-basic" data-scroll>Grid basic</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-basic-responsive" data-scroll>Grid basic responsive</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-nested" data-scroll>Grid nested</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-nested-responsive" data-scroll>Grid nested responsive</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-offset" data-scroll>Grid offset</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-offset-responsive" data-scroll>Grid offset responsive</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-order" data-scroll>Grid order</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-order-responsive" data-scroll>Grid order responsive</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-block" data-scroll>Grid block</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-block-responsive" data-scroll>Grid block responsive</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-visibility" data-scroll>Grid visibility</a>
+                    </li>
+                    <li>
+                        <a href="#example-grid-gutter" data-scroll>Grid gutter</a>
+                    </li>
+                </ul>
+        </li>
+        <li class="nav-parent">
+            <a href="#section-mixins-functions" data-scroll>Mixins &amp; Functions</a>
+            <ul class="nav nav-submenu">
+                <li>
+                    <a href="#section-functions" data-scroll>@functions</a>
+                </li>
+                <li>
+                    <a href="#section-mixins" data-scroll>@mixins</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#section-faq" data-scroll>FAQ</a>
+        </li>
+        <li>
+            <a href="#section-changelog" data-scroll>Changelog</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="ug-wrapper content">
+
+    <section id="section-introduction">
+        <div class="box box-intro">
+            <strong>TL;DR</strong>
+            <ul>
+                <li>unlimitedGrid is a very small / simple / flexible and functional grid "framework" (based on Sass)</li>
+                <li>Just set the properties in the <mark>ug-grid.scss</mark> file, next &raquo; build / compile this file</li>
+                <li>Use the generated classes in your HTML to fast create your individual grid / layout structure!</li>
+                <li>unlimitedGrid also provided a couple of <a href="#section-mixins" data-scroll>mixins</a>, which can be usefull in all type of projects!</li>
+            </ul>
+        </div>
+        <h2>unlimitedGrid - why use it?</h2>
+        <div class="ug-row ug-block-4">
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/eye.svg">
+                    ultra customizable
+                    <br>
+                    responsive, mobile first
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/cubes.svg">
+                    module structure
+                    <br>
+                    use only what you need
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/download.svg">
+                    small size - only 2kb (5kb)
+                    <br>
+                    12 columns + rwd (flexbox)
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/th.svg" />
+                    support 2 types of grid
+                    <br>
+                    gutter: margin | padding
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/css.svg" />
+                    support CSS3 features
+                    <br>
+                    rem | flexbox
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/clock-o.svg" />
+                    generate full grid in 15-30s
+                    <br>
+                    set the variables &raquo; compile
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/code.svg" />
+                    set your custom
+                    <br>
+                    settings | modules
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/code.svg" />
+                    set your custom
+                    <br>
+                    classnames | breakpoints
+                </div>
+            </div>
+            <div>
+                <div class="box box-feature">
+                    <img src="svg/code.svg" />
+                    set your custom grid
+                    <br>
+                    by using @mixin | @function
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-about">
+        <h2>About unlimitedGrid</h2>
+        The main reason that I wrote yet another grid system, was the fact that I can't found any grid system, which would give me the possibility to create functional grid in short time...
+        <br><br>
+        unlimitedGrid is a collection of <del>functions</del> principles and rules, by which you can easily and fast create an attractive and (ultra) functional grids.
+        <br><br>
+        unlimitedGrid based on a slightly different approach and mechanism of action than standard grid frameworks offer. He doesn’t provide functions or mixins*, which define the rules / size / properties for classes which you write, but immediately generate a whole set of classes based on your settings (see: settings). Just compile the mainly SCSS file (ug-grid.scss) and the grid will be ready for you!
+        <br><br>
+        unlimitedGrid is very flexible. It allows you to define multiple things, such as: the custom number of columns (10, 12, 16, 24 or maybe 7? no problem), custom size and type of gutters (in absolute or relative length units), custom class names (you prefer OOCSS, BEM or another methodology – easy), custom breakpoint values and class names for @media – for each module independently, according with your preferences – so you can generate the grid as you need – the only limitation is your imagination…
+        <br><br>
+        unlimitedGrid supports grid features like:
+        <ul>
+            <li>basic grid</li>
+            <li>responsive</li>
+            <li>custom gutter</li>
+            <li>nested</li>
+            <li>offset</li>
+            <li>order (pull / push)</li>
+            <li>visibility</li>
+        </ul>
+        All this things can have custom / different class names and responsive breakpoints!
+        <div class="message message-info">*From version >= 2.0.0 the unlimitedGrid also provide the scss mixins and functions to build custom grid in another than described above way. Nay! The mixins &amp; functions module, can be used alone, without the whole grid files!</div>
+    </section>
+
+    <section id="section-how-to-start">
+        <h2>How to start?</h2>
+        <h3>Install</h3>
+        There are a couple of methods, to install unlimitedGrid:
+        <ul>
+            <li>
+                <strong>npm</strong>
+                <pre>
+                    <code class="language-markup">
+                        npm install unlimitedgrid
+                    </code>
+                </pre>
+            </li>
+            <li>
+                <strong>bower</strong>
+                <pre>
+                    <code class="language-markup">
+                        bower install unlimitedgrid
+                    </code>
+                </pre>
+            </li>
+            <li>
+                <strong>github #1</strong>
+                <pre>
+                    <code class="language-markup">
+                        git clone https://github.com/PixelT/unlimitedGrid.git
+                    </code>
+                </pre>
+            </li>
+            <li>
+                <strong>github #2</strong>
+                <br><br>
+                download the <a href="https://github.com/PixelT/unlimitedGrid/releases/latest" target="_blank">latest release</a>
+            </li>
+        </ul>
+        <h3>First / basic usage</h3>
+        unlimitedGrid is build with Sass (SCSS syntax) - so you can start to work with him in many ways:
+        <br><br>
+        <strong>Method 1</strong> - generate grid classes based on settings:
+        <ul>
+            <li>set variables in the ug-grid.scss file</li>
+            <li>build / compile the ug-grid.scss file (after version 1.2.0 you can use / edit the included gulpfile.js which have predefined tasks for this)</li>
+            <li>include the generated ug-grid.css or ug-grid.min.css file into your project</li>
+        </ul>
+        <pre>
+            <code class="language-markup">
+                &lt;link rel="stylesheet" href="path/to/your/ug-grid.css">
+            </code>
+        </pre>
+        <strong>Method 2</strong> - If you work with Sass:
+        <ul>
+            <li>set variables in ug-grid.scss file</li>
+            <li>change the ug-grid.scss filename to _ug-grid.scss and import it as a part in your sass files:</li>
+        </ul>
+        <pre>
+            <code class="language-scss">
+                @import _ug-grid.scss;
+            </code>
+        </pre>
+        <strong>Method 3</strong> - Use the default grid:
+        <ul>
+            <li>include the grid.css or grid.min.css file yo your project</li>
+        </ul>
+        <pre>
+            <code class="language-markup">
+                &lt;link rel="stylesheet" href="path/to/your/ug-grid.css">
+            </code>
+        </pre>
+        <strong>Method 4</strong> - Use SCSS mixins &amp; functions provided in unlimitedGrid:
+        <ul>
+            <li>more details about this method you can find in the <a href="#section-mixins-functions" data-scroll>Mixin &amp; Function section</a></li>
+        </ul>
+        <div class="message message-info">The default values you can find in the 'Settings' section below</div>
+        That's all what you have to do (with the scss file(s)) to get stared with unlinitedGrid (using method 1-3).
+        <br>
+        HTML classes take care a rest of the job! (see: <a href="#section-usage-examples">Examples</a>)
+    </section>
+
+    <section id="section-settings">
+        <h2>Settings</h2>
+        Settings can be found &amp; set in the ug-grid.scss file. The values entered in this file depends how the grid will be look and how his functionality will be.
+        <div class="message message-info">The ug-grid.scss file is the only file that you need edit to generate the grid!</div>
+        <h3 id="settings-basic">Basic settings</h3>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-grid-wrapper-width</td>
+                <td>1200px</td>
+                <td>Maximum width of the grid container / wrapper. The container is always centered</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-wrapper-gutter</td>
+                <td>false</td>
+                <td>Add gutter (padding) to the grid wrapper. If set true, the gutter for wrapper will have this same value as $ug-grid-gutter</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-columns</td>
+                <td>-12</td>
+                <td>
+                    Number of columns in grid
+                    <br>
+                    You can provide list of numbers values or a negative number value:
+                    <br><br>
+                    <pre>
+                        <code class="language-scss">
+                            // list of values
+                            $grid-columns: 2 4 6 12;
+
+                            // negative value
+                            $grid-columns: -6;
+                        </code>
+                    </pre>
+                    <br>
+                    List of values create class <strong>ONLY</strong> for specific values
+                    <br>
+                    (in example above, will generate code for 2, 4, 6 and 12 columns).
+                    <br><br>
+                    Negative value create columns from 1 to this value (positive)
+                    <br>
+                    (in example above, will generate code for 1, 2, 3, 4, 5, 6 columns)
+                </td>
+            </tr>
+            <tr>
+                <td>$ug-grid-gutter-type</td>
+                <td>margin</td>
+                <td>Type of the grid gutter. Allowed values are 'margin' or 'padding'</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="http://pixeltown.pl/images/grid-types.jpg" alt="grid types infographics" style="margin: 0 auto">
+                </td>
+            </tr>
+            <tr>
+                <td>$ug-grid-gutter</td>
+                <td>15px</td>
+                <td>Size of the default grid gutter</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-box-sizing</td>
+                <td>grid</td>
+                <td>
+                    Define that box-sizing should be available globally to all elements ('global'), or only for grid elements ('grid').
+                    <br>
+                    If you want to use unlimitedGrid in project which have already defined the box-sizing, set false value here
+                </td>
+            </tr>
+            <tr>
+                <td>$ug-grid-flexbox</td>
+                <td>true</td>
+                <td>Build grid by using flexbox instead of floats</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-use-rem</td>
+                <td>false</td>
+                <td>Use rem units by default, instead of px units</td>
+            </tr>
+        </table>
+        <h3 id="settings-class-names">Class / names settings</h3>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-grid-class-container</td>
+                <td>ug-wrapper</td>
+                <td>Class name for the grid container / wrapper</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-class-row</td>
+                <td>ug-row</td>
+                <td>Class name for the row</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-class-column</td>
+                <td>ug-col-</td>
+                <td>Class name (prefix) for the columns</td>
+            </tr>
+        </table>
+        <h3 id="settings-responsive">Responsive settings</h3>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-grid-responsive</td>
+                <td>true</td>
+                <td>Create responsive classes, based on $ug-grid-breapoints values. If set true, generate responsive classes for grid and all other modules which value is true</td>
+            </tr>
+            <tr>
+                <td>$ug-grid-breakpoints</td>
+                <td>
+                <pre>
+                    <code class="language-scss">
+                        $ug-grid-breakpoints: (
+                            's-' : 480px,
+                            'm-' : 768px,
+                            'l-' : 992px,
+                            'xl-': 1200px,
+                        ) !default;
+                    </code>
+                </pre>
+                </td>
+                <td>
+                    Map with breakpoints (breakpoint names + values) for grid. Each breakpoint is a par of 'key': value
+                    <br>
+                    More about this you can read in the <a href="#section-responsive-breakpoints" data-scroll>responsive breakpoints</a> section.
+                </td>
+            </tr>
+        </table>
+        <h3 id="settings-helpers">Helpers settings</h3>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-helper-clearfix</td>
+                <td>false</td>
+                <td>If set true, generate class for clearfix</td>
+            </tr>
+            <tr>
+                <td>$ug-helper-clearfix-class</td>
+                <td>ug-cf</td>
+                <td>Class name for clearfix</td>
+            </tr>
+            <tr>
+                <td colspan="3"><div class="message message-error">Settings below ($ug-helper-gutter-*) will work / has effect only when $ug-grid-gutter-type = 'margin'</div></td>
+            </tr>
+            <tr>
+                <td>$ug-helper-gutter-class</td>
+                <td>ug-gutter-</td>
+                <td>Class name (prefix) for custom gutter</td>
+            </tr>
+            <tr>
+                <td>$ug-helper-gutter-values</td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            $ug-helper-gutter-values: (
+                                'reset': 0,
+                            ) !default;
+                        </code>
+                    </pre>
+                </td>
+                <td>Map with breakpoints (breakpoint names + values) for custom grid gutter</td>
+            </tr>
+        </table>
+        <h3 id="settings-modules">Modules settings</h3>
+        <div class="message message-info">
+            The XX is the name of the module. Currently exist modules are: <strong>offset</strong>, <strong>pull</strong>, <strong>push</strong>, <strong>visibility</strong>
+            <br>
+            More about modules you can read in the modules section
+        </div>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-module-XX</td>
+                <td>false</td>
+                <td>If set true, generate classes for current module</td>
+            </tr>
+            <tr>
+                <td>$ug-module-XX-class</td>
+                <td>'ug-XX-'</td>
+                <td>Class name (prefix) for current module</td>
+            </tr>
+            <tr>
+                <td>$ug-module-XX-columns</td>
+                <td>$ug-grid-columns</td>
+                <td>
+                    Generate columns for class in specific module
+                    <br>
+                    By default, the columns are the same as in basic grid ($ug-grid-columns value)
+                </td>
+            </tr>
+            <tr>
+                <td>$ug-module-XX-breakpoints</td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            $ug-module-XX-breakpoints: (
+                                'm-': 768px,
+                            ) !default;
+                        </code>
+                    </pre>
+                </td>
+                <td>
+                    Generate breakpoints for class in specific module
+                    <br>
+                    By default, the breakpoints each module have the only one breakpoint
+                </td>
+            </tr>
+        </table>
+        <h3 id="settings-debug">Debug settings</h3>
+        <table class="table-doc">
+            <tr>
+                <th>Variable:</th>
+                <th>Default value:</th>
+                <th>Description:</th>
+            </tr>
+            <tr>
+                <td>$ug-debug</td>
+                <td>false</td>
+                <td>Enable / disable generate class for debug grid</td>
+            </tr>
+            <tr>
+                <td>$ug-debug-class</td>
+                <td>'ug-debug'</td>
+                <td>Class for the debug element</td>
+            </tr>
+            <tr>
+                <td>$ug-debug-settings</td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                        $ug-debug-settings: (
+                            'background-gutter': rgba(#3498db, 0.2),
+                            'background-column': rgba(#2980b9, 0.1),
+                        ) !default;
+                        </code>
+                    </pre>
+                </td>
+                <td>The background color for the gutter / column in debug grid</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="section-responsive-breakpoints">
+        <h2>Responsive breakpoints</h2>
+        Responsive breakpoints is one of the most powerfull aspects in unlimitedGrid. You can define custom keys and its values for @media breakpoints, for each module independently!
+        <br><br>
+        Each breakpoint is a par of key: value
+        <ul>
+            <li>- key: is a string which is a part of the responsive class name</li>
+            <li>- value: is a number which is define the min-width condition in @media. The value should include the length unit</li>
+        </ul>
+        You can set unlimited number of breakpoints:
+        <pre>
+            <code class="language-scss">
+                $grid-breakpoints: (
+                    'key_1': value_1_with_length_unit,
+                    'key_2': value_2_with_length_unit,
+                );
+            </code>
+        </pre>
+        The default grid @media breakpoints ($ug-grid-breakpoints) are:
+        <pre>
+            <code class="language-scss">
+                $grid-breakpoints: (
+                    's-' : 480px,
+                    'm-' : 768px,
+                    'l-' : 992px,
+                    'xl-': 1200px,
+                );
+            </code>
+        </pre>
+        For modules, by default only one @media breakpoint is defined - for all existing modules:
+        <pre>
+            <code class="language-scss">
+                $ug-module-&lt;-module-name>-breakpoints: (
+                    'm-': 768px,
+                ) !default;
+            </code>
+        </pre>
+    </section>
+
+    <section id="section-modules">
+        <h2>Modules</h2>
+        In addition to the basic grid, you can add additional capabilities that have been called as modules
+        <br>
+        You can decided which modules should be added in your grid by set the true / false value in module name
+        <div class="message message-info">By default, all modules are <strong>enabled</strong></div>
+        Currenly available modules:
+        <table class="table-doc">
+            <tr>
+                <th>Module:</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>$ug-module-offset</td>
+                <td>If true, generate classes for columns offset</td>
+            </tr>
+            <tr>
+                <td>$ug-module-pull</td>
+                <td>If true, generate classes for pull columns</td>
+            </tr>
+            <tr>
+                <td>$ug-module-push</td>
+                <td>If true, generate classes for push columns</td>
+            </tr>
+            <tr>
+                <td>$ug-module-visibility</td>
+                <td>If true, generate classes to visibility the element (show / hide)</td>
+            </tr>
+            <tr>
+                <td>$ug-module-block</td>
+                <td>If true, generate classes for blocks</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="section-usage-examples">
+        <h2>Usage &amp; Examples</h2>
+        <div class="message message-info">All examples below based on default grid settings</div>
+        <h3 id="example-grid-wrapper">Example: grid - wrapper</h3>
+        Each column must be inside wrapper <mark>$ug-grid-class-wrapper</mark> and row <mark>$ug-grid-class-row</mark>:
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        //columns
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-basic">Example: Grid basic</h3>
+        Create the basic grid (columns)
+        <br>
+        Put the column class <mark>$ug-grid-class-column</mark> inside the row <mark>$ug-grid-class-row</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-12">
+                    <div class="box box-primary">12</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-3">
+                    <div class="box box-primary">3</div>
+                </div>
+                <div class="ug-col-9">
+                    <div class="box box-secondary">9</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-6">
+                    <div class="box box-primary">6</div>
+                </div>
+                <div class="ug-col-6">
+                    <div class="box box-secondary">6</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-9">
+                    <div class="box box-primary">9</div>
+                </div>
+                <div class="ug-col-3">
+                    <div class="box box-secondary">3</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-primary">1</div>
+                </div>
+                <div class="ug-col-1">
+                    <div class="box box-secondary">1</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-12">
+                            &lt;div class="box box-primary">12&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3">
+                            &lt;div class="box box-primary">3&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-9">
+                            &lt;div class="box box-secondary">9&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-6">
+                            &lt;div class="box box-primary">6&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-6">
+                            &lt;div class="box box-secondary">6&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-9">
+                            &lt;div class="box box-primary">9&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3">
+                            &lt;div class="box box-secondary">3&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-primary">1&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-1">
+                            &lt;div class="box box-secondary">1&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-basic-responsive">Example: Grid basic responsive</h3>
+        Create the basic grid (columns) based on responsive breakpoint values
+        <br>
+        Put the column class <mark>$ug-grid-class-column</mark> with responsive breakpoint key inside the row <mark>$ug-grid-class-row</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-primary">s6 m4 l2</div>
+                </div>
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-secondary">s6 m4 l2</div>
+                </div>
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-primary">s6 m4 l2</div>
+                </div>
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-secondary">s6 m4 l2</div>
+                </div>
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-primary">s6 m4 l2</div>
+                </div>
+                <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                    <div class="box box-secondary">s6 m4 l2</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-primary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-secondary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-primary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-secondary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-primary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                            &lt;div class="box box-secondary">s6 m4 l2&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-s-3 ug-col-m-6 ug-col-l-9">
+                    <div class="box box-primary">s3 m6 l9</div>
+                </div>
+                <div class="ug-col-s-9 ug-col-m-6 ug-col-l-3">
+                    <div class="box box-secondary">s3 m6 l3</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-s-3 ug-col-m-6 ug-col-l-9">
+                            &lt;div class="box box-primary">s3 m6 l9&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-s-9 ug-col-m-6 ug-col-l-3">
+                            &lt;div class="box box-secondary">s3 m6 l3&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-nested">Example: Grid nested</h3>
+        To nest grids, create new row <mark>$ug-grid-class-row</mark>  inside the column class <mark>$ug-grid-class-column</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-5">
+                    <div class="box box-primary">5</div>
+                </div>
+                <div class="ug-col-5">
+                    <div class="ug-row">
+                        <div class="ug-col-9">
+                            <div class="box box-secondary">9</div>
+                        </div>
+                        <div class="ug-col-3">
+                            <div class="box box-secondary">3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ug-col-2">
+                    <div class="box box-primary">2</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-5">
+                            &lt;div class="box box-primary">5&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-5">
+                            &lt;div class="ug-row">
+                                &lt;div class="ug-col-9">
+                                    &lt;div class="box box-secondary">9&lt;/div>
+                                &lt;/div>
+                                &lt;div class="ug-col-3">
+                                    &lt;div class="box box-secondary">3&lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-2">
+                            &lt;div class="box box-primary">2&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-5">
+                    <div class="box box-primary">5</div>
+                </div>
+                <div class="ug-col-5">
+                    <div class="box box-secondary">5</div>
+                    <div class="ug-row">
+                        <div class="ug-col-6">
+                            <div class="box box-primary">6</div>
+                            <div class="ug-row">
+                                <div class="ug-col-4">
+                                    <div class="box box-secondary">4</div>
+                                </div>
+                                <div class="ug-col-4">
+                                    <div class="box box-secondary">4</div>
+                                </div>
+                                <div class="ug-col-4">
+                                    <div class="box box-secondary">4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ug-col-6">
+                            <div class="box box-secondary">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ug-col-2">
+                    <div class="box box-primary">2</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-5">
+                            &lt;div class="box box-primary">5&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-5">
+                            &lt;div class="box box-secondary">5&lt;/div>
+                            &lt;div class="ug-row">
+                                &lt;div class="ug-col-6">
+                                    &lt;div class="box box-primary">6&lt;/div>
+                                    &lt;div class="ug-row">
+                                        &lt;div class="ug-col-4">
+                                            &lt;div class="box box-secondary">4&lt;/div>
+                                        &lt;/div>
+                                        &lt;div class="ug-col-4">
+                                            &lt;div class="box box-secondary">4&lt;/div>
+                                        &lt;/div>
+                                        &lt;div class="ug-col-4">
+                                            &lt;div class="box box-secondary">4&lt;/div>
+                                        &lt;/div>
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;div class="ug-col-6">
+                                    &lt;div class="box box-secondary">6&lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-2">
+                            &lt;div class="box box-primary">2&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-nested-responsive">Example: Grid nested responsive</h3>
+        This same ways as for &raquo; GRID: Basic (responsive)
+        <br>
+        Put the column class <mark>$ug-grid-class-column</mark> with responsive breakpoint key inside the row <mark>$ug-grid-class-row</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-m-4 ug-col-l-6">
+                    <div class="box box-primary">m4 l6</div>
+                </div>
+                <div class="ug-col-m-8 ug-col-l-6">
+                    <div class="box box-secondary">m8 l6</div>
+                    <div class="ug-row">
+                        <div class="ug-col-s-6 ug-col-m-3">
+                            <div class="box box-primary">s6 l3</div>
+                        </div>
+                        <div class="ug-col-s-6 ug-col-m-3">
+                            <div class="box box-primary">s6 l3</div>
+                        </div>
+                        <div class="ug-col-s-6 ug-col-m-3">
+                            <div class="box box-primary">s6 l3</div>
+                        </div>
+                        <div class="ug-col-s-6 ug-col-m-3">
+                            <div class="box box-primary">s6 l3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-m-4 ug-col-l-6">
+                            &lt;div class="box box-primary">m4 l6&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-m-8 ug-col-l-6">
+                            &lt;div class="box box-secondary">m8 l6&lt;/div>
+                            &lt;div class="ug-row">
+                                &lt;div class="ug-col-s-6 ug-col-m-3">
+                                    &lt;div class="box box-primary">s6 l3&lt;/div>
+                                &lt;/div>
+                                &lt;div class="ug-col-s-6 ug-col-m-3">
+                                    &lt;div class="box box-primary">s6 l3&lt;/div>
+                                &lt;/div>
+                                &lt;div class="ug-col-s-6 ug-col-m-3">
+                                    &lt;div class="box box-primary">s6 l3&lt;/div>
+                                &lt;/div>
+                                &lt;div class="ug-col-s-6 ug-col-m-3">
+                                    &lt;div class="box box-primary">s6 l3&lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-offset">Example: Grid offset</h3>
+        Move column to the right (offset) with left margin
+        <br>
+        Add the offset class <mark>$ug-grid-offset-class</mark> to the column class <mark>$ug-grid-class-column</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-2 ug-offset-10">
+                    <div class="box box-primary">2 | &raquo; 10</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-4 ug-offset-8">
+                    <div class="box box-secondary">4 | &raquo; 8</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-6 ug-offset-6">
+                    <div class="box box-primary">6 | &raquo; 6</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-8 ug-offset-4">
+                    <div class="box box-secondary">8 | &raquo; 4</div>
+                </div>
+            </div>
+            <div class="ug-row">
+                <div class="ug-col-10 ug-offset-2">
+                    <div class="box box-primary">10 | &raquo; 2</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-2 ug-offset-10">
+                            &lt;div class="box box-primary">2 | &raquo; 10&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-4 ug-offset-8">
+                            &lt;div class="box box-secondary">4 | &raquo; 8&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-6 ug-offset-6">
+                            &lt;div class="box box-primary">6 | &raquo; 6&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-8 ug-offset-4">
+                            &lt;div class="box box-secondary">8 | &raquo; 4&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-10 ug-offset-2">
+                            &lt;div class="box box-primary">10 | &raquo; 2&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-4">
+                    <div class="box box-primary">4</div>
+                </div>
+                <div class="ug-col-4 ug-offset-2">
+                    <div class="box box-secondary">4 | &raquo; 2</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-4">
+                            &lt;div class="box box-primary">4&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-4 ug-offset-2">
+                            &lt;div class="box box-secondary">4 | &raquo; 2&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-4 ug-offset-4">
+                    <div class="box box-primary">4 | &raquo; 4</div>
+                </div>
+                <div class="ug-col-4">
+                    <div class="box box-secondary">4</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-4 ug-offset-4">
+                            &lt;div class="box box-primary">4 | &raquo; 4&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-4">
+                            &lt;div class="box box-secondary">4&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-offset-responsive">Example: Grid offset responsive</h3>
+        Move column to the right (offset) with left margin, based on responsive breakpoint values
+        <br>
+        Add the offset class <mark>$ug-grid-offset-class</mark> with responsive breakpoint key to the column class <mark>$ug-grid-class-column</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-3">
+                    <div class="box box-primary">3</div>
+                </div>
+                <div class="ug-col-3 ug-offset-m-6">
+                    <div class="box box-secondary">3 | M6</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3">
+                            &lt;div class="box box-primary">3&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3 ug-offset-m-6">
+                            &lt;div class="box box-secondary">3 | M6&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-3 ug-offset-m-3">
+                    <div class="box box-primary">3 | M3</div>
+                </div>
+                <div class="ug-col-3 ug-offset-m-3">
+                    <div class="box box-secondary">3 | M3</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3 ug-offset-m-3">
+                            &lt;div class="box box-primary">3 | M3&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3 ug-offset-m-3">
+                            &lt;div class="box box-secondary">3 | M3&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-order">Example: Grid order</h3>
+        Change the column order
+        <br>
+        Add the pull class <mark>$ug-grid-pull-class</mark> - for move left, or push class <mark>$ug-module-push-class</mark> - for move right, to the column class <mark>$ug-grid-class-column</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-3 ug-push-9">
+                    <div class="box box-primary">3 | 9</div>
+                </div>
+                <div class="ug-col-9 ug-pull-3">
+                    <div class="box box-secondary">9 | 3</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3 ug-push-9">
+                            &lt;div class="box box-primary">3 | 9&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-9 ug-pull-3">
+                            &lt;div class="box box-secondary">9 | 3&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-order-responsive">Example: Grid order responsive</h3>
+        Change the column order based on responsive breakpoint values
+        <br>
+        Add the pull class <mark>$ug-grid-pull-class</mark> - for move left, or push class <mark>$ug-module-push-class</mark> - for move right, with responsive breakpoint key to the column class <mark>$ug-grid-class-column</mark>
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-3 ug-push-m-9">
+                    <div class="box box-primary">3 | M9</div>
+                </div>
+                <div class="ug-col-9 ug-pull-m-3">
+                    <div class="box box-secondary">9 | M3</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3 ug-push-m-9">
+                            &lt;div class="box box-primary">3 | M9&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-9 ug-pull-m-3">
+                            &lt;div class="box box-secondary">9 | M3&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-block">Example: Grid block</h3>
+        <!-- TODO: --> // TODO
+        <h3 id="example-grid-block-responsive">Example: Grid block responsive</h3>
+        <!-- TODO: --> // TODO
+        <h3 id="example-grid-visibility">Example: Grid visibility</h3>
+        Define visibility: show <mark>$ug-module-show-class</mark> or hide <mark>$ug-module-hide-class</mark> the element
+        <br><br>
+        <div class="ug-wrapper">
+            <div class="ug-row">
+                <div class="ug-col-3">
+                    <div class="box box-primary">3</div>
+                </div>
+                <div class="ug-col-3 ug-show-s">
+                    <div class="box box-secondary">3 | s</div>
+                </div>
+                <div class="ug-col-3 ug-show-m">
+                    <div class="box box-primary">3 | m</div>
+                </div>
+                <div class="ug-col-3 ug-show-l">
+                    <div class="box box-secondary">3 | l</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row">
+                        &lt;div class="ug-col-3">
+                            &lt;div class="box box-primary">3&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3 ug-show-s">
+                            &lt;div class="box box-secondary">3 | s&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3 ug-show-m">
+                            &lt;div class="box box-primary">3 | m&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-3 ug-show-l">
+                            &lt;div class="box box-secondary">3 | l&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+        <h3 id="example-grid-gutter">Example: Grid gutter</h3>
+        Gutter is a gap between each column.
+        <br>
+        You can set the default gutter by change the <mark>$ug-grid-gutter</mark> variable in UG-GRID.SCSS file.
+        <h3>Example: grid custom gutter</h3>
+        Create your own gutters with custom name &amp; value - in some cases you may want use another gutter size than default <mark>$ug-grid-gutter</mark>
+        <br>
+        Add the gutter class <mark>$ug-helper-gutter-class</mark> with <mark>$ug-helper-gutter-values(key)</mark> to the row class <mark>$ug-grid-class-row</mark>
+        <br><br>
+        <div class="message message-info">
+            Gutters you can define in the same way, as you define <strong>Responsive breakpoints</strong>
+            <br>
+            Custom gutters works only, if $ug-grid-gutter-type = 'margin'
+        </div>
+        <div class="ug-wrapper">
+            <div class="ug-row ug-gutter-reset">
+                <div class="ug-col-4">
+                    <div class="box box-secondary">4</div>
+                </div>
+                <div class="ug-col-4">
+                    <div class="box box-primary">4</div>
+                </div>
+                <div class="ug-col-4">
+                    <div class="box box-secondary">4</div>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code class="language-markup">
+                &lt;div class="ug-wrapper">
+                    &lt;div class="ug-row ug-gutter-reset">
+                        &lt;div class="ug-col-4">
+                            &lt;div class="box box-secondary">4&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-4">
+                            &lt;div class="box box-primary">4&lt;/div>
+                        &lt;/div>
+                        &lt;div class="ug-col-4">
+                            &lt;div class="box box-secondary">4&lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            </code>
+        </pre>
+    </section>
+
+    <section id="section-mixins-functions">
+        <h2>Mixins &amp; Functions</h2>
+        If you don't want to generate automatically the grid, you can create it yourself, by using the <strong>@mixin</strong> and <strong>@function</strong> which are provided by unlimitedGrid. To do this, you don't need to include all grid library. It's enough to import the <mark>_ug-mixins.scss</mark> to your project:
+        <pre><code class="language-scss">
+        @import 'ug-mixins';
+        </code></pre>
+        <div class="message message-info">Settings for the mixins are this same as for grid (see: Basic settings).</div>
+        <h3 id="section-functions">@functions</h3>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-rem($values)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Convert value(s) from px to rem. Allow to provide values with / without unit.
+                    <ul>
+                        <li><strong>$values</strong> - single value or list of values</li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            ug-rem(32)
+                            //return
+                            2rem
+
+                            ug-rem(16 16px 0 32px)
+                            //return:
+                            1rem 1rem 0 2rem
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-max-value($values)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Return the max value from provided values
+                    <ul>
+                        <li><strong>$values</strong> - list of values</li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            ug-max-value(2 10 5 18 12 3);
+                            //return:
+                            18
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-random-color($alpha)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Return random color in rgba format
+                    <ul>
+                        <li>
+                            <strong>$alpha</strong> - alpha value between 0 and 1.
+                            <br>
+                            Default value: 1
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            ug-random-color(.5);
+                            //return:
+                            rgba(26, 35, 12, .5);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-replace($string, $search, $replace)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Replace or remove char in string
+                    <ul>
+                        <li>
+                            <strong>$string</strong> - string which should be checked to replace.
+                        </li>
+                        <li>
+                            <strong>$search</strong> - char/string which should be replaced/removed.
+                        </li>
+                        <li>
+                            <strong>$replace</strong> - char/string which should replace $search char/string.
+                            <br>
+                            Default: ''
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            $string: example string for test
+                            $new-string: ug-replace($string, 'e', '_');
+                            //$new-string return:
+                            _xampl_ string for t_est
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <h3 id="section-mixins">@mixins</h3>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-clearfix()</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Add clearfix
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-clearfix();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-clearlist()</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Remove margin, padding and list-style. Especial usefull to reset ul and ol lists
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-clearlist();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-wrapper($width, $gutter, $gutter-wrapper)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create grid wrapper / container
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - max. width for the wrapper / container. Value can be number (of columns) or percentage.
+                            <br>
+                            Default: $ug-grid-wrapper-width
+                        </li>
+                        <li>
+                            <strong>$gutter</strong> - gutter size, the gap between columns
+                            <br>
+                            Default: $ug-grid-gutter
+                        </li>
+                        <li>
+                            <strong>$gutter-wrapper</strong> - outside gutter for the wrapper. Have effect only when $ug-grid-gutter-type = 'margin'
+                            <br>
+                            Default: false
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // create grid:
+                            // - max-width 1200px
+                            // - 15px gutter
+                            @include ug-wrapper(1200, 15);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-row($gutter)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create grid row
+                    <ul>
+                        <li>
+                            <strong>$gutter</strong> - gutter size, the gap between columns
+                            <br>
+                            Default: $ug-grid-gutter
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // create row with 15px gutter
+                            @include ug-row(15);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-col($width, $gutter)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create grid column
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - width of the column. Value can be number (of columns) or percentage.
+                            <br>
+                            Default: 100%
+                        </li>
+                        <li>
+                            <strong>$gutter</strong> - gutter size, the gap between columns
+                            <br>
+                            Default: $ug-grid-gutter
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // create column with 3-column width
+                            @include ug-col(3); // 25%
+
+                            // create column with 50% width
+                            @include ug-col(50%);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-width($width)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create width for the column. This is not create the whole column, but only the width property. Usefull when mix it with CSS @media
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - width of the column. Value can be number (of columns) or percentage.
+                            <br>
+                            Default: 100%
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // set width to 3-columns
+                            @include ug-width(3); // 25%
+
+                            // set width to 50%
+                            @include ug-width(50%);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-offset($width)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create grid offset
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - number of the columns or percentage width for offset. Value can be number (of columns) or percentage.
+                            <br>
+                            Default: 0
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            //move 5-colums to the right
+                            @include ug-offset(5); // 41.666%
+
+                            //move column 20% to the right
+                            @include ug-offset(20%);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-push($width)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Set offset to the column
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - number of the columns or percentage width to push (move right). Value can be number (of columns) or percentage.
+                            <br>
+                            Default: 0
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            //move 4-colums to the right
+                            @include ug-push(4); // 33.333%
+
+                            //move column 25% to the right
+                            @include ug-push(25%);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-pull($width)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Pull the column
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - number of the columns or percentage width to pull (move left). Value can be number (of columns) or percentage.
+                            <br>
+                            Default: 0
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            //move 7-colums to the left
+                            @include ug-pull(7); // 58.333%
+
+                            //move column 33% to the left
+                            @include ug-pull(33%);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-show($display)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Show the element
+                    <ul>
+                        <li>
+                            <strong>$display</strong> - type of display (block, inline-block, flex etc.)
+                            <br>
+                            Default: block
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-show();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-hide()</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Hide the element
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-hide();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-placeholder()</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create styles for placeholder attr in forms
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-placeholder() {
+                            // styles for placeholder
+                            }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-selection($current-selector)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create styles for text / content selection
+                    <ul>
+                        <li>
+                            <strong>$current-selector</strong> - choose that selection should be available globally, or for current element
+                            <br>
+                            Default: false
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            @include ug-selection() {
+                                // styles for selection
+                            }
+
+                            //selection only for element
+                            .element {
+                                @include ug-selection(true) {
+                                    // styles for selection
+                                }
+                            }
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-align-vertical($top)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Align element for the vertical (y-axis)
+                    <ul>
+                        <li>
+                            <strong>$top</strong> - percentage value from the top
+                            <br>
+                            Default: 50%
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // center element horizontally and vertically
+                            @include ug-align-vertical();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-align-horizontal($left)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Align element for the horizontal (x-axis)
+                    <ul>
+                        <li>
+                            <strong>$left</strong> - percentage value from the left
+                            <br>
+                            Default: 50%
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // center element horizontally
+                            @include ug-align-horizontal();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-align-both($top, $left)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Align element for the horizontal (x-axis) and vertical (y-axis)
+                    <ul>
+                        <li>
+                            <strong>$top</strong> - percentage value from the top
+                            <br>
+                            Default: 50%
+                        </li>
+                        <li>
+                            <strong>$left</strong> - percentage value from the left
+                            <br>
+                            Default: 50%
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // center element horizontally and vertically
+                            @include ug-align-both();
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-create-triangle($direction, $color, $size)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create CSS triangle with pseudo element. This must be added into pseudo element (::before / ::after)
+                    <ul>
+                        <li>
+                            <strong>$direction</strong> - direction of the triangle. Possible values: top | right | bottom | left
+                            <br>
+                            Default: right
+                        </li>
+                        <li>
+                            <strong>$color</strong> - color of the triangle
+                            <br>
+                            Default: random color (use ug-random-color function)
+                        </li>
+                        <li>
+                            <strong>$size</strong> - size of the triangle
+                            <br>
+                            Default: 10px
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // create triangle:
+                            // - default
+                            .element {
+                                &::before {
+                                    @include ug-create-triangle();
+                                }
+                            }
+
+                            // - triangle 10px black top
+                            @include ug-create-triangle(top, #000, 10px);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-hamburger($width, $height, $size, $bgcolor, $padding, $hcolor)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create hamburger menu icon
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - width of the hamburger menu icon
+                            <br>
+                            Default: 32px
+                        </li>
+                        <li>
+                            <strong>$height</strong> - height of the hamburger menu icon
+                            <br>
+                            Default: 24px
+                        </li>
+                        <li>
+                            <strong>$size</strong> - height of the bar lines
+                            <br>
+                            Default: 4px
+                        </li>
+                        <li>
+                            <strong>$bgcolor</strong> - color of the bar lines
+                            <br>
+                            Default: #000
+                        </li>
+                        <li>
+                            <strong>$padding</strong> - padding inside the hamburger menu icon
+                            <br>
+                            Default: 3px
+                        </li>
+                        <li>
+                            <strong>$hcolor</strong> - color of the bar lines after :hover on hamburger menu icon</br>
+                            Default: inherit (this same as $bgcolor)
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // create hamburger menu icon:
+                            // - based on default settings
+                            @include ug-hamburger();
+
+                            // - with custom settings
+                            @include ug-hamburger(32, 32, 5, #d35400, 3);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-truncate($width)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Truncate long text
+                    <ul>
+                        <li>
+                            <strong>$width</strong> - after this value (width of the element) the text will be truncated
+                            <br>
+                            Default: none
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            // truncate text
+                            @include ug-truncate();
+
+                            // truncate text after 250px width
+                            @include ug-truncate(250);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+        <table class="table-source">
+            <tr>
+                <td colspan="2"><h4>ug-bp($value, $rule)</h4></td>
+            </tr>
+            <tr>
+                <td>
+                    Create @media rule
+                    <ul>
+                        <li>
+                            <strong>$value</strong> - value for @media breakpoint
+                        </li>
+                        <li>
+                            <strong>$rule</strong> - possibility to declare 'min' or 'max' part of width.
+                            <br>
+                            Default: min
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <pre>
+                        <code class="language-scss">
+                            //create @media (min-width: 200px)
+                            @include ug-bp(200);
+                            @include ug-bp(200px);
+
+                            //create @media (max-width: 500px)
+                            @include ug-bp(500px, max);
+
+                            //create breakpoint with
+                            //$ug-grid-breakpoints key/value
+                            @include ug-bp(s);
+                            @include ug-bp(xl);
+                        </code>
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="message message-info">
+                        It's possible to use defined breakpoints/values in <strong>$ug-grid-breakpoints</strong> map.
+                        <br>
+                        Just put as the $value the key of value which you want to use as breakpoint, without any - and _ chars.
+                        <br>
+                        For example, for 1200px you should use <strong>xl</strong>, for 480px use <strong>s</strong>. If you use 'max' in $rule, the value will be automatically reduced by 1
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="section-faq">
+        <h2>FAQ</h2>
+        <strong>&raquo; The grid based on unlimitedGrid display wrong on different devices.</strong>
+        <br>
+        Make sure that your website have in &lt;head> section the viewport meta tag:
+        <br>
+        <pre>
+            <code class="language-markup">
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+            </code>
+        </pre>
+        <h2>Issues</h2>
+        If you find in project / doc page some bugs or have an ideas for improvements / features, feel free to create an issue on <a href="https://github.com/PixelT/unlimitedGrid" target="_blank">Github project page</a>.
+    </section>
+
+    <section id="section-changelog">
+        <h3>Changelog</h3>
+        <table>
+            <tr>
+                <th>Version</th>
+                <th>Changes</th>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.4.1</strong>
+                    <br>
+                    <small>21/06/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Fix $ug-helper-trim function for better support attribute selectors</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.4.0</strong>
+                    <br>
+                    <small>04/05/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Add new mixin: ug-bp (for breakpoints)</li>
+                        <li>Add new function: ug-replace (for replace char in string)</li>
+                        <li>Add scss linter config file</li>
+                        <li>Remove $ug-module-offset-media-range</li>
+                        <li>Rename $ug-helper-gutter-wrapper to $ug-grid-wrapper-gutter + support custom value for this variable</li>
+                        <li>Enable $ug-debug by default + update demo page</li>
+                        <li>Replace all @media occurrences to ug-bp mixin</li>
+                        <li>Move ug-ordering into two separate modules: ug-pull and ug-push</li>
+                        <li>Update gulpfile.js (use gulp-load-plugins now)</li>
+                        <li>Update ug-debug mixin (to support $ug-grid-wrapper-gutter value)</li>
+                        <li>General code cleanup</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.3.1</strong>
+                    <br>
+                    <small>28/03/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Fix ug-block module (wrong variables &amp; responsive breakpoint name)</li>
+                        <li>Update demo</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.3.0</strong>
+                    <br>
+                    <small>23/03/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Add new module - block (ug-block)</li>
+                        <li>Update (rewrite) ug-hamburger mixin</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.2.2</strong>
+                    <br>
+                    <small>02/03/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Fix column attribute selector</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.2.0</strong>
+                    <br>
+                    <small>03/02/2017</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Add unlimitedGrid into npm, Bower and Sache</li>
+                        <li>Add $ug-helper-attr-selector variable in settings</li>
+                        <li>Add column auto &amp; column expand (only in flexbox grid)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.1.0</strong>
+                    <br>
+                    <small>12/12/2016</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Fix default $size value parameter in ug-create-triangle mixin</li>
+                        <li>Add new mixins: ug-hamburger (create hamburger menu icon), ug-truncate (truncate long text)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>v2.0.0</strong>
+                    <br>
+                    <small>16/11/2016</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>Add _ug-mixins.scss file, with a lot of usefull SCSS mixins and functions</li>
+                        <li>Add possibility to create custom grid by using only the _ug-mixins.scss file</li>
+                        <li>Add support for 2 types of grid gutter: 'margin' and 'padding'</li>
+                        <li>Add support for rem unit</li>
+                        <li>Remove block module</li>
+                        <li>Update all grid modules - now the modules are using the mixins from _ug-mixins.scss</li>
+                        <li>Update new version and url for grid documentation</li>
+                        <li>Update new demo page</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>1.X.X</strong>
+                    <br>
+                    <small>
+                        30.01.2016
+                        <br>
+                        28.06.2016
+                    </small>
+                </td>
+                <td>
+                    <ul>
+                        <li>First release</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>0.9.X</strong>
+                    <br>
+                    <small>25.07.2015</small>
+                </td>
+                <td>
+                    <ul>
+                        <li>First beta</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.1.1.min.js"><\/script>')
+</script>
+<script src="js/prism.js"></script>
+<script src="js/function.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>
