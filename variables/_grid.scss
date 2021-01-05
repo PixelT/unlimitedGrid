@@ -1,0 +1,33 @@
+// ----- GRID SETTINGS ------------------------------------
+$ug-grid-wrapper-width  : 1200px !default;
+$ug-grid-wrapper-gutter : true !default;
+$ug-grid-columns        : -12 !default;
+$ug-grid-gutter-type    : 'margin' !default; // 'margin' | 'padding'
+$ug-grid-gutter         : 15px !default;
+$ug-grid-box-sizing     : 'grid' !default; // 'grid' | 'global' | false
+$ug-grid-flexbox        : true !default;
+$ug-grid-use-rem        : true !default;
+
+// ----- CLASS SETTINGS -----------------------------------
+$ug-grid-container-class : 'ug-wrapper' !default;
+$ug-grid-row-class       : 'ug-row' !default;
+$ug-grid-column-class    : 'ug-col-' !default;
+
+// ----- RESPONSIVE SETTINGS ------------------------------
+$ug-grid-responsive  : true !default;
+$ug-grid-breakpoints : (
+    's-'  : 480px,
+    'm-'  : 768px,
+    'l-'  : 992px,
+    'xl-' : 1200px,
+) !default;
+
+// ----- CLEARFIX SETTINGS --------------------------------
+$ug-grid-clearfix       : false !default;
+$ug-grid-clearfix-class : 'ug-cf' !default;
+
+// ----- GUTTER SETTINGS ----------------------------------
+$ug-grid-gutter-class   : 'ug-gutter-' !default;
+$ug-grid-gutter-values  : (
+    'reset' : 0,
+) !default;

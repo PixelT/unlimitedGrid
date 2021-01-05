@@ -1,0 +1,57 @@
+// ----- CONVERT PX TO REM --------------------------------
+@function ug-rem($values) {
+    $base: 16;
+    $list: ();
+
+    @each $value in $values {
+        @if not (unitless($value)) and (unit($value) != '%') {
+            $value: $value / ($value * 0 + 1);
+        }
+
+        @if ($ug-grid-use-rem) {
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, ($value / $base) * 1rem)));
+        } @else {
+            $list: if($value == 0, append($list, 0), append($list, if(unit($value) == '%', $value, $value * 1px)));
+        }
+    }
+    @return $list;
+}
+
+// ----- GET MAX VALUE FROM LIST OF VALUES ----------------
+@function ug-max-value($ug-list) {
+    $ug-max-value: 0;
+
+    @if (type-of($ug-list) == 'number') {
+        $ug-max-value: $ug-list;
+    } @else {
+        @each $ug-item in $ug-list {
+            @if ($ug-item > $ug-max-value) {
+                $ug-max-value: $ug-item;
+            }
+        }
+    }
+    @return $ug-max-value;
+}
+
+// ----- REPLACE STRING -----------------------------------
+// https://css-tricks.com/snippets/sass/ug-string-function/
+@function ug-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if ($index) {
+        @return str-slice($string, 1, $index - 1) + $replace + ug-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+// ----- TRIM STRING --------------------------------------
+@function ug-helper-trim($string) {
+    $index: -1;
+    $counter: 0;
+    
+    @while (str-slice($string, $index, $index) == ' ') or (str-slice($string, $index, $index) == '-') or (str-slice($string, $index, $index) == '_') {
+        $counter: $counter + 1;
+        $index: $index - 1;
+    }
+    @return str-slice($string, 1, str-length($string) - $counter);
+}

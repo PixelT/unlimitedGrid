@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>unlimitedGrid - DEMO</title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="ug-grid.min.css">
     <style>
         body {
-            min-width: 320px;
             font-family: "Oxygen";
             font-size: 12px;
             font-weight: 400;
@@ -35,25 +33,6 @@
             display: inline-block;
             background-color: #e5e5e5;
             color: #444;
-        }
-        .heading-flexbox::after {
-            content: 'available only in flexbox grid!';
-            position:absolute;
-            right: 7px;
-            top: 7px;
-            font-size: 11px;
-            background-color: rgba(39, 174, 96, .75);
-            color: #fff;
-            display: block;
-            padding: 5px 10px;
-            font-weight: 400;
-            text-shadow: 1px 1px 0 rgba(39, 174, 96, 1);
-        }
-        @media (max-width: 767px) {
-            .heading-flexbox::after {
-                content: 'flexbox';
-                padding: 5px;
-            }
         }
         .subheading {
             display: inline-block;
@@ -168,8 +147,8 @@
 <body>
     <div class="ug-wrapper">
         <div class="message">
-            By default, all <span>modules</span> are enabled and have one responsive breakpoint (in 768px)<br>
-            You can edit modules and their breakpoints in setting file (ug-grid.scss)
+            By default, all <span>modules</span> are enabled and have one responsive breakpoint - M (in 768px)<br>
+            You can edit modules and their breakpoints in setting file (variables/_modules.scss)
         </div>
         <div class="heading"><span>grid: basic</span></div>
         <div class="ug-row">
@@ -241,32 +220,32 @@
         </div>
         <div class="heading"><span>grid: basic (responsive)</span></div>
         <div class="ug-row">
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-primary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-primary"><span>12 / s6 / m4 / l2</span></div>
             </div>
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-secondary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-secondary"><span>12 / s6 / m4 / l2</span></div>
             </div>
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-primary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-primary"><span>12 / s6 / m4 / l2</span></div>
             </div>
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-secondary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-secondary"><span>12 / s6 / m4 / l2</span></div>
             </div>
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-primary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-primary"><span>12 / s6 / m4 / l2</span></div>
             </div>
-            <div class="ug-col-s-6 ug-col-m-4 ug-col-l-2">
-                <div class="box-secondary"><span>s6 m4 l2</span></div>
+            <div class="ug-col-12 ug-col-s-6 ug-col-m-4 ug-col-l-2">
+                <div class="box-secondary"><span>12 / s6 / m4 / l2</span></div>
             </div>
         </div>
         <hr>
         <div class="ug-row">
-            <div class="ug-col-s-3 ug-col-m-6 ug-col-l-9">
-                <div class="box-primary"><span>s3 m6 l9</span></div>
+            <div class="ug-col-12 ug-col-s-3 ug-col-m-6 ug-col-l-9">
+                <div class="box-primary"><span>12 | s3 | m6 | l9</span></div>
             </div>
-            <div class="ug-col-s-9 ug-col-m-6 ug-col-l-3">
-                <div class="box-secondary"><span>s3 m6 l3</span></div>
+            <div class="ug-col-12 ug-col-s-9 ug-col-m-6 ug-col-l-3">
+                <div class="box-secondary"><span>12 | s3 | m6 | l3</span></div>
             </div>
         </div>
         <div class="heading"><span>grid: nested</span></div>
@@ -321,23 +300,23 @@
         </div>
         <div class="heading"><span>grid: nested (responsive)</span></div>
         <div class="ug-row">
-            <div class="ug-col-m-4 ug-col-l-6">
-                <div class="box-primary"><span>m4 l6</span></div>
+            <div class="ug-col-12 ug-col-m-4 ug-col-l-6">
+                <div class="box-primary"><span>12 | m4 | l6</span></div>
             </div>
-            <div class="ug-col-m-8 ug-col-l-6">
-                <div class="box-secondary"><span>m8 l6</span></div>
+            <div class="ug-col-12 ug-col-m-8 ug-col-l-6">
+                <div class="box-secondary"><span>12 | m8 | l6</span></div>
                 <div class="ug-row">
-                    <div class="ug-col-s-6 ug-col-m-3">
-                        <div class="box-primary"><span>s6 l3</span></div>
+                    <div class="ug-col-12 ug-col-s-6 ug-col-m-3">
+                        <div class="box-primary"><span>12 | s6 | l3</span></div>
                     </div>
-                    <div class="ug-col-s-6 ug-col-m-3">
-                        <div class="box-primary"><span>s6 l3</span></div>
+                    <div class="ug-col-12 ug-col-s-6 ug-col-m-3">
+                        <div class="box-primary"><span>12 | s6 | l3</span></div>
                     </div>
-                    <div class="ug-col-s-6 ug-col-m-3">
-                        <div class="box-primary"><span>s6 l3</span></div>
+                    <div class="ug-col-12 ug-col-s-6 ug-col-m-3">
+                        <div class="box-primary"><span>12 | s6 | l3</span></div>
                     </div>
-                    <div class="ug-col-s-6 ug-col-m-3">
-                        <div class="box-primary"><span>s6 l3</span></div>
+                    <div class="ug-col-12 ug-col-s-6 ug-col-m-3">
+                        <div class="box-primary"><span>12 | s6 | l3</span></div>
                     </div>
                 </div>
             </div>
@@ -480,45 +459,45 @@
             </li>
         </ul>
         <div class="heading"><span>grid: block (responsive)</span></div>
-        <div class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
+        <div class="ug-row ug-block-12 ug-block-s-6 ug-block-m-4 ug-block-l-2">
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
             <div>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </div>
         </div>
         <span class="subheading">(un)ordered list:</span>
-        <ul class="ug-row ug-block-s-6 ug-block-m-4 ug-block-l-2">
+        <ul class="ug-row ug-block-12 ug-block-s-6 ug-block-m-4 ug-block-l-2">
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
             <li>
-                <div class="box-primary"><span>M4</span></div>
+                <div class="box-primary"><span>12 | m4</span></div>
             </li>
         </ul>
         <div class="heading heading-flexbox"><span>grid: custom width</span></div>

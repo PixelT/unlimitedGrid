@@ -1,0 +1,41 @@
+// ----- MODULE-OFFSET SETTINGS ---------------------------
+$ug-module-offset-class       : 'ug-offset-' !default;
+$ug-module-offset-columns     : $ug-grid-columns !default;
+$ug-module-offset-breakpoints : (
+    'm-' : 768px,
+) !default;
+
+// ----- MODULE-PULL SETTINGS -----------------------------
+$ug-module-pull-class       : 'ug-pull-' !default;
+$ug-module-pull-columns     : $ug-grid-columns !default;
+$ug-module-pull-breakpoints : (
+    'm-' : 768px,
+) !default;
+
+// ----- MODULE-PUSH SETTINGS -----------------------------
+$ug-module-push-class       : 'ug-push-' !default;
+$ug-module-push-columns     : $ug-grid-columns !default;
+$ug-module-push-breakpoints : (
+    'm-' : 768px,
+) !default;
+
+// ----- MODULE-BLOCK SETTINGS ----------------------------
+$ug-module-block-class       : 'ug-block-' !default;
+$ug-module-block-columns     : $ug-grid-columns !default;
+$ug-module-block-breakpoints : (
+    'm-' : 768px,
+) !default;
+
+// ----- MODULE-VISIBILITY (SHOW/HIDE) SETTINGS -----------
+$ug-module-visibility-class-show  : 'ug-show-' !default;
+$ug-module-visibility-class-hide  : 'ug-hide-' !default;
+$ug-module-visibility-breakpoints : (
+    'm' : 768px,
+) !default;
+
+// ----- MODULE-DEBUG SETTINGS ----------------------------
+$ug-module-debug-class    : 'ug-debug' !default;
+$ug-module-debug-settings : (
+    'background-gutter' : rgba(#3498db, 0.2),
+    'background-column' : rgba(#2980b9, 0.1),
+) !default;

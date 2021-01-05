@@ -1,29 +1,33 @@
 // ----- MODULE-RESPONSIVE --------------------------------
-@if $ug-grid-responsive {
+@if ($ug-grid-responsive) {
     @each $key, $value in $ug-grid-breakpoints {
         @include ug-bp($value) {
-            @if length($ug-grid-columns) == 1 and $ug-grid-columns < 0 {
+            @if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
                 @for $i from 1 through abs($ug-grid-columns) {
-                    .#{$ug-grid-class-column}#{$key}#{$i} {
+                    .#{$ug-grid-column-class}#{$key}#{$i} {
                         @include ug-width($i / abs($ug-grid-columns) * 100%);
                     }
                 }
-                .#{$ug-grid-class-column}#{$key}auto {
+
+                .#{$ug-grid-column-class}#{$key}auto {
                     @include ug-col-auto($ug-grid-gutter);
                 }
-                .#{$ug-grid-class-column}#{$key}expand {
+
+                .#{$ug-grid-column-class}#{$key}expand {
                     @include ug-col-expand($ug-grid-gutter);
                 }
             } @else {
                 @each $column-value in $ug-grid-columns {
-                    .#{$ug-grid-class-column}#{$key}#{$column-value} {
+                    .#{$ug-grid-column-class}#{$key}#{$column-value} {
                         @include ug-width(100% / ug-max-value($ug-grid-columns) * $column-value);
                     }
                 }
-                .#{$ug-grid-class-column}#{$key}auto {
+
+                .#{$ug-grid-column-class}#{$key}auto {
                     @include ug-col-auto($ug-grid-gutter);
                 }
-                .#{$ug-grid-class-column}#{$key}expand {
+                
+                .#{$ug-grid-column-class}#{$key}expand {
                     @include ug-col-expand($ug-grid-gutter);
                 }
             }

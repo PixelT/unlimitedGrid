@@ -1,0 +1,35 @@
+// ----- MODULE-OFFSET ------------------------------------
+@if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
+    @for $i from 1 through abs($ug-module-offset-columns) {
+        .#{$ug-module-offset-class}#{$i} {
+            @include ug-offset($i / abs($ug-module-offset-columns) * 100%);
+        }
+    }
+} @else {
+    @each $column-value in $ug-grid-columns {
+        .#{$ug-module-offset-class}#{$column-value} {
+            @include ug-offset(100% / ug-max-value($ug-module-offset-columns) * $column-value)
+        }
+    }
+}
+@if ($ug-grid-responsive) {
+    $ug-counter: 1;
+
+    @each $key, $value in $ug-module-offset-breakpoints {
+        @include ug-bp($value) {
+            @if (length($ug-module-offset-columns) == 1) and ($ug-module-offset-columns < 0) {
+                @for $i from 1 through (abs($ug-module-offset-columns) - 1) {
+                    .#{$ug-module-offset-class}#{$key}#{$i} {
+                        @include ug-offset($i / abs($ug-module-offset-columns) * 100%);
+                    }
+                }
+            } @else {
+                @each $column-value in $ug-grid-columns {
+                    .#{$ug-module-offset-class}#{$key}#{$column-value} {
+                        @include ug-offset(100% / ug-max-value($ug-module-offset-columns) * $column-value);
+                    }
+                }
+            }
+        }
+    }
+}

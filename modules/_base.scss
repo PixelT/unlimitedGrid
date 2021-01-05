@@ -1,0 +1,78 @@
+// ----- BASE-CLEARFIX ------------------------------------
+@if ($ug-grid-clearfix) {
+    .#{$ug-grid-clearfix-class} {
+        @include ug-clearfix;
+    }
+}
+
+// ----- BASE-WRAPPER -------------------------------------
+.#{$ug-grid-container-class} {
+    @include ug-wrapper($gutter-wrapper: $ug-grid-wrapper-gutter);
+}
+
+// ----- BASE-ROW -----------------------------------------
+.#{$ug-grid-row-class} {
+    @include ug-row;
+}
+
+// ----- BASE-COLUMN --------------------------------------
+[class*="#{ug-helper-trim($ug-grid-column-class)}"] {
+    @include ug-col;
+}
+
+// ----- BASE-GRID ----------------------------------------
+@if (length($ug-grid-columns) == 1) and ($ug-grid-columns < 0) {
+    @for $i from 1 through abs($ug-grid-columns) {
+        .#{$ug-grid-column-class}#{$i} {
+            @include ug-width(($i / abs($ug-grid-columns)) * 100%)
+        }
+    }
+} @else {
+    @each $column-value in $ug-grid-columns {
+        .#{$ug-grid-column-class}#{$column-value} {
+            @include ug-width((100% / ug-max-value($ug-grid-columns)) * $column-value);
+        }
+    }
+}
+
+@if ($ug-grid-flexbox) {
+    .#{$ug-grid-column-class}auto {
+        @include ug-col-auto($ug-grid-gutter);
+    }
+
+    .#{$ug-grid-column-class}expand {
+        @include ug-col-expand($ug-grid-gutter);
+    }
+}
+
+// ----- BASE-CUSTOM GUTTERS ------------------------------
+@if ($ug-grid-gutter-type == 'margin') {
+    @each $key, $value in $ug-grid-gutter-values {
+        .#{$ug-grid-gutter-class}#{$key} {
+            margin-left: ug-rem(-$value);
+
+            > [class*="#{ug-helper-trim($ug-grid-column-class)}"] {
+                padding-left: ug-rem($value);
+            }
+        }
+
+        @if (global-variable-exists(ug-module-block-class)) {
+            .#{$ug-grid-gutter-class}#{$key}[class*="#{ug-helper-trim($ug-module-block-class)}"] > * {
+                padding-left: ug-rem($value);
+            }
+        }
+    }
+}
+
+// ----- BOX SIZING (GLOBAL) ------------------------------
+@if ($ug-grid-box-sizing == 'global') {
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+}

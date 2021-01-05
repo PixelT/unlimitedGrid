@@ -1,0 +1,21 @@
+// ----- BASE-DEBUG ---------------------------------------
+.#{$ug-module-debug-class} {
+    @include ug-debug;
+}
+
+[class*="#{ug-helper-trim($ug-grid-column-class)}"] {
+    position: relative;
+
+    &:hover {
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: ug-rem(4 8);
+            background-color: rgba(#000, 0.8);
+            color: rgba(#eee, 1);
+            white-space: nowrap;
+            content: attr(class);
+        }
+    }
+}

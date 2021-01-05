@@ -1,0 +1,221 @@
+// ----- DEBUG --------------------------------------------
+@mixin ug-debug {
+    @if global-variable-exists(ug-module-debug-settings) {
+        $ug-module-debug-columns: if(length($ug-grid-columns) > 1, ug-max-value($ug-grid-columns), abs($ug-grid-columns));
+        $ug-module-debug-width: (100 / $ug-module-debug-columns) * 1%;
+        position: relative;
+
+        &::after {
+            display: block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            margin: 0 auto;
+            content: '';
+            z-index: -1;
+
+            @if (type-of($ug-grid-wrapper-gutter) == 'number') {
+                left: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
+                right: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-gutter), ug-rem($ug-grid-wrapper-gutter - $ug-grid-gutter));
+                max-width: if($ug-grid-gutter-type == 'margin', ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-wrapper-gutter)), ug-rem($ug-grid-wrapper-width + (2 * $ug-grid-gutter) - (2 * $ug-grid-wrapper-gutter)));
+            } @else if ($ug-grid-wrapper-gutter) and ($ug-grid-gutter-type == 'margin') {
+                left: ug-rem($ug-grid-gutter);
+                right: ug-rem($ug-grid-gutter);
+                max-width: ug-rem($ug-grid-wrapper-width - (2 * $ug-grid-gutter));
+            } @else {
+                left: 0;
+                right: 0;
+                max-width: ug-rem($ug-grid-wrapper-width);
+            }
+
+            @if ($ug-grid-gutter-type != 'padding') {
+                background: repeating-linear-gradient(90deg,
+                    map-get($ug-module-debug-settings, background-column) 0,
+                    map-get($ug-module-debug-settings, background-column) calc(#{$ug-module-debug-width} - #{$ug-grid-gutter}),
+                    map-get($ug-module-debug-settings, background-gutter) calc(#{$ug-module-debug-width} - #{$ug-grid-gutter}),
+                    map-get($ug-module-debug-settings, background-gutter) calc(#{$ug-module-debug-width} + (#{$ug-grid-gutter} / #{$ug-module-debug-columns})));
+            } @else {
+                background: repeating-linear-gradient(90deg,
+                    map-get($ug-module-debug-settings, background-gutter) 0,
+                    map-get($ug-module-debug-settings, background-gutter) $ug-grid-gutter,
+                    map-get($ug-module-debug-settings, background-column) $ug-grid-gutter,
+                    map-get($ug-module-debug-settings, background-column) calc(#{$ug-module-debug-width} - #{$ug-grid-gutter}),
+                    map-get($ug-module-debug-settings, background-gutter) calc(#{$ug-module-debug-width} - #{$ug-grid-gutter}),
+                    map-get($ug-module-debug-settings, background-gutter) calc(#{$ug-module-debug-width}));
+            }
+        }
+    } @else {
+        @error "ug-debug mixin can\'t be used in one-file way - see docs for details";
+    }
+}
+
+// ----- CLEARFIX -----------------------------------------
+@mixin ug-clearfix {
+    &::after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+}
+
+// ----- WRAPPER ------------------------------------------
+@mixin ug-wrapper($width: $ug-grid-wrapper-width, $gutter: $ug-grid-gutter, $gutter-wrapper: $ug-grid-wrapper-gutter) {
+    width: 100%;
+
+    @if ($ug-grid-box-sizing == 'grid') {
+        box-sizing: border-box;
+    }
+
+    @if ($gutter-wrapper) or (($ug-grid-gutter-type == 'padding') and ($gutter-wrapper == false)) {
+        padding-right: ug-rem($gutter);
+        padding-left: ug-rem($gutter);
+    } @else if (type-of($gutter-wrapper) == 'number') {
+        padding-left: ug-rem($gutter-wrapper);
+        padding-right: ug-rem($gutter-wrapper);
+    }
+
+    @if ($width != 100%) {
+        max-width: ug-rem($width);
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+// ----- ROW ----------------------------------------------
+@mixin ug-row($gutter: $ug-grid-gutter) {
+    @if ($ug-grid-gutter-type == 'padding') {
+        margin-right: ug-rem(-$gutter);
+        margin-left: ug-rem(-$gutter);
+    } @else {
+        margin-left: ug-rem(-$gutter);
+    }
+
+    @if ($ug-grid-flexbox) {
+        display: flex;
+        flex-flow: row wrap;
+    } @else {
+        @include ug-clearfix;
+    }
+}
+
+// ----- COLUMN -------------------------------------------
+@mixin ug-col($width: 100%, $gutter: $ug-grid-gutter) {
+    min-height: ug-rem(1px);
+    padding-left: ug-rem($gutter);
+
+    @if ($ug-grid-box-sizing == 'grid') {
+        box-sizing: border-box;
+    }
+    
+    @if ($ug-grid-gutter-type == 'padding') {
+        padding-right: ug-rem($gutter);
+    }
+
+    @if not $ug-grid-flexbox {
+        float: left;
+    }
+}
+
+// ----- COLUMN (ONLY WIDTH) ------------------------------
+@mixin ug-width($width: 100%) {
+    @if ($ug-grid-flexbox) {
+        @if unitless($width) {
+            flex: 1 1 percentage($width / abs(ug-max-value($ug-grid-columns)));
+            max-width: percentage($width / abs(ug-max-value($ug-grid-columns)));
+        } @else {
+            flex: 1 1 $width;
+            max-width: $width;
+        }
+    } @else {
+        @if unitless($width) {
+            width: percentage($width / abs(ug-max-value($ug-grid-columns)));
+        } @else {
+            width: $width;
+        }
+    }
+}
+
+// ----- COLUMN (AUTO - FLEXBOX ONLY)----------------------
+@mixin ug-col-auto($gutter: $ug-grid-gutter) {
+    @if ($ug-grid-flexbox) {
+        width: auto;
+        max-width: 100%;
+        flex: none;
+    }
+}
+
+// ----- COLUMN (EXPAND - FLEXBOX ONLY) -------------------
+@mixin ug-col-expand($gutter: $ug-grid-gutter) {
+    @if ($ug-grid-flexbox) {
+        flex: 1;
+    }
+}
+
+// ----- BLOCK --------------------------------------------
+@mixin ug-block($width: 100%, $gutter: $ug-grid-gutter, $element: '*') {
+    > #{$element} {
+        @include ug-width($width);
+    }
+}
+
+// ----- OFFSET -------------------------------------------
+@mixin ug-offset($width: 0) {
+    margin-left: if(unitless($width), percentage($width / abs(ug-max-value($ug-grid-columns))), $width);
+}
+
+// ----- PUSH ---------------------------------------------
+@mixin ug-push($width: 0) {
+    position: relative;
+    left: if(unitless($width), percentage($width / abs(ug-max-value($ug-grid-columns))), $width);
+}
+
+// ----- PULL ---------------------------------------------
+@mixin ug-pull($width: 0) {
+    position: relative;
+    left: if(unitless($width), -(percentage($width / abs(ug-max-value($ug-grid-columns)))), -$width);
+}
+
+// ----- SHOW ---------------------------------------------
+@mixin ug-show($display: block) {
+    display: $display;
+}
+
+// ----- HIDE ---------------------------------------------
+@mixin ug-hide {
+    display: none;
+}
+
+// ----- @MEDIA BREAKPOINTS -------------------------------
+@mixin ug-bp($value, $rule: min) {
+    @if (type-of($ug-grid-breakpoints) == 'map') and (type-of($value) == 'string') {
+        $bp-key-list: ();
+        $bp-val-list: ();
+        $value: ug-replace($value, '-');
+        $value: ug-replace($value, '_');
+
+        @each $key, $val in $ug-grid-breakpoints {
+            $key: ug-replace($key, '-');
+            $key: ug-replace($key, '_');
+            $bp-key-list: append($bp-key-list, $key);
+            $bp-val-list: append($bp-val-list, $val);
+        }
+
+        $bp-index: index($bp-key-list, $value);
+        $bp-value: nth($bp-val-list, $bp-index);
+
+        @if ($rule == 'max') {
+            $bp-value: nth($bp-val-list, $bp-index) - 1;
+        }
+
+        @media (#{$rule}-width: ug-rem($bp-value)) {
+            @content;
+        }
+    } @else {
+        @if (type-of($value) == 'number') {
+            @media (#{$rule}-width: ug-rem($value)) {
+                @content;
+            }
+        }
+    }
+}

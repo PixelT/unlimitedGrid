@@ -1,12 +1,11 @@
 # unlimitedGrid
 
 - **Documentation & examples**: [http://pixelt.github.io/unlimitedGrid/](http://pixelt.github.io/unlimitedGrid/)
-- **Demo** (htmlpreview): [http://htmlpreview.github.io/?https://github.com/PixelT/unlimitedGrid/blob/master/demo.html](http://htmlpreview.github.io/?https://github.com/PixelT/unlimitedGrid/blob/master/demo.html)
 
 ## TL;DR
 
 - unlimitedGrid is a very small / simple / flexible and functional grid "framework" (build with Sass)
-- Just set the properties in the ug-grid.scss file, next build / compile this file
+- Just set the properties in the variables/_grid.scss file, next build / compile ug-grid.scss file
 - Use the generated classes in your HTML to fast create your individual grid / layout structure!
 -- or --
 - Use build functions / mixins to create your own grid
@@ -23,18 +22,18 @@
 
 - Ultra customizable, responsive, mobile first
 - Module structure - use only what you need
-- Small size - 12 columns grid with RWD only 2KB (5KB if use flexbox)
-- Support 2 types of grid - gutter margin or padding
+- Small size - 12 columns grid with RWD only 4KB
+- Support 2 types of grid - gutter using margin or padding
 - Support CSS3 features: rem units, flexbox
 - Generate full grid in 15-30s
 - Set your custom: settings | modules | classnames | breakpoints
-- Set your custom grid by using provided SCSS @mixin and @function
+- Set your custom grid by using provided SCSS @mixins and @functions
 
 ## About unlimitedGrid
 
 The main reason that I wrote yet another grid system, was the fact that I can’t found any grid system, which would give me the possibility to create functional grid in short time…
 
-unlimitedGrid is a collection of ~~functions~~ principles and rules, by which you can easily and fast create an attractive and ( ultra ) functional grid.
+unlimitedGrid is a collection of ~~functions~~ principles and rules, by which you can easily and fast create an attractive and (ultra) functional grid.
 
 unlimitedGrid based on a slightly different approach and mechanism of action than standard grid frameworks offer. He doesn’t provide functions or mixins*, which define the rules / size / properties for classes which you write, but immediately generate a whole set of classes based on your settings. Just compile the mainly SCSS file (ug-grid.scss) and the grid will be ready for you!
 
